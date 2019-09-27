@@ -50,6 +50,14 @@
         <primitive id="demoSphere">
             <sphere radius="1" stacks="5" slices="5" />
         </primitive>
+        <primitive id="demoTriangle">
+            <triangle   x1="0" y1="0" z1="0"
+                        x2="5" y2="0" z2="0"
+                        x3="0" y3="0" z3="5" />
+        </primitive>
+        <primitive id="demoCylinder">
+            <cylinder base="ff" top="ff" height="ff" slices="ii" stacks="ii" />
+        </primitive>
     </primitives>
 
     <components>
