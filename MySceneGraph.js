@@ -27,7 +27,7 @@ class MySceneGraph {
 
         this.nodes = [];
 
-        this.idRoot = null;                    // The id of the root element.
+        this.idRoot = null; // The id of the root element.
 
         this.axisCoords = [];
         this.axisCoords['x'] = [1, 0, 0];
@@ -293,8 +293,7 @@ class MySceneGraph {
             if (children[i].nodeName != "omni" && children[i].nodeName != "spot") {
                 this.onXMLMinorError("unknown tag <" + children[i].nodeName + ">");
                 continue;
-            }
-            else {
+            } else {
                 attributeNames.push(...["location", "ambient", "diffuse", "specular"]);
                 attributeTypes.push(...["position", "color", "color", "color"]);
             }
@@ -341,8 +340,7 @@ class MySceneGraph {
                         return aux;
 
                     global.push(aux);
-                }
-                else
+                } else
                     return "light " + attributeNames[i] + " undefined for ID = " + lightId;
             }
 
@@ -366,8 +364,7 @@ class MySceneGraph {
                         return aux;
 
                     targetLight = aux;
-                }
-                else
+                } else
                     return "light target undefined for ID = " + lightId;
 
                 global.push(...[angle, exponent, targetLight])
@@ -476,7 +473,7 @@ class MySceneGraph {
 
                         transfMatrix = mat4.translate(transfMatrix, transfMatrix, coordinates);
                         break;
-                    case 'scale':                        
+                    case 'scale':
                         this.onXMLMinorError("To do: Parse scale transformations.");
                         break;
                     case 'rotate':
@@ -576,9 +573,7 @@ class MySceneGraph {
 
                 let sphere = new MySphere(this.scene, radius, slices, stacks);
                 this.primitives[primitiveId] = sphere;
-            } 
-            
-            else if(primitiveType == 'triangle'){
+            } else if (primitiveType == 'triangle') {
                 // x1
                 var x1 = this.reader.getFloat(grandChildren[0], 'x1');
                 if (!(x1 != null && !isNaN(x1)))
@@ -627,43 +622,57 @@ class MySceneGraph {
                     return "unable to parse z3 of the primitive coordinates for ID = " + primitiveId;
 
 
-                var triangle = new MyTriangle(this.scene,primitiveId,x1,y1,z1,x2,y2,z2,x3,y3,z3);
+                var triangle = new MyTriangle(this.scene, primitiveId, x1, y1, z1, x2, y2, z2, x3, y3, z3);
 
                 this.primitives[primitiveId] = triangle;
 
 
-            }
-
-            else if(primitiveType == 'cylinder'){
+            } else if (primitiveType == 'cylinder') {
                 var base = this.reader.getFloat(grandChildren[0], 'base');
                 if (!(base != null && !isNaN(base)))
                     return "unable to parse base of the primitive coordinates for ID = " + primitiveId;
-                
+
                 var top = this.reader.getFloat(grandChildren[0], 'top');
                 if (!(top != null && !isNaN(top)))
                     return "unable to parse top of the primitive coordinates for ID = " + primitiveId;
-                    
+
                 var height = this.reader.getFloat(grandChildren[0], 'height');
                 if (!(height != null && !isNaN(height)))
                     return "unable to parse height of the primitive coordinates for ID = " + primitiveId;
-    
-               
+
+
                 var slices = this.reader.getInteger(grandChildren[0], 'slices');
                 if (!(slices != null && !isNaN(slices)))
-                return "unable to parse slices of the primitive coordinates for ID = " + primitiveId;
+                    return "unable to parse slices of the primitive coordinates for ID = " + primitiveId;
 
                 var stacks = this.reader.getInteger(grandChildren[0], 'stacks');
                 if (!(stacks != null && !isNaN(stacks)))
-                return "unable to parse slices of the primitive coordinates for ID = " + primitiveId;
+                    return "unable to parse stacks of the primitive coordinates for ID = " + primitiveId;
 
 
-                var cylinder = new MyCylinder(this.scene,primitiveId,slices,stacks,base,top,height);
+                var cylinder = new MyCylinder(this.scene, primitiveId, slices, stacks, base, top, height);
 
                 this.primitives[primitiveId] = cylinder;
 
-            }
-            
-            else {
+            } else if (primitiveType == 'torus') {
+                var inner = this.reader.getFloat(grandChildren[0], 'inner');
+                if (!(inner != null && !isNaN(inner)))
+                    return "unable to parse inner of the primitive coordinates for ID = " + primitiveId;
+
+                var outer = this.reader.getFloat(grandChildren[0], 'outer');
+                if (!(outer != null && !isNaN(outer)))
+                    return "unable to parse outer of the primitive coordinates for ID = " + primitiveId;
+                var slices = this.reader.getInteger(grandChildren[0], 'slices');
+                if (!(slices != null && !isNaN(slices)))
+                    return "unable to parse slices of the primitive coordinates for ID = " + primitiveId;
+
+                var loops = this.reader.getInteger(grandChildren[0], 'loops');
+                if (!(loops != null && !isNaN(loops)))
+                    return "unable to parse loops of the primitive coordinates for ID = " + primitiveId;
+
+                var torus = new MyTorus(this.scene,primitiveId,inner,outer,slices,stacks);
+                this.primitives[primitiveId] = torus;
+            } else {
                 console.warn("To do: Parse other primitives.");
             }
         }
@@ -673,9 +682,9 @@ class MySceneGraph {
     }
 
     /**
-   * Parses the <components> block.
-   * @param {components block element} componentsNode
-   */
+     * Parses the <components> block.
+     * @param {components block element} componentsNode
+     */
     parseComponents(componentsNode) {
         var children = componentsNode.children;
 
@@ -844,6 +853,7 @@ class MySceneGraph {
         //To do: Create display loop for transversing the scene graph
 
         //To test the parsing/creation of the primitives, call the display function directly
-        this.primitives['demoCylinder'].display();
+        //this.primitives['demoCylinder'].display();
+        //this.primitives['demoTorus'].display();
     }
 }

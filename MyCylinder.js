@@ -41,29 +41,37 @@ class MyCylinder extends CGFobject {
 				ang += ang_inc;
 			}
 			ang = 0;
-			radius = this.radius_bot * (this.stacks - j + 1) / this.stacks + this.radius_top * ((j + 1) / this.stacks) // optimize this?
+			//radius = this.radius_bot * (this.stacks - j + 1) / this.stacks + this.radius_top * ((j + 1) / this.stacks) // optimize this?
 			h += heigh_inc;
 		}
 
-		console.log("vertices: " + this.vertices.length);
+		//console.log("vertices: " + this.vertices.length);
 
 		//INDICES
 
-		for (var j = 0; j < this.slices; j++) {
 
-
-
-			for (var i = 1; i < this.stacks - 1; i++) {
+			for (var i = 0; i < this.stacks - 1; i++) {
 				for (var j = 0; j < this.slices; j++) {
 
 					let index = i * this.slices + j;
 					let upper = (i + 1) * this.slices + j;
 
 
+					
+					if(j == this.slices-1){
 
+						this.indices.push(index, index + 1 - this.slices, upper);
+						this.indices.push(index + 1, upper + 1 - this.slices, upper);
 
+					
+					}
+					else{
 					this.indices.push(index, index + 1, upper);
 					this.indices.push(index + 1, upper + 1, upper);
+					}
+				
+					
+					
 				}
 
 
@@ -81,5 +89,5 @@ class MyCylinder extends CGFobject {
 
 		}
 
-	}
+	
 }
