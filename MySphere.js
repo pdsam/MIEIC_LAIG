@@ -21,11 +21,11 @@ class MySphere extends CGFobject {
         this.vertices.push(...[0,0,1]);
         this.normals.push(...[0,0,1]);
 
-        for (let i = 1; i <= this.stacks * 2 - 1; i++) {
+        for (let i = 1; i <= (this.stacks * 2 - 1); i++) {
             for (let j = 0; j < this.slices; j++) {
                 let x = Math.sin(dTheta*i) * Math.cos(dPhi*j);
-                let y = Math.sin(dTheta*i) * Math.cos(dPhi*j);
-                let z = Math.sin(dTheta*i) * Math.cos(dPhi*j);
+                let y = Math.sin(dTheta*i) * Math.sin(dPhi*j);
+                let z = Math.cos(dTheta*i);
 
                 this.normals.push(...[x,y,z]);
                 this.vertices.push(...[this.radius*x, this.radius*y, this.radius*z]);
@@ -38,8 +38,8 @@ class MySphere extends CGFobject {
 
         //Triangles on first pole
         for (let i = 0; i < this.slices; i++) {
-            this.indices.push(i + 1);
-            this.indices.push(i + 2);
+            this.indices.push(1 + i);
+            this.indices.push(1 + (i + 1) % this.slices);
             this.indices.push(0);
         }
 
@@ -61,10 +61,10 @@ class MySphere extends CGFobject {
         }
 
         //Triangles on second pole 
-        for (let i = 0; i < this.slices; i++) {
-            this.indices.push(firstIndex + i);
-            this.indices.push(firstIndex + (i + 1) % this.slices);
+        for (let i = 1; i < this.slices; i++) {
             this.indices.push(this.vertices.length / 3 - 1);
+            this.indices.push(firstIndex + (i + 1) % this.slices);
+            this.indices.push(firstIndex + i);
         }
 
 		this.primitiveType = this.scene.gl.TRIANGLES;

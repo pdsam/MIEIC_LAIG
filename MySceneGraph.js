@@ -636,7 +636,7 @@ class MySceneGraph {
 
             else if(primitiveType == 'cylinder'){
                 var base = this.reader.getFloat(grandChildren[0], 'base');
-                if (!(base != null && !isNaN(z3)))
+                if (!(base != null && !isNaN(base)))
                     return "unable to parse base of the primitive coordinates for ID = " + primitiveId;
                 
                 var top = this.reader.getFloat(grandChildren[0], 'top');
