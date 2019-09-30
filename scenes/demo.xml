@@ -55,6 +55,9 @@
                         x2="5" y2="0" z2="0"
                         x3="0" y3="0" z3="5" />
         </primitive>
+        <primitive id="demoCylinder">
+            <cylinder base="3" top="3" height="5" slices="10" stacks="10" />
+        </primitive>
     </primitives>
 
     <components>

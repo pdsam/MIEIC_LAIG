@@ -20,7 +20,7 @@ class MyCylinder extends CGFobject {
 		let ang_inc = 2*Math.PI/this.slices;
 		let n_verts = (this.slices+1)*4;
 		let heigh_inc = this.height/this.stacks;
-		let radius = radius_bot;
+		let radius = this.radius_bot;
 		let h = 0;
 
 
@@ -47,35 +47,25 @@ class MyCylinder extends CGFobject {
 
 		//INDICES
 
-		for(var i = 0; i <this.stacks;i++ ){
+		for(var i = 0; i <this.stacks-1;i++ ){
 			for(var j = 0; j < this.slices;j++){
 
-				if(j +1 != slices){
-				//does not work for the last slice
-				   this.indices.push(i*this.slices+j);
-				   this.indices.push(i*this.slices + j+1);
-				   this.indices.push((i+1)*this.slices+j);
+				let index = i*this.slices + j;
+				let upper =(i+1)*this.slices + j ;
 
-				   this.indices.push(i*this.slices + j +1);
-				   this.indices.push((i+1)*this.slices+j+1);
-				   this.indices.push((i+1)*this.slices+j);
-				}
-				else{
-					
-					this.indices.push(i*this.slices+j);
-					this.indices.push(i*this.slices + j+1);
-					this.indices.push((i+1)*this.slices+j);
- 
-					this.indices.push(i*this.slices + j +1);
-					this.indices.push((i+1)*this.slices+j+1);
-					this.indices.push((i+1)*this.slices+j);
+					this.indices.push(index, index +1, upper);
+					this.indices.push(index+1,upper+1,upper);
 
+			
 				}
+
+				
+				
 			
 			}
 
 
-		}
+		
 
 
 		// 	/* VERTICES */

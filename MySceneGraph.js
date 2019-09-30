@@ -613,12 +613,12 @@ class MySceneGraph {
 
                 // x3
                 var x3 = this.reader.getFloat(grandChildren[0], 'x3');
-                if (!(x3 != null && !isNaN(x1)))
+                if (!(x3 != null && !isNaN(x3)))
                     return "unable to parse x3 of the primitive coordinates for ID = " + primitiveId;
 
                 // y3
                 var y3 = this.reader.getFloat(grandChildren[0], 'y3');
-                if (!(y3 != null && !isNaN(y1)))
+                if (!(y3 != null && !isNaN(y3)))
                     return "unable to parse y3 of the primitive coordinates for ID = " + primitiveId;
 
                 //z3
@@ -658,6 +658,8 @@ class MySceneGraph {
 
 
                 var cylinder = new MyCylinder(this.scene,primitiveId,slices,stacks,base,top,height);
+
+                this.primitives[primitiveId] = cylinder;
 
             }
             
@@ -842,6 +844,6 @@ class MySceneGraph {
         //To do: Create display loop for transversing the scene graph
 
         //To test the parsing/creation of the primitives, call the display function directly
-        this.primitives['demoSphere'].display();
+        this.primitives['demoCylinder'].display();
     }
 }
