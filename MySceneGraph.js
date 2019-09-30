@@ -670,7 +670,7 @@ class MySceneGraph {
                 if (!(loops != null && !isNaN(loops)))
                     return "unable to parse loops of the primitive coordinates for ID = " + primitiveId;
 
-                var torus = new MyTorus(this.scene,primitiveId,inner,outer,slices,stacks);
+                var torus = new MyTorus(this.scene,primitiveId,inner,outer,slices,loops);
                 this.primitives[primitiveId] = torus;
             } else {
                 console.warn("To do: Parse other primitives.");

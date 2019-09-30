@@ -59,7 +59,7 @@
             <cylinder base="3" top="3" height="5" slices="6" stacks="10" />
         </primitive>
         <primitive id="demoTorus">
-            <torus inner="2" outer="8" slices="10" loops="5" />
+            <torus inner="1" outer="3" slices="10" loops="6" />
         </primitive>
  
     </primitives>

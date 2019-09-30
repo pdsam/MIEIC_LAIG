@@ -24,18 +24,14 @@ class MyTorus extends CGFobject{
 
         for(let i = 0;i <= this.slices;i++){
             for(let j = 0; j <=this.loops; j++){
-                
                 this.vertices.push(
-                    (this.outer_radius + this.inner_radius*Math.cos(loop_angle*j)) * Math.cos(slice_angle*i), 
-					(this.outer_radius + this.inner_radius*Math.cos(loop_angle*j)) * Math.sin(slice_angle*i), 
-					this.inner_radius * Math.sin(loop_angle*j)
-
-                );
-
-
+                    (this.outter + this.inner*Math.cos(loop_angle*j)) * Math.cos(slice_angle*i), 
+					(this.outter + this.inner*Math.cos(loop_angle*j)) * Math.sin(slice_angle*i), 
+                    this.inner * Math.sin(loop_angle*j));
 
             }
         }
+        console.log(this.vertices.toString());
 
         for (let i = 0; i < this.slices; i++) {
 			for(let j = 0; j < this.loops; j++) {
@@ -46,6 +42,7 @@ class MyTorus extends CGFobject{
 			}
         }
 
+        console.log(this.indices.toString());
 
     }
 
