@@ -26,7 +26,7 @@ class MyTorus extends CGFobject{
             for(let j = 0; j <=this.loops; j++){
 
 
-
+                //todo calculate the trigonometry once
                 this.vertices.push(
                     (this.outter + this.inner*Math.cos(loop_angle*j)) * Math.cos(slice_angle*i), 
 					(this.outter + this.inner*Math.cos(loop_angle*j)) * Math.sin(slice_angle*i), 
@@ -37,8 +37,8 @@ class MyTorus extends CGFobject{
                 
                 this.normals.push(
                     cInternal * Math.cos(i*slice_angle),
-                    Math.sin(loop_angle*j),
-                    cInternal*Math.sin(slice_angle*i)
+                    cInternal*Math.sin(slice_angle*i),
+                    Math.sin(loop_angle*j)
 
 
 
