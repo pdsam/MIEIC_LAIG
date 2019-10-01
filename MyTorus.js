@@ -19,20 +19,33 @@ class MyTorus extends CGFobject{
 		this.texCoords = [];
 
 
-        let slice_angle = 2*Math.PI/this.slices;
-		let loop_angle = 2*Math.PI/this.loops;
+        let slice_angle = 2*Math.PI/this.slices; //increment in the outter radius
+		let loop_angle = 2*Math.PI/this.loops;  //increment in the inner radius
 
         for(let i = 0;i <= this.slices;i++){
             for(let j = 0; j <=this.loops; j++){
+
+
+
                 this.vertices.push(
                     (this.outter + this.inner*Math.cos(loop_angle*j)) * Math.cos(slice_angle*i), 
 					(this.outter + this.inner*Math.cos(loop_angle*j)) * Math.sin(slice_angle*i), 
                     this.inner * Math.sin(loop_angle*j));
 
+
+                let cInternal = Math.cos(loop_angle*j);
+                
+                this.normals.push(
+                    cInternal * Math.cos(i*slice_angle),
+                    Math.sin(loop_angle*j),
+                    cInternal*Math.sin(slice_angle*i)
+
+
+
+                );
+
             }
         }
-        console.log("vertices: "+this.vertices.toString());
-        console.log("vertices number:"+ (this.vertices.length/3));
 
         for (let i = 0; i < this.slices; i++) {
 			for(let j = 0; j < this.loops; j++) {
@@ -43,8 +56,9 @@ class MyTorus extends CGFobject{
 			}
         }
 
-        console.log("indices: "+ this.indices.toString());
-        console.log("indices number:"+ (this.vertices.length));
+
+        this.primitiveType = this.scene.gl.TRIANGLES;
+		this.initGLBuffers();
     }
 
 }

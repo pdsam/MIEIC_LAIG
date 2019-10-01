@@ -853,7 +853,7 @@ class MySceneGraph {
         //To do: Create display loop for transversing the scene graph
 
         //To test the parsing/creation of the primitives, call the display function directly
-        this.primitives['demoCylinder'].display();
-        //this.primitives['demoTorus'].display();
+        //this.primitives['demoCylinder'].display();
+        this.primitives['demoTorus'].display();
     }
 }

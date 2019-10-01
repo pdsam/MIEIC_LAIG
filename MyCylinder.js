@@ -37,6 +37,11 @@ class MyCylinder extends CGFobject {
 
 				this.normals.push(ca,sa,0);
 
+				this.texCoords.push(
+					i*1/this.slices, 
+					1 - (j*1/this.stacks)
+				);
+
 /*				if (radius == 0) { // TODO check if it's the tip of the cone, might not be needed
 					break;
 				}
