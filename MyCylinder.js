@@ -34,10 +34,13 @@ class MyCylinder extends CGFobject {
 
 				this.vertices.push(radius * ca, radius * sa, h);
 
-				if (radius == 0) { // TODO check if it's the tip of the cone, might not be needed
+
+				this.normals.push(ca,sa,0);
+
+/*				if (radius == 0) { // TODO check if it's the tip of the cone, might not be needed
 					break;
 				}
-
+*/
 				ang += ang_inc;
 			}
 			ang = 0;
@@ -61,7 +64,7 @@ class MyCylinder extends CGFobject {
 					if(j == this.slices-1){
 
 						this.indices.push(index, index + 1 - this.slices, upper);
-						this.indices.push(index + 1, upper + 1 - this.slices, upper);
+						this.indices.push(index + 1-this.slices, upper + 1-this.slices, upper);
 
 					
 					}

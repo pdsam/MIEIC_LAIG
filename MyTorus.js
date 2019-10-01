@@ -31,7 +31,8 @@ class MyTorus extends CGFobject{
 
             }
         }
-        console.log(this.vertices.toString());
+        console.log("vertices: "+this.vertices.toString());
+        console.log("vertices number:"+ (this.vertices.length/3));
 
         for (let i = 0; i < this.slices; i++) {
 			for(let j = 0; j < this.loops; j++) {
@@ -42,8 +43,8 @@ class MyTorus extends CGFobject{
 			}
         }
 
-        console.log(this.indices.toString());
-
+        console.log("indices: "+ this.indices.toString());
+        console.log("indices number:"+ (this.vertices.length));
     }
 
 }
