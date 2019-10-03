@@ -43,6 +43,9 @@ class MySceneGraph {
          * If any error occurs, the reader calls onXMLError on this object, with an error message
          */
         this.reader.open('scenes/' + filename, this);
+
+        this.materialStack = [];
+        this.textureStack = [];
     }
 
     /*
@@ -723,14 +726,140 @@ class MySceneGraph {
             var textureIndex = nodeNames.indexOf("texture");
             var childrenIndex = nodeNames.indexOf("children");
 
-            this.onXMLMinorError("To do: Parse components.");
+            this.onXMLMinorError("To do: texture scales factors. \n reintroduce missing materials and texture warnings.");
+
+            let component = new SceneTreeNode(this.scene, this, []);
             // Transformations
+            if (transformationIndex != null) {
+                let children = grandChildren[transformationIndex].children;
+                if (children[0].name == "transformationref") {
+                    let id = this.reader.getString(children[0], "id");
+                    if (this.transformations[id]) {
+                        component.transformationMatrix = this.transformations[id];
+                    } else {
+                        return "invalid transform id in componentID " + componentID;
+                    }
+                } else {
+                    let matrix = mat4.create();
+                    for (let child of children) {
+                        if (child.nodeName == "transformationref") {
+                            return "transf ref mixed with explicit transform at componentID " + componentID;
+                        }
+                        
+                        if (child.nodeName === "translate") {
+                            let x = this.reader.getFloat(child, "x");
+                            let y = this.reader.getFloat(child, "y");
+                            let z = this.reader.getFloat(child, "z");
+
+                            if (x == null || y == null || z == null) {
+                                return "invalid translation coords at componentID " + componentID;
+                            }
+
+                            mat4.translate(matrix, matrix, [x,y,z]);
+                        } else if (child.nodeName === "rotate") {
+                            let axes = {'x': [1,0,0], 'y':[0,1,0], 'z':[0,0,1]};
+
+                            let axis = this.reader.getString(child, "axis");
+                            let angle = this.reader.getFloat(child, "angle");
+
+                            if (axis == null || angle == null || axes[axis] == null) {
+                                return "invalid parameters rotation in componentID " + componentID;
+                            }
+
+                            mat4.rotate(matrix, matrix, angle, axes[axis]);
+                        } else if (child.nodeName === "scale") {
+                            let x = this.reader.getFloat(child, "x");
+                            let y = this.reader.getFloat(child, "y");
+                            let z = this.reader.getFloat(child, "z");
+
+                            if (x == null || y == null || z == null) {
+                                return "invalid scale values at componentID " + componentID;
+                            }
+
+                            mat4.scale(matrix, matrix, [x,y,z]);
+                        } else {
+                            return "unknown transformation in componentID " + componentID;
+                        }
+                    }
+                    component.transformationMatrix = matrix;
+                }
+            } else {
+                return "Missing transoformation for componentId " + componentID;
+            }
 
             // Materials
+            let mats = [];
+            if (materialsIndex) {
+                let children = grandChildren[materialsIndex].children;
+                for (let child of children) {
+                    if (child.nodeName == "material") {
+                        let id = this.reader.getString(child, "id");
+                        if (id == null || this.materials[id] == null) {
+                            //return "problem with material at componentID " + componentID;
+                        }
+
+                        mats.push(this.materials[id]);
+                    } else {
+                        return "invalid materials child at componentID " + componentID;
+                    }
+                }
+
+                //component.materials = mats;
+            } else {
+                return "Missing materials at componentID " + componentID;
+            }
 
             // Texture
+            let texts = [];
+            if (textureIndex) {
+                let children = grandChildren[textureIndex].children;
+                for (let child of children) {
+                    if (child.nodeName == "texture") {
+                        let id = this.reader.getString(child, "id");
+                        if (id == null || this.textures[id] == null) {
+                            //return "problem with material at componentID " + componentID;
+                        }
+
+                        texts.push(this.textures[id]);
+                    } else {
+                        return "invalid textures child at componentID " + componentID;
+                    }
+                }
+                //component.textures = texts;
+            } else {
+                return "Missing textures at componentID " + componentID;
+            }
 
             // Children
+            let chil = [];
+            if (childrenIndex) {
+                let children = grandChildren[childrenIndex].children;
+                for (let child of children) {
+                    if (child.nodeName == "componentref") {
+                        let id = this.reader.getString(child,"id");
+                        if (id == null || this.components[id] == null) {
+                            return "problem with componentref at componentID " + componentID;
+                        }
+
+                        chil.push(this.components[id]);
+                    } else if (child.nodeName == "primitiveref") {
+                        let id = this.reader.getString(child,"id");
+                        if (id == null || this.primitives[id] == null) {
+                            return "problem with primitiveref at componentID " + componentID;
+                        }
+
+                        chil.push(this.primitives[id]);
+                    } else {
+                        return "invalid children child at componentID " + componentID;
+                    }
+                }
+
+                component.children = chil;
+            } else {
+                return "Missing transoformation for componentId " + componentID;
+            }
+
+            this.components[componentID] = component;
         }
     }
 
@@ -846,6 +975,35 @@ class MySceneGraph {
         console.log("   " + message);
     }
 
+    applyMaterial(m) {
+        this.activeMaterial = m;
+        m.apply();
+    }
+
+    pushMaterial() {
+        this.materialStack.push(this.activeMaterial);
+    }
+
+    popMaterial() {
+        this.materialStack.pop();
+        if (this.materialStack[this.materialStack.length-1]) {
+            this.materialStack[this.materialStack.length-1].apply();
+        }
+    }
+
+    applyTexture(m) {
+        this.activeTexture = m;
+        m.apply();
+    }
+
+    pushTexture() {
+        this.textureStack.push(this.activeTexture);
+    }
+
+    popTexture() {
+        this.textureStack.pop();
+    }
+
     /**
      * Displays the scene, processing each node, starting in the root node.
      */
@@ -854,6 +1012,8 @@ class MySceneGraph {
 
         //To test the parsing/creation of the primitives, call the display function directly
         //this.primitives['demoCylinder'].display();
-        this.primitives['demoTorus'].display();
+        //this.primitives['demoSphere'].enableNormalViz();
+        this.components['demoRoot'].display();
+
     }
 }
