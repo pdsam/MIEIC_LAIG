@@ -60,10 +60,10 @@
                         x3="0" y3="0" z3="5" />
         </primitive>
         <primitive id="demoCylinder">
-            <cylinder base="1" top="1" height="0.5" slices="20" stacks="5" />
+            <cylinder base="1" top="1" height="1" slices="20" stacks="5" />
         </primitive>
         <primitive id="coneFrustum">
-            <cylinder base="5" top="2" height="1" slices="20" stacks="10" />
+            <cylinder base="1" top="0.5" height="1" slices="20" stacks="10" />
         </primitive>
         
 
@@ -80,7 +80,7 @@
         <component id="topUnitCube">
             <transformation>
                 <translate x="0" y="0.5" z="0" /> 
-                <rotate axis="x" angle="-1.5708" />
+                <rotate axis="x" angle="-90" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
@@ -98,7 +98,7 @@
         <component id="botUnitCube">
             <transformation>
                 <translate x="0" y="-0.5" z="0" /> 
-                <rotate axis="x" angle="1.5708" />
+                <rotate axis="x" angle="90" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
@@ -116,7 +116,7 @@
         <component id="backUnitCube">
             <transformation>
                 <translate x="0" y="0" z="-0.5" />
-                <rotate axis="y" angle="3.14" />
+                <rotate axis="y" angle="180" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
@@ -151,7 +151,7 @@
         <component id="rightUnitCube">
             <transformation>
                 <translate x="-0.5" y="0" z="0" /> 
-                <rotate axis="y" angle="-1.5708" />
+                <rotate axis="y" angle="-90" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
@@ -169,7 +169,7 @@
         <component id="leftUnitCube">
             <transformation>
                 <translate x="0.5" y="0" z="0" /> 
-                <rotate axis="y" angle="1.5708" />
+                <rotate axis="y" angle="90" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
@@ -215,10 +215,36 @@
             </materials>
             <texture id="demoTexture"/>
             <children>
-                <primitiveref id="coneFrustum" />
+                <primitiveref id="demoCylinder" />
             </children>
         </component>
 
+        <component id="tableTop">
+            <transformation>
+                <scale x="3" y="1" z="6" />
+                <rotate axis="x" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="unitSquare" />
+            </children>
+        </component>
+
+        <component id="table">
+            <transformation>
+                <scale x="1" y="1" z="1" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="unitSquare" />
+            </children>
+        </component>
 
         <component id="demoRoot">
             <transformation>
@@ -229,7 +255,7 @@
             </materials>
             <texture id="demoTexture"/>
             <children>
-                <componentref id="unitCube" />
+                <componentref id="tableLeg" />
             </children>
         </component>
 
