@@ -61,22 +61,156 @@
         <primitive id="demoTorus">
             <torus inner="1" outer="3" slices="10" loops="6" />
         </primitive>
+        <primitive id="unitSquare">
+            <rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" />
+        </primitive>
  
     </primitives>
 
     <components>
+        <component id="topUnitCube">
+            <transformation>
+                <translate x="0" y="0.5" z="0" /> 
+                <rotate axis="x" angle="-1.5708" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+
+            <texture id="demoTexture" length_s="1" length_t="1" />
+
+            <children>
+                <primitiveref id="unitSquare" />
+
+             </children>
+
+        </component>
+
+        <component id="botUnitCube">
+            <transformation>
+                <translate x="0" y="-0.5" z="0" /> 
+                <rotate axis="x" angle="1.5708" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+
+            <texture id="demoTexture" length_s="1" length_t="1" />
+
+            <children>
+                <primitiveref id="unitSquare" />
+
+             </children>
+
+        </component>
+
+        <component id="backUnitCube">
+            <transformation>
+                <translate x="0" y="0" z="-0.5" />
+                <rotate axis="y" angle="3.14" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+
+            <texture id="demoTexture" length_s="1" length_t="1" />
+
+            <children>
+                <primitiveref id="unitSquare" />
+
+             </children>
+
+        </component>
+
+        <component id="frontUnitCube">
+            <transformation>
+                <translate x="0" y="0" z="0.5" /> 
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+
+            <texture id="demoTexture" length_s="1" length_t="1" />
+
+            <children>
+                <primitiveref id="unitSquare" />
+
+             </children>
+
+        </component>
+
+        <component id="rightUnitCube">
+            <transformation>
+                <translate x="-0.5" y="0" z="0" /> 
+                <rotate axis="y" angle="-1.5708" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+
+            <texture id="demoTexture" length_s="1" length_t="1" />
+
+            <children>
+                <primitiveref id="unitSquare" />
+
+             </children>
+
+        </component>
+
+        <component id="leftUnitCube">
+            <transformation>
+                <translate x="0.5" y="0" z="0" /> 
+                <rotate axis="y" angle="1.5708" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+
+            <texture id="demoTexture" length_s="1" length_t="1" />
+
+            <children>
+                <primitiveref id="unitSquare" />
+
+             </children>
+
+        </component>
+
+        <component id="unitCube">
+            <transformation>
+                <scale x="1" y="1" z="1" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+
+            <texture id="demoTexture" length_s="1" length_t="1" />
+
+            <children>
+                <componentref id="topUnitCube" />
+                <componentref id="botUnitCube" />
+                <componentref id="leftUnitCube" />
+                <componentref id="rightUnitCube" />
+                <componentref id="frontUnitCube" />
+                <componentref id="backUnitCube" />
+
+             </children>
+
+        </component>
+
         <component id="demoRoot">
             <transformation>
-                <translate x="0" y="0" z="1" />
-                <scale x="2" y="1" z="1" />
+                <scale x="1" y="1" z="1" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
             </materials>
             <texture id="demoTexture"/>
             <children>
-                <primitiveref id="demoRectangle" />
+                <componentref id="unitCube" />
             </children>
         </component>
+
+        
+
     </components>
 </lxs>
