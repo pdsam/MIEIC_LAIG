@@ -243,14 +243,10 @@ class MySceneGraph {
         for (let view of viewNodes) {
             if (view.nodeName == "perspective") {
                 hasViews = true;
-                let id = this.reader.getString(view, "id");
-                let near = this.reader.getFloat(view, "near");
-                let far = this.reader.getFloat(view, "far");
-                let angle = this.reader.getFloat(view, "angle");
-
-                if (id == null || near == null || far == null || angle == null) {
-                    return "Missing necessary parameter for perspective view.";
-                }
+                let id = this.reader.getString(view, "id", true);
+                let near = this.reader.getFloat(view, "near", true);
+                let far = this.reader.getFloat(view, "far", true);
+                let angle = this.reader.getFloat(view, "angle", true);
 
                 let nodeNames = [];
                 for (let child of view.children) {
@@ -264,25 +260,9 @@ class MySceneGraph {
                     return "Missing necessary children from perpective view.";
                 }
 
-                let x = this.reader.getFloat(view.children[fromIndex], "x");
-                let y = this.reader.getFloat(view.children[fromIndex], "y");
-                let z = this.reader.getFloat(view.children[fromIndex], "z");
+                let position = vec3.fromValues(...this.parseCoordinates3D(view.children[fromIndex], "from node"));
 
-                if (x == null || y==null || z ==null) {
-                    return "Missing proper coordinates for from vector.";
-                }
-
-                let position = vec3.fromValues(x,y,z);
-
-                x = this.reader.getFloat(view.children[toIndex], "x");
-                y = this.reader.getFloat(view.children[toIndex], "y");
-                z = this.reader.getFloat(view.children[toIndex], "z");
-
-                if (x == null || y==null || z ==null) {
-                    return "Missing proper coordinates for to vector.";
-                }
-
-                let target = vec3.fromValues(x,y,z);
+                let target = vec3.fromValues(...this.parseCoordinates3D(view.children[toIndex], "to node"));
 
                 this.views[id] = new CGFcamera(angle, near, far , position, target);
 
@@ -309,39 +289,15 @@ class MySceneGraph {
                     return "Missing necessary children from ortho view.";
                 }
 
-                let x = this.reader.getFloat(view.children[fromIndex], "x", true);
-                let y = this.reader.getFloat(view.children[fromIndex], "y", true);
-                let z = this.reader.getFloat(view.children[fromIndex], "z", true);
+                let position = vec3.fromValues(...this.parseCoordinates3D(view.children[fromIndex], "from node"));
 
-                if (x == null || y==null || z ==null) {
-                    return "Missing proper coordinates for from vector.";
-                }
-
-                let position = vec3.fromValues(x,y,z);
-
-                x = this.reader.getFloat(view.children[toIndex], "x", true);
-                y = this.reader.getFloat(view.children[toIndex], "y", true);
-                z = this.reader.getFloat(view.children[toIndex], "z", true);
-
-                if (x == null || y==null || z ==null) {
-                    return "Missing proper coordinates for to vector.";
-                }
-
-                let target = vec3.fromValues(x,y,z);
+                let target = vec3.fromValues(...this.parseCoordinates3D(view.children[toIndex], "to node"));
 
                 let up;
                 if (upIndex == -1) {
                     up = vec3.fromValues(0,1,0);
                 } else {
-                    x = this.reader.getFloat(view.children[upIndex], "x", true);
-                    y = this.reader.getFloat(view.children[upIndex], "y", true);
-                    z = this.reader.getFloat(view.children[upIndex], "z", true);
-
-                    if (x == null || y==null || z == null) {
-                        return "Invalid or missing up vector parameters in ortho view.";
-                    } else {
-                        up = vec3.fromValues(x,y,z); 
-                    }
+                    up = vec3.fromValues(...this.parseCoordinates3D(view.children[upIndex], "up node")); 
                 } 
                 this.views[id] = new CGFcameraOrtho(left, right, bottom, top, near, far, position, target, up);
             } else {
@@ -357,7 +313,7 @@ class MySceneGraph {
             return "Non existant view ID for default view: " + defaultID;
         }
 
-        this.scene.camera = this.views[defaultID];
+        //this.scene.camera = this.views[defaultID];
 
         return null;
     }
@@ -879,11 +835,9 @@ class MySceneGraph {
                         
                         if (transNode.nodeName === "translate") {
                             //Translation
-                            let x = this.reader.getFloat(transNode, "x", true);
-                            let y = this.reader.getFloat(transNode, "y", true);
-                            let z = this.reader.getFloat(transNode, "z", true);
+                            let transPos = this.parseCoordinates3D(transNode, "translate node");
 
-                            mat4.translate(matrix, matrix, [x,y,z]);
+                            mat4.translate(matrix, matrix, transPos);
                         } else if (transNode.nodeName === "rotate") {
                             //Rotation
                             let axes = {'x': [1,0,0], 'y':[0,1,0], 'z':[0,0,1]};
@@ -894,11 +848,9 @@ class MySceneGraph {
                             mat4.rotate(matrix, matrix, angle * DEGREE_TO_RAD, axes[axis]);
                         } else if (transNode.nodeName === "scale") {
                             //Scaling
-                            let x = this.reader.getFloat(transNode, "x", true);
-                            let y = this.reader.getFloat(transNode, "y", true);
-                            let z = this.reader.getFloat(transNode, "z", true);
+                            let scaleValues = this.parseCoordinates3D(transNode, "scale node");
 
-                            mat4.scale(matrix, matrix, [x,y,z]);
+                            mat4.scale(matrix, matrix, scaleValues);
                         } else {
                             return "unknown transformation in componentID " + componentID;
                         }
