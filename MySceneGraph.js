@@ -817,7 +817,11 @@ class MySceneGraph {
             // Transformations
             if (transformationIndex != -1) {
                 let trasnformNodes = grandChildren[transformationIndex].children;
-                if (trasnformNodes[0].name == "transformationref") {
+                if (trasnformNodes == null || trasnformNodes.length == 0) {
+                    let matrix = mat4.create();
+                    mat4.identity(matrix);
+                    newComponent.transformationMatrix = matrix;
+                } else if (trasnformNodes[0].name == "transformationref") {
                     let id = this.reader.getString(children[0], "id", true);
                     if (this.transformations[id]) {
                         newComponent.transformationMatrix = this.transformations[id];
@@ -827,6 +831,7 @@ class MySceneGraph {
                 } else {
                     //Initializes transformation matrix
                     let matrix = mat4.create();
+                    mat4.identity(matrix);
                     for (let transNode of trasnformNodes) {
                         //Check if there is a reference mixed with transformation clauses
                         if (transNode.nodeName == "transformationref") {
