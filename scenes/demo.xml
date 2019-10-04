@@ -60,8 +60,13 @@
                         x3="0" y3="0" z3="5" />
         </primitive>
         <primitive id="demoCylinder">
-            <cylinder base="3" top="3" height="5" slices="20" stacks="4" />
+            <cylinder base="1" top="1" height="0.5" slices="20" stacks="5" />
         </primitive>
+        <primitive id="coneFrustum">
+            <cylinder base="5" top="2" height="1" slices="20" stacks="10" />
+        </primitive>
+        
+
         <primitive id="demoTorus">
             <torus inner="1" outer="3" slices="10" loops="6" />
         </primitive>
@@ -200,6 +205,20 @@
              </children>
 
         </component>
+
+        <component id="tableLeg">
+            <transformation>
+                <scale x="1" y="1" z="1" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="coneFrustum" />
+            </children>
+        </component>
+
 
         <component id="demoRoot">
             <transformation>

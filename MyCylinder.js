@@ -25,8 +25,9 @@ class MyCylinder extends CGFobject {
 
 
 		//Vertices
-		//TODO check if < or if <=
+
 		for (var j = 0; j < this.stacks; j++) {
+			radius = this.radius_bot * (this.stacks - j) / this.stacks + this.radius_top * (j / this.stacks);
 			for (var i = 0; i < this.slices; i++) {
 
 				var sa = Math.sin(ang);
@@ -42,23 +43,24 @@ class MyCylinder extends CGFobject {
 					1 - (j*1/this.stacks)
 				);
 
-/*				if (radius == 0) { // TODO check if it's the tip of the cone, might not be needed
+				/*
+				if (radius == 0) { // TODO check if it's the tip of the cone, might not be needed
 					break;
 				}
-*/
+
+				*/
 				ang += ang_inc;
 			}
 			ang = 0;
-			//radius = this.radius_bot * (this.stacks - j + 1) / this.stacks + this.radius_top * ((j + 1) / this.stacks) // optimize this?
 			h += heigh_inc;
+			console.log("height:"+h);
 		}
 
-		//console.log("vertices: " + this.vertices.length);
 
 		//INDICES
 
 
-			for (var i = 0; i < this.stacks - 1; i++) {
+			for (var i = 0; i < this.stacks -1; i++) {
 				for (var j = 0; j < this.slices; j++) {
 
 					let index = i * this.slices + j;
@@ -89,7 +91,7 @@ class MyCylinder extends CGFobject {
 
 			}
 
-
+			
 
 
 			this.primitiveType = this.scene.gl.TRIANGLES;
