@@ -1,12 +1,11 @@
 class SceneTreeNode extends CGFobject {
-    constructor(scene, tree, children = null, materials = null, textures = null, transformation = null) {
+    constructor(scene, tree, children = null, materials = null, texture = null, transformation = null) {
         super(scene);
         this.tree = tree;
         this.children = children;
         this.materials = materials;
         this.activeMaterialIndex = 0;
-        this.textures = textures;
-        this.activeTextureIndex = 0;
+        this.texture = texture;
         this.transformationMatrix = transformation;
     }
 
@@ -27,8 +26,10 @@ class SceneTreeNode extends CGFobject {
             this.tree.applyMaterial(this.materials[this.activeMaterialIndex]);
         }
         this.tree.pushTexture();
-        if (this.textures != null) {
-            this.tree.applyMaterial(this.textures[this.activeTextureIndex]);
+        if (this.texture != null) {
+            this.tree.applyMaterial(this.texture);
+        } else if (this.texture == -1) {
+            this.scene.setDefaultAppearance();
         }
         
         for (let child of this.children) {

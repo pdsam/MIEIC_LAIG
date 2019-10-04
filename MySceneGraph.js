@@ -474,6 +474,7 @@ class MySceneGraph {
      * @param {textures block element} texturesNode
      */
     parseTextures(texturesNode) {
+        this.textures = [];
 
         //For each texture in textures block, check ID and file URL
         this.onXMLMinorError("To do: Parse textures.");
@@ -809,9 +810,7 @@ class MySceneGraph {
             var textureIndex = nodeNames.indexOf("texture");
             var childrenIndex = nodeNames.indexOf("children");
 
-            this.onXMLMinorError("To do: texture scales factors. \n "+
-            "reintroduce missing materials and texture warnings.\n" + 
-            "implement inherit in what it needs\n");
+            this.onXMLMinorError("To do: texture scales factors. \n ");
 
             let newComponent = new SceneTreeNode(this.scene, this, []);
             // Transformations
@@ -867,44 +866,55 @@ class MySceneGraph {
             }
 
             // Materials
-            let componentMaterials = [];
             if (materialsIndex != -1) {
                 let materialNodes = grandChildren[materialsIndex].children;
-                for (let matNode of materialNodes) {
-                    if (matNode.nodeName == "material") {
-                        let id = this.reader.getString(matNode, "id", true);
-                        if (this.materials[id] == null) {
-                            //return "problem with material at componentID " + componentID;
-                        }
 
-                        componentMaterials.push(this.materials[id]);
-                    } else {
-                        return "invalid materials child at componentID " + componentID;
-                    }
+                if (materialNodes == null || materialNodes.length == 0) {
+                    return "Empty materials node at componentID " + componentID;
                 }
 
-                //newComponent.materials = componentMaterials;
+                if (this.reader.getString(materialNodes[0], "id", true) != "inherit") {
+                    let componentMaterials = [];
+                    let hasMaterials = false;
+                    for (let matNode of materialNodes) {
+                        if (matNode.nodeName == "material") {
+                            hasMaterials = true;
+                            let id = this.reader.getString(matNode, "id", true);
+                            if (this.materials[id] == null) {
+                                //return "problem with material at componentID " + componentID;
+                            }
+
+                            if (id == "inherit") {
+                                return "Component inheriting material and defining it, must only be one of them. At componentID " + componentID;
+                            }
+
+                            componentMaterials.push(this.materials[id]);
+                        } else {
+                            return "invalid materials child at componentID " + componentID;
+                        }
+                    }
+
+                    if (!hasMaterials) {
+                        return "Must declare at least one material for componentID " + componentID;
+                    }
+
+                    //newComponent.materials = componentMaterials;
+                }
             } else {
                 return "Missing materials at componentID " + componentID;
             }
 
             // Texture
-            let componentTextures = [];
             if (textureIndex != -1) {
-                let textureNodes = grandChildren[textureIndex].children;
-                for (let texNode of textureNodes) {
-                    if (texNode.nodeName == "texture") {
-                        let id = this.reader.getString(texNode, "id", true);
-                        if (this.textures[id] == null) {
-                            //return "problem with material at componentID " + componentID;
-                        }
-
-                        componentTextures.push(this.textures[id]);
-                    } else {
-                        return "invalid textures child at componentID " + componentID;
-                    }
+                let id = this.reader.getString(grandChildren[textureIndex], "id", true);
+                if (id == "inherit") {
+                } else if (id == "none") {
+                    newComponent.texture = -1;
+                } else if (this.textures[id] != null) {
+                    newComponent.texture = this.textures[id];
+                } else {
+                    return "invalid texture id at componentID " + componentID;
                 }
-                //newComponent.textures = componentTextures;
             } else {
                 return "Missing textures at componentID " + componentID;
             }
@@ -913,8 +923,10 @@ class MySceneGraph {
             let componentChildren = [];
             if (childrenIndex != -1) {
                 let childrenNodes = grandChildren[childrenIndex].children;
+                let hasChildren = false;
                 for (let child of childrenNodes) {
                     if (child.nodeName == "componentref") {
+                        hasChildren = true;
                         let id = this.reader.getString(child,"id",true);
                         if (this.components[id] == null) {
                             return "problem with componentref at componentID " + componentID;
@@ -922,6 +934,7 @@ class MySceneGraph {
 
                         componentChildren.push(this.components[id]);
                     } else if (child.nodeName == "primitiveref") {
+                        hasChildren = true;
                         let id = this.reader.getString(child,"id", true);
                         if (this.primitives[id] == null) {
                             return "problem with primitiveref at componentID " + componentID;
@@ -931,6 +944,10 @@ class MySceneGraph {
                     } else {
                         return "invalid children child at componentID " + componentID;
                     }
+                }
+
+                if (!hasChildren) {
+                    return "Component of id " + componentID + " has no children";
                 }
 
                 newComponent.children = componentChildren;
