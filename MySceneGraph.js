@@ -115,14 +115,14 @@ class MySceneGraph {
                 return error;
         }
 
-        // <ambient>
-        if ((index = nodeNames.indexOf("ambient")) == -1)
-            return "tag <ambient> missing";
+        // <ambient> globals
+        if ((index = nodeNames.indexOf("globals")) == -1)
+            return "tag <globals> missing";
         else {
             if (index != AMBIENT_INDEX)
-                this.onXMLMinorError("tag <ambient> out of order");
+                this.onXMLMinorError("tag <globals> out of order");
 
-            //Parse ambient block
+            //Parse globals block
             if ((error = this.parseAmbient(nodes[index])) != null)
                 return error;
         }
