@@ -913,7 +913,7 @@ class MySceneGraph {
                 } else if (this.textures[id] != null) {
                     newComponent.texture = this.textures[id];
                 } else {
-                    return "invalid texture id at componentID " + componentID;
+                    //return "invalid texture id at componentID " + componentID;
                 }
             } else {
                 return "Missing textures at componentID " + componentID;
@@ -929,7 +929,7 @@ class MySceneGraph {
                         hasChildren = true;
                         let id = this.reader.getString(child,"id",true);
                         if (this.components[id] == null) {
-                            return "problem with componentref at componentID " + componentID;
+                            return "Non existant componentref at componentID " + componentID;
                         }
 
                         componentChildren.push(this.components[id]);
@@ -1107,9 +1107,9 @@ class MySceneGraph {
         //To do: Create display loop for transversing the scene graph
 
         //To test the parsing/creation of the primitives, call the display function directly
-        //this.primitives['demoCylinder'].display();
-        //this.primitives['demoSphere'].enableNormalViz();
-        this.components['demoRoot'].display();
+        this.primitives['demoCylinder'].display();
+        this.primitives['demoCylinder'].enableNormalViz();
+        //this.components['demoRoot'].display();
 
     }
 }
