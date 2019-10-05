@@ -1092,6 +1092,10 @@ class MySceneGraph {
         m.apply();
     }
 
+    applyTexture(t) {
+        //TODO
+    }
+
     pushTexture() {
         this.textureStack.push(this.activeTexture);
     }
