@@ -764,6 +764,69 @@
                 <componentref id="stick" />
             </children>
         </component>
+        
+        <component id="pooltriangleL">
+            <transformation>
+            <translate x="-0.5" y="0" z="0" />
+            <rotate axis="y" angle ="-30" />
+            <scale x="0.1" y="0.1" z= "2" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <componentref id="unitCube" />
+            </children>
+        </component>
+
+        <component id="pooltriangleR">
+            <transformation>
+            <translate x="0.5" y="0" z="0" />
+            <rotate axis="y" angle ="30" />
+            <scale x="0.1" y="0.1" z= "2" />
+            </transformation>
+            <materials>
+                <material id="demoMaterialB" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <componentref id="unitCube" />
+            </children>
+        </component>
+
+        <component id="pooltriangleB">
+            <transformation>
+            <translate x="0" y="0" z="0.8660254037844386" />
+            <rotate axis="y" angle ="90" />
+            <scale x="0.1" y="0.1" z= "2" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <componentref id="unitCube" />
+            </children>
+        </component>
+
+
+
+        <component id="pooltriangle">
+            <transformation>
+            <translate x="0" y="0.25" z="5.6" />
+            <rotate axis ="x" angle="-10" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <componentref id="pooltriangleL" />
+                <componentref id="pooltriangleR" />
+                <componentref id="pooltriangleB" />
+            </children>
+        </component>
 
         <component id="demoRoot">
             <transformation>
@@ -776,6 +839,7 @@
             <children>
                 <componentref id="table" />
                 <componentref id="stickTable" />
+                <componentref id="pooltriangle" />
             </children>
         </component>
 
