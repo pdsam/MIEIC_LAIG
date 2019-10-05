@@ -27,7 +27,7 @@
     </lights>
 
     <textures>
-        <texture id="demoTexture" file="scenes/images/vidral.jpg" />
+        <texture id="demoTexture" file="scenes/images/bank.jpg" />
     </textures>
 
     <materials>
@@ -36,6 +36,13 @@
             <ambient r="1.0" g="0.0" b="0.0" a="1.0" />
             <diffuse r="0.6" g="0.0" b="0.0" a="1.0" />
             <specular r="0.6" g="0.0" b="0.0" a="1.0" />
+        </material>
+
+        <material id="ballMaterial" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse r="0.2" g="0.2" b="0.2" a="1.0" />
+            <specular r="0.6" g="0.6" b="0.6" a="1.0" />
         </material>
     </materials>
 
@@ -422,7 +429,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="ballMaterial" />
             </materials>
             <texture id="demoTexture"/>
             <children>
@@ -563,7 +570,7 @@
 
         <component id="tableLegDR">
             <transformation>
-                <translate x="2.5" y="-2.5" z="5.5" />
+                <translate x="2.5" y="-3" z="5.5" />
                 
             </transformation>
             <materials>
@@ -577,7 +584,7 @@
 
         <component id="tableLegUR">
             <transformation>
-                <translate x="2.5" y="-2.5" z="-5.5" />
+                <translate x="2.5" y="-3" z="-5.5" />
                 
             </transformation>
             <materials>
@@ -591,7 +598,7 @@
 
         <component id="tableLegDL">
             <transformation>
-                <translate x="-2.5" y="-2.5" z="5.5" />
+                <translate x="-2.5" y="-3" z="5.5" />
                 
             </transformation>
             <materials>
@@ -605,7 +612,7 @@
 
         <component id="tableLegUL">
             <transformation>
-                <translate x="-2.5" y="-2.5" z="-5.5" />
+                <translate x="-2.5" y="-3" z="-5.5" />
                 
             </transformation>
             <materials>
@@ -732,9 +739,6 @@
 
         <component id="stick">
             <transformation>
-                <translate x="4.2" y="-3.4" z="0" />
-                <rotate axis ="z" angle="15" />
-                <rotate axis ="x" angle="-90" />
                 <scale x="0.3" y="0.3" z ="10" /> 
             </transformation>
             <materials>
@@ -743,6 +747,21 @@
             <texture id="demoTexture"/>
             <children>
                 <primitiveref id="coneFrustum" />
+            </children>
+        </component>
+
+        <component id="stickTable">
+            <transformation>
+                <translate x="4.2" y="-3.4" z="0" />
+                <rotate axis ="z" angle="15" />
+                <rotate axis ="x" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <componentref id="stick" />
             </children>
         </component>
 
@@ -756,7 +775,7 @@
             <texture id="demoTexture"/>
             <children>
                 <componentref id="table" />
-                <componentref id="stick" />
+                <componentref id="stickTable" />
             </children>
         </component>
 
