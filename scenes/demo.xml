@@ -63,12 +63,12 @@
             <cylinder base="1" top="1" height="1" slices="20" stacks="5" />
         </primitive>
         <primitive id="coneFrustum">
-            <cylinder base="1" top="0.5" height="1" slices="20" stacks="10" />
+            <cylinder base="0.3" top="0.1" height="1" slices="20" stacks="10" />
         </primitive>
         
 
         <primitive id="demoTorus">
-            <torus inner="1" outer="3" slices="10" loops="6" />
+            <torus inner="0.1" outer="0.4" slices="20" loops="6" />
         </primitive>
         <primitive id="unitSquare">
             <rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" />
@@ -617,6 +617,90 @@
             </children>
         </component>
 
+        <component id="tableHoleBR">
+            <transformation>
+            <translate x="2.7" y="0" z="5.5" />
+            <rotate axis="x" angle="90" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="demoTorus" />
+            </children>
+        </component>
+
+        <component id="tableHoleBL">
+            <transformation>
+            <translate x="-2.7" y="0" z="5.5" />
+            <rotate axis="x" angle="90" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="demoTorus" />
+            </children>
+        </component>
+
+        <component id="tableHoleMR">
+            <transformation>
+            <translate x="2.7" y="0" z="0" />
+            <rotate axis="x" angle="90" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="demoTorus" />
+            </children>
+        </component>
+
+        <component id="tableHoleML">
+            <transformation>
+            <translate x="-2.7" y="0" z="0" />
+            <rotate axis="x" angle="90" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="demoTorus" />
+            </children>
+        </component>
+
+        <component id="tableHoleUR">
+            <transformation>
+            <translate x="2.7" y="0" z="-5.5" />
+            <rotate axis="x" angle="90" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="demoTorus" />
+            </children>
+        </component>
+
+        <component id="tableHoleUL">
+            <transformation>
+            <translate x="-2.7" y="0" z="-5.5" />
+            <rotate axis="x" angle="90" />
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="demoTorus" />
+            </children>
+        </component>
+
         <component id="table">
             <transformation>
                 <scale x="1" y="1" z="1" />
@@ -637,6 +721,28 @@
                 <componentref id="tableBorderBot" />
                 <componentref id="ballGroup" />
                 <componentref id="ball0" />
+                <componentref id="tableHoleBR" />
+                <componentref id="tableHoleBL" />
+                <componentref id="tableHoleMR" />
+                <componentref id="tableHoleML" />
+                <componentref id="tableHoleUR" />
+                <componentref id="tableHoleUL" />
+            </children>
+        </component>
+
+        <component id="stick">
+            <transformation>
+                <translate x="4.2" y="-3.4" z="0" />
+                <rotate axis ="z" angle="15" />
+                <rotate axis ="x" angle="-90" />
+                <scale x="0.3" y="0.3" z ="10" /> 
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="demoTexture"/>
+            <children>
+                <primitiveref id="coneFrustum" />
             </children>
         </component>
 
@@ -650,6 +756,7 @@
             <texture id="demoTexture"/>
             <children>
                 <componentref id="table" />
+                <componentref id="stick" />
             </children>
         </component>
 
