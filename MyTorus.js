@@ -28,6 +28,11 @@ class MyTorus extends CGFobject{
                     this.inner * Math.sin(loop_angle*j));
 
                 let cInternal = Math.cos(loop_angle*j);
+
+                this.texCoords.push(
+					i*1/this.slices, 
+					j*1/this.loops	
+				);
                 
                 this.normals.push(
                     cInternal * Math.cos(i*slice_angle),
