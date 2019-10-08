@@ -39,6 +39,11 @@ class MyCylinder extends CGFobject {
         this.normals.push(
           ...[cost * Math.cos(angle), cost * Math.sin(angle), sint]
         );
+
+        let u = j*(1/this.slices);
+        let v = 1-i*(1/(this.stacks+1));
+
+        this.texCoords.push(...[u, v]);
       }
     }
 

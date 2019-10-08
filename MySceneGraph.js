@@ -207,7 +207,7 @@ class MySceneGraph {
     parseScene(sceneNode) {
 
         // Get root of the scene.
-        var root = this.reader.getString(sceneNode, 'root')
+        var root = this.reader.getString(sceneNode, 'root');
         if (root == null)
             return "no root defined for scene";
 
@@ -546,16 +546,16 @@ class MySceneGraph {
             for (let param of matParams) {
                 if (param.nodeName == "emission") {
                     let color = this.parseColor(param, "emission tag of material with id: " + materialID);
-                    material.setEmission(...[color]);
+                    material.setEmission(...color);
                 } else if (param.nodeName == "ambient") {
                     let color = this.parseColor(param, "ambient tag of material with id: " + materialID);
-                    material.setAmbient(...[color]);
+                    material.setAmbient(...color);
                 } else if (param.nodeName == "diffuse") {
                     let color = this.parseColor(param, "diffuse tag of material with id: " + materialID);
-                    material.setDiffuse(...[color]);
+                    material.setDiffuse(...color);
                 } else if (param.nodeName == "specular") {
                     let color = this.parseColor(param, "specular tag of material with id: " + materialID);
-                    material.setSpecular(...[color]);
+                    material.setSpecular(...color);
                 } else {
                     return "Unknown material parameter tag:" + param.nodeName;
                 }
@@ -623,15 +623,14 @@ class MySceneGraph {
                         break;
                     case 'rotate':
                         // angle
-                        let axes = {'x': [1,0,0], 'y':[0,1,0], 'z':[0,0,1]};
                         let axis = this.reader.getString(grandChildren[j], "axis", true);
-                        if (axes[axis] == null) {
+                        if (this.axisCoords[axis] == null) {
                             return "Invalid axis parameter " + axis + " for rotation transformation for ID " + transformationID;
                         }
                         let angle = this.reader.getString(grandChildren[j], "angle", true);
                         angle = angle * DEGREE_TO_RAD;
 
-                        transfMatrix = mat4.rotate(transfMatrix, transfMatrix, angle, axes[axis]);
+                        transfMatrix = mat4.rotate(transfMatrix, transfMatrix, angle, this.axisCoords[axis]);
                         break;
                 }
             }
@@ -878,7 +877,7 @@ class MySceneGraph {
 
             this.onXMLMinorError("To do: texture scales factors. \n ");
 
-            let newComponent = new SceneTreeNode(this.scene, this, []);
+            let newComponent = new SceneTreeNode(this.scene, componentID, this, []);
             // Transformations
             if (transformationIndex != -1) {
                 let trasnformNodes = grandChildren[transformationIndex].children;
@@ -891,7 +890,7 @@ class MySceneGraph {
                     if (this.transformations[id]) {
                         newComponent.transformationMatrix = this.transformations[id];
                     } else {
-                        return "invalid transform id in componentID " + componentID;
+                        return "Invalid transform id in componentID " + componentID;
                     }
                 } else {
                     //Initializes transformation matrix
@@ -900,35 +899,36 @@ class MySceneGraph {
                     for (let transNode of trasnformNodes) {
                         //Check if there is a reference mixed with transformation clauses
                         if (transNode.nodeName == "transformationref") {
-                            return "transf ref mixed with explicit transform at componentID " + componentID;
+                            return "transformationref tag mixed with explicit transform at componentID " + componentID;
                         }
                         
                         if (transNode.nodeName === "translate") {
                             //Translation
-                            let transPos = this.parseCoordinates3D(transNode, "translate node");
+                            let transPos = this.parseCoordinates3D(transNode, "translate node at componentID " + componentID);
 
                             mat4.translate(matrix, matrix, transPos);
                         } else if (transNode.nodeName === "rotate") {
                             //Rotation
-                            let axes = {'x': [1,0,0], 'y':[0,1,0], 'z':[0,0,1]};
-
                             let axis = this.reader.getString(transNode, "axis", true);
                             let angle = this.reader.getFloat(transNode, "angle", true);
+                            if (this.axisCoords[axis] == null) {
+                                return "Invalid axis in ratation transformation for componentID " + componentID;
+                            }
 
-                            mat4.rotate(matrix, matrix, angle * DEGREE_TO_RAD, axes[axis]);
+                            mat4.rotate(matrix, matrix, angle * DEGREE_TO_RAD, this.axisCoords[axis]);
                         } else if (transNode.nodeName === "scale") {
                             //Scaling
-                            let scaleValues = this.parseCoordinates3D(transNode, "scale node");
+                            let scaleValues = this.parseCoordinates3D(transNode, "scale node at componentID " + componentID);
 
                             mat4.scale(matrix, matrix, scaleValues);
                         } else {
-                            return "unknown transformation in componentID " + componentID;
+                            return "unknown transformation tag in componentID " + componentID;
                         }
                     }
                     newComponent.transformationMatrix = matrix;
                 }
             } else {
-                return "Missing transoformation for componentId " + componentID;
+                return "Missing transformation for componentId " + componentID;
             }
 
             // Materials
@@ -947,7 +947,7 @@ class MySceneGraph {
                             hasMaterials = true;
                             let id = this.reader.getString(matNode, "id", true);
                             if (this.materials[id] == null) {
-                                //return "problem with material at componentID " + componentID;
+                                return "Non existant material ID at componentID " + componentID;
                             }
 
                             if (id == "inherit") {
@@ -956,7 +956,7 @@ class MySceneGraph {
 
                             componentMaterials.push(this.materials[id]);
                         } else {
-                            return "invalid materials child at componentID " + componentID;
+                            return "Unknown materials child at componentID " + componentID;
                         }
                     }
 
@@ -964,7 +964,7 @@ class MySceneGraph {
                         return "Must declare at least one material for componentID " + componentID;
                     }
 
-                    //newComponent.materials = componentMaterials;
+                    newComponent.materials = componentMaterials;
                 }
             } else {
                 return "Missing materials at componentID " + componentID;
@@ -979,7 +979,7 @@ class MySceneGraph {
                 } else if (this.textures[id] != null) {
                     newComponent.texture = this.textures[id];
                 } else {
-                    //return "invalid texture id at componentID " + componentID;
+                    return "Invalid texture id at componentID " + componentID;
                 }
             } else {
                 return "Missing textures at componentID " + componentID;
@@ -1003,12 +1003,12 @@ class MySceneGraph {
                         hasChildren = true;
                         let id = this.reader.getString(child,"id", true);
                         if (this.primitives[id] == null) {
-                            return "problem with primitiveref at componentID " + componentID;
+                            return "Non existant primitiveref at componentID " + componentID;
                         }
 
                         componentChildren.push(this.primitives[id]);
                     } else {
-                        return "invalid children child at componentID " + componentID;
+                        return "Invalid children tag at componentID " + componentID;
                     }
                 }
 
@@ -1018,7 +1018,7 @@ class MySceneGraph {
 
                 newComponent.children = componentChildren;
             } else {
-                return "Missing transoformation for componentId " + componentID;
+                return "Missing children for componentId " + componentID;
             }
 
             this.components[componentID] = newComponent;
@@ -1148,18 +1148,21 @@ class MySceneGraph {
 
     popMaterial() {
         this.materialStack.pop();
-        if (this.materialStack[this.materialStack.length-1]) {
-            this.materialStack[this.materialStack.length-1].apply();
+        let mat = this.materialStack[this.materialStack.length-1];
+        this.activeMaterial = mat;
+        if (mat != null) {
+            mat.apply();
+        } else {
+            this.scene.setDefaultAppearance();
         }
     }
 
-    applyTexture(m) {
-        this.activeTexture = m;
-        m.apply();
-    }
-
     applyTexture(t) {
-        //TODO
+        this.activeTexture = t;
+        if (this.activeMaterial) {
+            this.activeMaterial.setTexture(t);
+            this.activeMaterial.apply();
+        }
     }
 
     pushTexture() {
@@ -1168,6 +1171,11 @@ class MySceneGraph {
 
     popTexture() {
         this.textureStack.pop();
+        let tex = this.textureStack[this.textureStack.length-1];
+        if (this.activeMaterial) {
+            this.activeMaterial.setTexture(tex);
+            this.activeMaterial.apply();
+        }
     }
 
     /**
@@ -1177,7 +1185,7 @@ class MySceneGraph {
         //To do: Create display loop for transversing the scene graph
 
         //To test the parsing/creation of the primitives, call the display function directly
-        //this.primitives['demoCylinder'].display();
+        //this.primitives['demoSphere'].display();
         //this.primitives['demoCylinder'].enableNormalViz();
         this.components['demoRoot'].display();
 

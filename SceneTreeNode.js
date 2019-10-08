@@ -1,12 +1,15 @@
 class SceneTreeNode extends CGFobject {
-    constructor(scene, tree, children = null, materials = null, texture = null, transformation = null) {
+    constructor(scene, id, tree, children = null, materials = null, texture = null, transformation = null) {
         super(scene);
+        this.id = id;
         this.tree = tree;
         this.children = children;
         this.materials = materials;
         this.activeMaterialIndex = 0;
         this.texture = texture;
         this.transformationMatrix = transformation;
+
+        this.firstrender= true;
     }
 
     rotateMaterials() {
@@ -17,6 +20,10 @@ class SceneTreeNode extends CGFobject {
     }
 
     display() {
+        /*if (this.firstrender) {
+            console.log("Rendering " + this.id);
+            this.firstrender = false;
+        }*/
         this.scene.pushMatrix();
         if (this.transformationMatrix != null) {
             this.scene.multMatrix(this.transformationMatrix);
