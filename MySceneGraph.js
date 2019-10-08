@@ -230,8 +230,6 @@ class MySceneGraph {
      * @param {view block element} viewsNode
      */
     parseView(viewsNode) {
-        this.onXMLMinorError("To do: Parse views and create cameras.");
-
         this.views = [];
         let defaultID = this.reader.getString(viewsNode, "default");
         if (defaultID == null) {
@@ -257,7 +255,7 @@ class MySceneGraph {
                 let toIndex = nodeNames.indexOf("to");
 
                 if (fromIndex == -1 || toIndex == -1) {
-                    return "Missing necessary children from perpective view.";
+                    return "Missing necessary children from perpective view of id " + id;
                 }
 
                 let position = vec3.fromValues(...this.parseCoordinates3D(view.children[fromIndex], "from node"));
@@ -286,7 +284,7 @@ class MySceneGraph {
                 let upIndex = nodeNames.indexOf("up");
 
                 if (fromIndex == -1 || toIndex == -1) {
-                    return "Missing necessary children from ortho view.";
+                    return "Missing necessary children from ortho view of id " + id;
                 }
 
                 let position = vec3.fromValues(...this.parseCoordinates3D(view.children[fromIndex], "from node"));
@@ -301,7 +299,7 @@ class MySceneGraph {
                 } 
                 this.views[id] = new CGFcameraOrtho(left, right, bottom, top, near, far, position, target, up);
             } else {
-                return "Unknown view type: " + view.nodeName;
+                return "Invalid view node name: " + view.nodeName;
             }
         }
 
@@ -314,6 +312,7 @@ class MySceneGraph {
         }
 
         //this.scene.camera = this.views[defaultID];
+        this.log("Parsed views");
 
         return null;
     }
@@ -349,7 +348,7 @@ class MySceneGraph {
         else
             this.background = color;
 
-        this.log("Parsed ambient");
+        this.log("Parsed globals");
 
         return null;
     }
@@ -477,7 +476,38 @@ class MySceneGraph {
         this.textures = [];
 
         //For each texture in textures block, check ID and file URL
-        this.onXMLMinorError("To do: Parse textures.");
+        let hasTextures = false;
+        for (let texture of texturesNode.children) {
+            if (texture.nodeName == "texture") {
+                hasTextures = true;
+                let id = this.reader.getString(texture, "id", false);
+                if (id == null) {
+                    return "No id defined for texture";
+                }
+                if (this.textures[id] != null) {
+                    return "Conflict. Repeated texture id: " + id;
+                }
+
+                let url = this.reader.getString(texture, "file", true);
+                if (url == null) {
+                    return "No url defined for texture with id " + id;
+                }
+                if (!url.match(/\.png$|\.jpg$/)) {
+                    return "Texture (id= " + id + ") file url needs to have extension .png or .jpg.";
+                }
+
+                this.textures[id] = new CGFtexture(this.scene, url);
+            } else {
+                return "Unknown texture tag: " + texture.nodeName;
+            }
+        }
+
+        if (!hasTextures) {
+            return "There are no textures declared for this scene.";
+        }
+
+        this.log("Parsed textures");
+
         return null;
     }
 
@@ -490,16 +520,16 @@ class MySceneGraph {
 
         this.materials = [];
 
-        var grandChildren = [];
-        var nodeNames = [];
-
         // Any number of materials.
+        let hasMaterials = false;
         for (var i = 0; i < children.length; i++) {
 
             if (children[i].nodeName != "material") {
                 this.onXMLMinorError("unknown tag <" + children[i].nodeName + ">");
                 continue;
             }
+
+            hasMaterials = true;
 
             // Get id of the current material.
             var materialID = this.reader.getString(children[i], 'id');
@@ -510,11 +540,35 @@ class MySceneGraph {
             if (this.materials[materialID] != null)
                 return "ID must be unique for each light (conflict: ID = " + materialID + ")";
 
-            //Continue here
-            this.onXMLMinorError("To do: Parse materials.");
+            let material = new CGFappearance(this.scene);
+
+            let matParams = children[i].children;
+            for (let param of matParams) {
+                if (param.nodeName == "emission") {
+                    let color = this.parseColor(param, "emission tag of material with id: " + materialID);
+                    material.setEmission(...[color]);
+                } else if (param.nodeName == "ambient") {
+                    let color = this.parseColor(param, "ambient tag of material with id: " + materialID);
+                    material.setAmbient(...[color]);
+                } else if (param.nodeName == "diffuse") {
+                    let color = this.parseColor(param, "diffuse tag of material with id: " + materialID);
+                    material.setDiffuse(...[color]);
+                } else if (param.nodeName == "specular") {
+                    let color = this.parseColor(param, "specular tag of material with id: " + materialID);
+                    material.setSpecular(...[color]);
+                } else {
+                    return "Unknown material parameter tag:" + param.nodeName;
+                }
+            }
+
+            this.materials[materialID] = material;
         }
 
-        //this.log("Parsed materials");
+        if (!hasMaterials) {
+            return "No materials defined for this scene";
+        }
+
+        this.log("Parsed materials");
         return null;
     }
 
@@ -561,11 +615,23 @@ class MySceneGraph {
                         transfMatrix = mat4.translate(transfMatrix, transfMatrix, coordinates);
                         break;
                     case 'scale':
-                        this.onXMLMinorError("To do: Parse scale transformations.");
+                        let coords = this.parseCoordinates3D(grandChildren[j], "scale transformation for ID " + transformationID);
+                        if (!Array.isArray(coords)){
+                            return coords;
+                        }
+                        transfMatrix = mat4.scale(transfMatrix, transfMatrix, coords);
                         break;
                     case 'rotate':
                         // angle
-                        this.onXMLMinorError("To do: Parse rotate transformations.");
+                        let axes = {'x': [1,0,0], 'y':[0,1,0], 'z':[0,0,1]};
+                        let axis = this.reader.getString(grandChildren[j], "axis", true);
+                        if (axes[axis] == null) {
+                            return "Invalid axis parameter " + axis + " for rotation transformation for ID " + transformationID;
+                        }
+                        let angle = this.reader.getString(grandChildren[j], "angle", true);
+                        angle = angle * DEGREE_TO_RAD;
+
+                        transfMatrix = mat4.rotate(transfMatrix, transfMatrix, angle, axes[axis]);
                         break;
                 }
             }
