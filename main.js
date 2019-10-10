@@ -50,3 +50,7 @@ main=function()
 }
 
 ]);
+
+
+//TODO perguntar acerca de camara estatica quando se da parse nas views
+//TODO pergunatr acerca de aplicar scales factors no shader

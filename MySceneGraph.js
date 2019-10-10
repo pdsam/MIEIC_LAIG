@@ -532,7 +532,7 @@ class MySceneGraph {
             hasMaterials = true;
 
             // Get id of the current material.
-            var materialID = this.reader.getString(children[i], 'id');
+            var materialID = this.reader.getString(children[i], 'id', true);
             if (materialID == null)
                 return "no ID defined for material";
 
@@ -541,6 +541,10 @@ class MySceneGraph {
                 return "ID must be unique for each light (conflict: ID = " + materialID + ")";
 
             let material = new CGFappearance(this.scene);
+
+            let shininess = this.reader.getFloat(children[i], 'shininess', true);
+            
+            material.setShininess(shininess);
 
             let matParams = children[i].children;
             for (let param of matParams) {
