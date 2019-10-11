@@ -1187,10 +1187,12 @@ class MySceneGraph {
         }
     }
 
+    
     updateMaterials(){
-        for(let i = 0; i < this.nodes.length;i++){
-            this.nodes[i].rotateMaterials();
-        }
+        Object.keys(this.components).forEach(key => {
+            this.components[key].rotateMaterials();
+        });
+        console.log("materials swiched");
     }
 
 

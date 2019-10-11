@@ -32,6 +32,7 @@ class SceneTreeNode extends CGFobject {
         this.tree.pushMaterial();
         if (this.materials != null) {
             this.tree.applyMaterial(this.materials[this.activeMaterialIndex]);
+            
         }
         this.tree.pushTexture();
         if (this.texture == -1) {

@@ -72,8 +72,8 @@
 
         <material id="tableTopMaterial2" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="1" g="1" b="1" a="1.0" />
-            <diffuse r="1" g="1" b="1" a="1.0" />
+            <ambient r="1" g="0" b="0" a="1.0" />
+            <diffuse r="1" g="0" b="0" a="1.0" />
             <specular r="0.9" g="0.9" b="0.9" a="1.0" />
         </material>
     </materials>
