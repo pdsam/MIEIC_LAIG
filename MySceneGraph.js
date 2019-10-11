@@ -1182,6 +1182,13 @@ class MySceneGraph {
         }
     }
 
+    updateMaterials(){
+        for(let i = 0; i < this.nodes.length;i++){
+            this.nodes[i].rotateMaterials();
+        }
+    }
+
+
     /**
      * Displays the scene, processing each node, starting in the root node.
      */

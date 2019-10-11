@@ -15,7 +15,7 @@ class SceneTreeNode extends CGFobject {
     rotateMaterials() {
         if (this.materials) {
             this.activeMaterialIndex++;
-            this.activeMaterialIndex %= this.materials.children;
+            this.activeMaterialIndex %= this.materials.length;
         }
     }
 

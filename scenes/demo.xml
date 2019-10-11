@@ -484,7 +484,7 @@
 
         <component id="tableBorderX">
             <transformation>
-                <scale x="0.4" y="0.3" z="12" />
+                <scale x="0.4" y="0.4" z="12" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
@@ -497,7 +497,7 @@
 
         <component id="tableBorderY">
             <transformation>
-                <scale x="6" y="0.3" z="0.4" />
+                <scale x="6" y="0.4" z="0.405" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
