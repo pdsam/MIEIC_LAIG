@@ -21,11 +21,22 @@ class MyInterface extends CGFinterface {
         this.gui = new dat.GUI();
 
         // add a group of controls (and open/expand by defult)
-        
 
         this.initKeys();
 
         return true;
+    }
+
+    build(graph) {
+        console.log("Building interface");
+        let mapper = {};
+        let keys =Object.keys(graph.views);
+        for (let key of keys) {
+            mapper[key] = key;
+        }
+        this.gui.add(graph, 'activeView', mapper)
+        .name("Camera")
+        .onChange(graph.changeCamera.bind(graph));
     }
 
     /**

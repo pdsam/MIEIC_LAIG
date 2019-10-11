@@ -37,12 +37,16 @@ class MySceneGraph {
         // File reading 
         this.reader = new CGFXMLreader();
 
+        this.views = [];
+        this.activeView = "";
+
         /*
          * Read the contents of the xml file, and refer to this class for loading and error handlers.
          * After the file is read, the reader calls onXMLReady on this object.
          * If any error occurs, the reader calls onXMLError on this object, with an error message
          */
         this.reader.open('scenes/' + filename, this);
+
 
         this.materialStack = [];
         this.textureStack = [];
@@ -66,6 +70,7 @@ class MySceneGraph {
         this.loadedOk = true;
 
         // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
+        this.scene.interface.build(this);
         this.scene.onGraphLoaded();
     }
 
@@ -312,6 +317,7 @@ class MySceneGraph {
         }
 
         this.scene.camera = this.views[defaultID];
+        this.activeView = defaultID;
         this.scene.interface.setActiveCamera(this.scene.camera);
         this.log("Parsed views");
 
@@ -1195,6 +1201,10 @@ class MySceneGraph {
         console.log("materials swiched");
     }
 
+    changeCamera() {
+        this.scene.camera = this.views[this.activeView];
+        this.scene.interface.setActiveCamera(this.scene.camera);
+    }
 
     /**
      * Displays the scene, processing each node, starting in the root node.

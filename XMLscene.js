@@ -21,6 +21,8 @@ class XMLscene extends CGFscene {
     init(application) {
         super.init(application);
 
+        this.interface.scene = this;
+
         this.sceneInited = false;
 
         this.initCameras();
