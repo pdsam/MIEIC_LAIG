@@ -10,6 +10,10 @@ class MyTorus extends CGFobject{
 
     }
 
+    updateScaleFactors(length_s, length_t) {
+        return;
+    }
+
     initBuffers(){
         this.vertices = [];
 		this.indices = [];

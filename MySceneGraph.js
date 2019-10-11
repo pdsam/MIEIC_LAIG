@@ -311,7 +311,8 @@ class MySceneGraph {
             return "Non existant view ID for default view: " + defaultID;
         }
 
-        //this.scene.camera = this.views[defaultID];
+        this.scene.camera = this.views[defaultID];
+        this.scene.interface.setActiveCamera(this.scene.camera);
         this.log("Parsed views");
 
         return null;
@@ -879,8 +880,6 @@ class MySceneGraph {
             var textureIndex = nodeNames.indexOf("texture");
             var childrenIndex = nodeNames.indexOf("children");
 
-            this.onXMLMinorError("To do: texture scales factors. \n ");
-
             let newComponent = new SceneTreeNode(this.scene, componentID, this, []);
             // Transformations
             if (transformationIndex != -1) {
@@ -978,9 +977,15 @@ class MySceneGraph {
             if (textureIndex != -1) {
                 let id = this.reader.getString(grandChildren[textureIndex], "id", true);
                 if (id == "inherit") {
+                    newComponent.length_s = -1;
+                    newComponent.length_t = -1;
                 } else if (id == "none") {
                     newComponent.texture = -1;
                 } else if (this.textures[id] != null) {
+                    let length_s = this.reader.getFloat(grandChildren[textureIndex], "length_s", true);
+                    let length_t = this.reader.getFloat(grandChildren[textureIndex], "length_t", true);
+                    newComponent.length_s = length_s;
+                    newComponent.length_t = length_t;
                     newComponent.texture = this.textures[id];
                 } else {
                     return "Invalid texture id at componentID " + componentID;

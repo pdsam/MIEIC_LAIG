@@ -3,10 +3,10 @@
 
     <views default="defaultCamera">
         <perspective id="defaultCamera" near="0.1" far="500" angle="45">
-            <from x="30" y="15" z="30" />
-            <to x="0" y="-2" z="0" />
+            <from x="10" y="10" z="10" />
+            <to x="0" y="0" z="0" />
         </perspective>
-        <ortho id="orthoBoi" near="0.1" far="500" left="-5" right="5" top="5" bottom="-5">
+        <ortho id="orthoBoi" near="0.1" far="500" left="-6" right="6" top="6" bottom="-6">
             <from x="30" y="15" z="30" />
             <to x="0" y="0" z="0" />
         </ortho>
@@ -45,7 +45,7 @@
         <texture id="ball15Texture" file="scenes/images/Ball15.jpg" />
         <texture id="ballCueTexture" file="scenes/images/BallCue.jpg" />
         <texture id="tableTopTexture" file="scenes/images/poolTop.jpg" />
-        <texture id="tableBorderTexture" file="scenes/images/marble.jpg" />
+        <texture id="marbleTexture" file="scenes/images/marble.jpg" />
     </textures>
         
     <materials>
@@ -239,7 +239,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball1Texture"/>
+            <texture id="ball1Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -253,7 +253,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball2Texture"/>
+            <texture id="ball2Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -267,7 +267,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball3Texture"/>
+            <texture id="ball3Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -281,7 +281,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball4Texture"/>
+            <texture id="ball4Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -295,7 +295,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball5Texture"/>
+            <texture id="ball5Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -309,7 +309,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball6Texture"/>
+            <texture id="ball6Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -323,7 +323,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball7Texture"/>
+            <texture id="ball7Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -337,7 +337,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball8Texture"/>
+            <texture id="ball8Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -351,7 +351,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball9Texture"/>
+            <texture id="ball9Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -365,7 +365,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball10Texture"/>
+            <texture id="ball10Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -379,7 +379,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball11Texture"/>
+            <texture id="ball11Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -393,7 +393,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball12Texture"/>
+            <texture id="ball12Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -407,7 +407,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball13Texture"/>
+            <texture id="ball13Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -421,7 +421,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball14Texture"/>
+            <texture id="ball14Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -435,7 +435,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ball15Texture"/>
+            <texture id="ball15Texture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -449,7 +449,7 @@
             <materials>
                 <material id="ballMaterial" />
             </materials>
-            <texture id="ballCueTexture"/>
+            <texture id="ballCueTexture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoSphere" />
             </children>
@@ -462,7 +462,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="ball1" />
                 <componentref id="ball2" />
@@ -489,7 +489,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -502,7 +502,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -515,7 +515,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="tableBorderTexture"/>
+            <texture id="marbleTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableBorderX" />
             </children>
@@ -527,7 +527,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="tableBorderTexture"/>
+            <texture id="marbleTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableBorderX" />
             </children>
@@ -539,7 +539,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="tableBorderTexture"/>
+            <texture id="marbleTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableBorderY" />
             </children>
@@ -551,7 +551,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="tableBorderTexture"/>
+            <texture id="marbleTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableBorderY" />
             </children>
@@ -566,7 +566,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="tableTopTexture"/>
+            <texture id="tableTopTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -580,7 +580,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="marbleTexture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="demoCylinder" />
             </children>
@@ -594,7 +594,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableLeg" />
             </children>
@@ -608,7 +608,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableLeg" />
             </children>
@@ -622,7 +622,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableLeg" />
             </children>
@@ -636,9 +636,21 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableLeg" />
+            </children>
+        </component>
+
+        <component id="tableHole">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="demoMaterial" />
+            </materials>
+            <texture id="tableTopTexture" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="demoTorus" />
             </children>
         </component>
 
@@ -650,9 +662,9 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="tableTopTexture" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="demoTorus" />
+                <componentref id="tableHole" />
             </children>
         </component>
 
@@ -664,9 +676,9 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="tableTopTexture" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="demoTorus" />
+                <componentref id="tableHole" />
             </children>
         </component>
 
@@ -678,9 +690,9 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="tableTopTexture" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="demoTorus" />
+                <componentref id="tableHole" />
             </children>
         </component>
 
@@ -692,9 +704,9 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="tableTopTexture" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="demoTorus" />
+                <componentref id="tableHole" />
             </children>
         </component>
 
@@ -706,9 +718,9 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="tableTopTexture" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="demoTorus" />
+                <componentref id="tableHole" />
             </children>
         </component>
 
@@ -720,9 +732,9 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="tableTopTexture" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="demoTorus" />
+                <componentref id="tableHole" />
             </children>
         </component>
 
@@ -733,7 +745,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableLegDR" />
                 <componentref id="tableLegUR" />
@@ -762,7 +774,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="coneFrustum" />
             </children>
@@ -777,7 +789,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="stick" />
             </children>
@@ -792,7 +804,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -807,7 +819,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -822,7 +834,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -838,7 +850,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="pooltriangleL" />
                 <componentref id="pooltriangleR" />
@@ -854,7 +866,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="table" />
                 <componentref id="stickTable" />

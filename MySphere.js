@@ -8,6 +8,10 @@ class MySphere extends CGFobject {
         this.initBuffers();
     }
 
+    updateScaleFactors(length_s, length_t) {
+        return;
+    }
+
     initBuffers() {
 
         this.vertices = [];

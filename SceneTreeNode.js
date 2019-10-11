@@ -9,7 +9,8 @@ class SceneTreeNode extends CGFobject {
         this.texture = texture;
         this.transformationMatrix = transformation;
 
-        this.firstrender= true;
+        this.length_s = 1;
+        this.length_t = 1;
     }
 
     rotateMaterials() {
@@ -19,11 +20,11 @@ class SceneTreeNode extends CGFobject {
         }
     }
 
+    updateScaleFactors(length_s, length_t) {
+        return;
+    }
+
     display() {
-        /*if (this.firstrender) {
-            console.log("Rendering " + this.id);
-            this.firstrender = false;
-        }*/
         this.scene.pushMatrix();
         if (this.transformationMatrix != null) {
             this.scene.multMatrix(this.transformationMatrix);
@@ -38,8 +39,12 @@ class SceneTreeNode extends CGFobject {
         } else if (this.texture == -1) {
             this.scene.setDefaultAppearance();
         }
-        
+
+        let update = this.length_s > 0 && this.length_t > 0;
         for (let child of this.children) {
+            if (update) {
+                child.updateScaleFactors(this.length_s, this.length_t);
+            }
             child.display();
         }
 

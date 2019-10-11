@@ -13,7 +13,21 @@ class MyRectangle extends CGFobject {
 		this.y1 = y1;
 		this.y2 = y2;
 
+		this.origTexCoords = [];
+
 		this.initBuffers();
+	}
+
+	updateScaleFactors(length_s, length_t) {
+		this.updateTexCoords(this.origTexCoords);
+
+		for (let i = 0; i < this.texCoords.length; i++) {
+			if (i % 2 == 0) {
+				this.texCoords[i] = this.texCoords[i]*length_s;
+			} else {
+				this.texCoords[i] = this.texCoords[i]*length_t;
+			}
+		}
 	}
 	
 	initBuffers() {
@@ -48,12 +62,15 @@ class MyRectangle extends CGFobject {
         t
         */
 
-		this.texCoords = [
+		this.origTexCoords = [
 			0, 1,
 			1, 1,
 			0, 0,
 			1, 0
-		]
+		];
+
+		this.updateTexCoords(this.origTexCoords);
+
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}
