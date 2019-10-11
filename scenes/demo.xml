@@ -578,8 +578,8 @@
                 <rotate axis="x" angle="-90" />
             </transformation>
             <materials>
-                <material id="tableTopMaterial1" />
                 <material id="tableTopMaterial2" />
+                <material id="tableTopMaterial1" />
             </materials>
             <texture id="tableTopTexture" length_s="1" length_t="1" />
             <children>
