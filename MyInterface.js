@@ -37,6 +37,12 @@ class MyInterface extends CGFinterface {
         this.gui.add(graph, 'activeView', mapper)
         .name("Camera")
         .onChange(graph.changeCamera.bind(graph));
+
+        
+        let lightKeys = Object.keys(graph.lights);
+        for(let light of lightKeys){
+            
+        }
     }
 
     /**
