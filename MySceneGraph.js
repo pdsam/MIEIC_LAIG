@@ -1162,7 +1162,6 @@ class MySceneGraph {
     }
 
     popMaterial() {
-        this.materialStack.pop();
         let mat = this.materialStack[this.materialStack.length-1];
         this.activeMaterial = mat;
         if (mat != null) {
@@ -1170,6 +1169,7 @@ class MySceneGraph {
         } else {
             this.scene.setDefaultAppearance();
         }
+        this.materialStack.pop();
     }
 
     applyTexture(t) {
@@ -1185,12 +1185,12 @@ class MySceneGraph {
     }
 
     popTexture() {
-        this.textureStack.pop();
         let tex = this.textureStack[this.textureStack.length-1];
         if (this.activeMaterial) {
             this.activeMaterial.setTexture(tex);
             this.activeMaterial.apply();
         }
+        this.textureStack.pop();
     }
 
     

@@ -29,11 +29,12 @@ class SceneTreeNode extends CGFobject {
         if (this.transformationMatrix != null) {
             this.scene.multMatrix(this.transformationMatrix);
         }
+
         this.tree.pushMaterial();
         if (this.materials != null) {
             this.tree.applyMaterial(this.materials[this.activeMaterialIndex]);
-            
         }
+        
         this.tree.pushTexture();
         if (this.texture == -1) {
             this.tree.applyTexture(null);
@@ -50,7 +51,9 @@ class SceneTreeNode extends CGFobject {
         }
 
         this.tree.popTexture();
+
         this.tree.popMaterial();
+
         this.scene.popMatrix();
     }
 }
