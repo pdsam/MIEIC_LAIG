@@ -16,15 +16,15 @@ class MyTriangle extends CGFobject{
     }
 
 	updateScaleFactors(length_s, length_t) {
-		this.updateTexCoords(this.origTexCoords);
-
-		for (let i = 0; i < this.texCoords.length; i++) {
+		let newTex = [...this.origTexCoords];
+		for (let i = 0; i < this.origTexCoords.length; i++) {
 			if (i % 2 == 0) {
-				this.texCoords[i] = this.texCoords[i]*length_s;
+				newTex[i] = this.origTexCoords[i]*length_s;
 			} else {
-				this.texCoords[i] = this.texCoords[i]*length_t;
+				newTex[i] = this.origTexCoords[i]*length_t;
 			}
 		}
+		this.updateTexCoords(newTex);
 	}
 
     initBuffers(){

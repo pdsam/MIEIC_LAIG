@@ -125,7 +125,7 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
 
             <children>
                 <primitiveref id="unitSquare" />
@@ -143,7 +143,7 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
 
             <children>
                 <primitiveref id="unitSquare" />
@@ -161,7 +161,7 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
 
             <children>
                 <primitiveref id="unitSquare" />
@@ -178,7 +178,7 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
 
             <children>
                 <primitiveref id="unitSquare" />
@@ -196,7 +196,7 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
 
             <children>
                 <primitiveref id="unitSquare" />
@@ -214,7 +214,7 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
 
             <children>
                 <primitiveref id="unitSquare" />
@@ -231,7 +231,7 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
 
             <children>
                 <componentref id="topUnitCube" />
@@ -503,7 +503,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -516,7 +516,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -676,7 +676,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -690,7 +690,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -704,7 +704,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -718,7 +718,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -732,7 +732,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -746,7 +746,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit"/>
             <children>
                 <componentref id="tableHole" />
             </children>

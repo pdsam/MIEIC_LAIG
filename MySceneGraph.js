@@ -572,6 +572,8 @@ class MySceneGraph {
                 }
             }
 
+            material.setTextureWrap('REPEAT', 'REPEAT');
+
             this.materials[materialID] = material;
         }
 
