@@ -42,7 +42,7 @@ class MyInterface extends CGFinterface {
         let lightKeys = Object.keys(this.scene.lights);
         let j = 0;
         for(let i of lightKeys){
-            this.gui.add(this.scene.lights[i],'visible')
+            this.gui.add(this.scene.lights[i],'enabled')
             .name("light: ")
             .onChange(console.log("changed"));
             j++;
@@ -66,6 +66,7 @@ class MyInterface extends CGFinterface {
         if(event.code == "KeyM"){
             this.scene.graph.updateMaterials();
             console.log("M");
+            console.log(this.scene.lights[0]);
         }
     };
 
