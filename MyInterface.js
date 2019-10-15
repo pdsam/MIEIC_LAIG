@@ -39,15 +39,10 @@ class MyInterface extends CGFinterface {
         .onChange(graph.changeCamera.bind(graph));
         
         
-        let lightKeys = Object.keys(this.scene.lights);
-        let j = 0;
-        for(let i of lightKeys){
-            this.gui.add(this.scene.lights[i],'enabled')
-            .name("light: ")
+        for(let i = 0; i < graph.numberOfLights; i++) {
+            this.gui.add(this.scene.lights[i], 'enabled')
+            .name("Light: " + i)
             .onChange(console.log("changed"));
-            j++;
-            if(j > graph.lights.length)
-                break;
         }
       //  this.gui.add(this.scene, 'bruh').name('Display Diamond');
     }

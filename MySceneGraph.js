@@ -471,6 +471,7 @@ class MySceneGraph {
         else if (numLights > 8)
             this.onXMLMinorError("too many lights defined; WebGL imposes a limit of 8 lights");
 
+        this.numberOfLights = numLights;
         this.log("Parsed lights");
         return null;
     }
