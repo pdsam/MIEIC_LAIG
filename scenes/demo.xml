@@ -55,6 +55,8 @@
         <texture id="floorTexture" file="scenes/images/floor.jpg" />
         <texture id="lightWoodTexture" file="scenes/images/light-wood.jpg" />
         <texture id="greenTable" file="scenes/images/greenText.jpg"/>
+        <texture id="hazard" file="scenes/images/hazard.png"/>
+        <texture id="steel" file="scenes/images/steel.jpg" />
     </textures>
         
     <materials>
@@ -63,6 +65,13 @@
             <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
             <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
             <specular r="0.5" g="0.5" b="0.5" a="1.0" />
+        </material>
+
+        <material id="steelMat" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="0.8" g="0.81" b="0.82" a="1.0" />
+            <specular r="0.9" g="0.9" b="0.9" a="1.0" />
         </material>
 
         <material id="orangeWood" shininess="10">
@@ -603,7 +612,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="tableTopTexture" length_s="1" length_t="1" />
+            <texture id="greenTable" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -615,9 +624,9 @@
                 <scale x="0.25" y="0.25" z="3" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="steelMat" />
             </materials>
-            <texture id="marbleTexture" length_s="1" length_t="1" />
+            <texture id="steel" length_s="1" length_t="0.5" />
             <children>
                 <primitiveref id="demoCylinder" />
             </children>
@@ -783,7 +792,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="hazard" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableLegDR" />
                 <componentref id="tableLegUR" />
