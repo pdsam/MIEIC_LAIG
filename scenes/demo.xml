@@ -6,7 +6,15 @@
             <from x="10" y="10" z="10" />
             <to x="0" y="0" z="0" />
         </perspective>
-        <ortho id="orthoBoi" near="0.1" far="500" left="-6" right="6" top="6" bottom="-6">
+        <perspective id="otherSide" near="0.1" far="500" angle="45">
+            <from x="-10" y="10" z="-10" />
+            <to x="0" y="0" z="0" />
+        </perspective>
+        <perspective id="balls" near="0.1" far="500" angle="45">
+            <from x="0" y="2" z="-2" />
+            <to x="0" y="0" z="2" />
+        </perspective>
+        <ortho id="orthoCamera" near="0.1" far="500" left="-6" right="6" top="6" bottom="-6">
             <from x="30" y="15" z="30" />
             <to x="0" y="0" z="0" />
         </ortho>
@@ -30,6 +38,14 @@
             <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
             <specular r="1.0" g="1.0" b="1.0" a="1.0" />
         </omni>
+        <spot id="spotLight" enabled="0" angle="30" exponent="1">
+            <location x="1" y="0.3" z="0" w="1.0" />
+            <target x="1" y="0.3" z="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="0" linear="0" quadratic="0" />
+        </spot>
     </lights>
 
     <textures>
@@ -63,7 +79,7 @@
         <material id="demoMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
             <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
-            <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+            <diffuse r="1" g="1" b="1" a="1.0" />
             <specular r="0.5" g="0.5" b="0.5" a="1.0" />
         </material>
 
@@ -85,6 +101,18 @@
             <ambient r="0.87" g="0.72" b="0.52" a="1.0" />
             <diffuse r="0.87" g="0.72" b="0.52" a="1.0" />
             <specular r="0.2" g="0.2" b="0.2" a="1.0" />
+    </material>
+        <material id="stickMaterial" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="1" g="1" b="1" a="1.0" />
+            <specular r="0.2" g="0.2" b="0.2" a="1.0" />
+        </material>
+        <material id="floorMaterial" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="1" g="1" b="1" a="1.0" />
+            <specular r="0.05" g="0.05" b="0.05" a="1.0" />
         </material>
 
         <material id="ballMaterial" shininess="10">
@@ -94,19 +122,34 @@
             <specular r="0.9" g="0.9" b="0.9" a="1.0" />
         </material>
 
-        <material id="tableTopMaterial1" shininess="10">
+        <material id="tableTopMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="1" g="1" b="1" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="1" g="1" b="1" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+        </material>
+
+        <material id="tableMaterial" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="1" g="1" b="1" a="1.0" />
+            <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+        </material>
+
+        <material id="voidMaterial" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
             <diffuse r="0" g="0" b="0" a="1.0" />
             <specular r="0" g="0" b="0" a="1.0" />
         </material>
 
-        <material id="tableTopMaterial2" shininess="10">
+        <material id="holeMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="1" g="0" b="0" a="1.0" />
-            <diffuse r="1" g="0" b="0" a="1.0" />
-            <specular r="0.9" g="0.9" b="0.9" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="0.15" g="0.12" b="0.08" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
         </material>
+
     </materials>
 
     <transformations>
@@ -130,7 +173,7 @@
                         x3="-0.5" y3="0" z3="-0.87" />
         </primitive>
         <primitive id="demoCylinder">
-            <cylinder base="1" top="1" height="1" slices="20" stacks="5" />
+            <cylinder base="0.5" top="1" height="1" slices="20" stacks="5" />
         </primitive>
         <primitive id="coneFrustum">
             <cylinder base="0.3" top="0.1" height="1" slices="20" stacks="10" />
@@ -282,7 +325,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball1Texture" length_s="1" length_t="1" />
             <children>
@@ -296,7 +339,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball2Texture" length_s="1" length_t="1" />
             <children>
@@ -310,7 +353,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball3Texture" length_s="1" length_t="1" />
             <children>
@@ -324,7 +367,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball4Texture" length_s="1" length_t="1" />
             <children>
@@ -338,7 +381,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball5Texture" length_s="1" length_t="1" />
             <children>
@@ -352,7 +395,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball6Texture" length_s="1" length_t="1" />
             <children>
@@ -366,7 +409,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball7Texture" length_s="1" length_t="1" />
             <children>
@@ -380,7 +423,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball8Texture" length_s="1" length_t="1" />
             <children>
@@ -394,7 +437,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball9Texture" length_s="1" length_t="1" />
             <children>
@@ -408,7 +451,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball10Texture" length_s="1" length_t="1" />
             <children>
@@ -422,7 +465,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball11Texture" length_s="1" length_t="1" />
             <children>
@@ -436,7 +479,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball12Texture" length_s="1" length_t="1" />
             <children>
@@ -450,7 +493,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball13Texture" length_s="1" length_t="1" />
             <children>
@@ -464,7 +507,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball14Texture" length_s="1" length_t="1" />
             <children>
@@ -478,7 +521,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ball15Texture" length_s="1" length_t="1" />
             <children>
@@ -492,7 +535,7 @@
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
             <materials>
-                <material id="ballMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="ballCueTexture" length_s="1" length_t="1" />
             <children>
@@ -505,9 +548,9 @@
                 <translate x="0" y="0" z="1" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="ballMaterial" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="none" />
             <children>
                 <componentref id="ball1" />
                 <componentref id="ball2" />
@@ -533,7 +576,7 @@
                 <rotate axis="x" angle="90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
@@ -546,7 +589,7 @@
                 <scale x="6.38" y="0.39" z="0.405" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
@@ -559,7 +602,7 @@
                 <translate x="-3" y="0.05" z="0" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="marbleTexture" length_s="1" length_t="0.1" />
             <children>
@@ -571,7 +614,7 @@
                 <translate x="3" y="0.05" z="0" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="marbleTexture" length_s="1" length_t="0.1" />
             <children>
@@ -583,7 +626,7 @@
                 <translate x="0" y="0.05" z="-5.8" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="marbleTexture" length_s="0.1" length_t="1" />
             <children>
@@ -595,7 +638,7 @@
                 <translate x="0" y="0.05" z="5.8" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="marbleTexture" length_s="0.1" length_t="1" />
             <children>
@@ -610,7 +653,7 @@
                 <rotate axis="x" angle="-90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="tableTopMaterial" />
             </materials>
             <texture id="greenTable" length_s="1" length_t="1" />
             <children>
@@ -638,9 +681,9 @@
                 
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="none" />
             <children>
                 <componentref id="tableLeg" />
             </children>
@@ -652,9 +695,9 @@
                 
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="none" />
             <children>
                 <componentref id="tableLeg" />
             </children>
@@ -666,9 +709,9 @@
                 
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="none" />
             <children>
                 <componentref id="tableLeg" />
             </children>
@@ -680,9 +723,9 @@
                 
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="none" />
             <children>
                 <componentref id="tableLeg" />
             </children>
@@ -690,11 +733,13 @@
 
         <component id="tableHole">
             <transformation>
+                <scale x="1" y="0.2" z="1" />
+                <rotate axis="x" angle="90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="holeMaterial" />
             </materials>
-            <texture id="tableTopTexture" length_s="1" length_t="1" />
+            <texture id="none" />
             <children>
                 <primitiveref id="demoTorus" />
             </children>
@@ -703,10 +748,9 @@
         <component id="tableHoleBR">
             <transformation>
             <translate x="2.7" y="0" z="5.5" />
-            <rotate axis="x" angle="90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
@@ -717,10 +761,9 @@
         <component id="tableHoleBL">
             <transformation>
             <translate x="-2.7" y="0" z="5.5" />
-            <rotate axis="x" angle="90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
@@ -731,10 +774,9 @@
         <component id="tableHoleMR">
             <transformation>
             <translate x="2.7" y="0" z="0" />
-            <rotate axis="x" angle="90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
@@ -745,10 +787,9 @@
         <component id="tableHoleML">
             <transformation>
             <translate x="-2.7" y="0" z="0" />
-            <rotate axis="x" angle="90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
@@ -759,10 +800,9 @@
         <component id="tableHoleUR">
             <transformation>
             <translate x="2.7" y="0" z="-5.5" />
-            <rotate axis="x" angle="90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
@@ -773,10 +813,9 @@
         <component id="tableHoleUL">
             <transformation>
             <translate x="-2.7" y="0" z="-5.5" />
-            <rotate axis="x" angle="90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
@@ -784,15 +823,115 @@
             </children>
         </component>
 
+        <component id="tableUnderSide">
+            <transformation>
+                <translate x="0" y="-0.15" z="0" />
+                <scale x="5.7" y="0.2" z="11.7" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="marbleTexture" length_s="1" length_t="1" />
+            <children>
+                <componentref id="unitCube" />
+            </children>
+        </component>
+
+        <component id="tableHoleVoid">
+            <transformation>
+                <rotate axis="x" angle="90" />
+                <scale x="0.3" y="0.3" z="0.05" />
+            </transformation>
+            <materials>
+                <material id="voidMaterial" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <primitiveref id="demoSphere" />
+            </children>
+        </component>
+
+        <component id="tableHoleVoidUL">
+            <transformation>
+                <translate x="-2.7" y="0" z="-5.5" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="tableHoleVoid" />
+            </children>
+        </component>
+        <component id="tableHoleVoidUR">
+            <transformation>
+                <translate x="2.7" y="0" z="-5.5" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="tableHoleVoid" />
+            </children>
+        </component>
+        <component id="tableHoleVoidML">
+            <transformation>
+                <translate x="-2.7" y="0" z="0" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="tableHoleVoid" />
+            </children>
+        </component>
+        <component id="tableHoleVoidMR">
+            <transformation>
+                <translate x="2.7" y="0" z="0" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="tableHoleVoid" />
+            </children>
+        </component>
+        <component id="tableHoleVoidLL">
+            <transformation>
+                <translate x="-2.7" y="0" z="5.5" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="tableHoleVoid" />
+            </children>
+        </component>
+        <component id="tableHoleVoidLR">
+            <transformation>
+                <translate x="2.7" y="0" z="5.5" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="tableHoleVoid" />
+            </children>
+        </component>
 
         <component id="table">
             <transformation>
                 <scale x="1" y="1" z="1" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="tableMaterial" />
             </materials>
-            <texture id="hazard" length_s="1" length_t="1" />
+            <texture id="marbleTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="tableLegDR" />
                 <componentref id="tableLegUR" />
@@ -811,6 +950,13 @@
                 <componentref id="tableHoleML" />
                 <componentref id="tableHoleUR" />
                 <componentref id="tableHoleUL" />
+                <componentref id="tableUnderSide" />
+                <componentref id="tableHoleVoidUL" />
+                <componentref id="tableHoleVoidUR" />
+                <componentref id="tableHoleVoidML" />
+                <componentref id="tableHoleVoidMR" />
+                <componentref id="tableHoleVoidLL" />
+                <componentref id="tableHoleVoidLR" />
             </children>
         </component>
 
@@ -819,9 +965,9 @@
                 <scale x="0.3" y="0.3" z ="10" /> 
             </transformation>
             <materials>
-                <material id="inherit" />
+                <material id="lightWood" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="lightWoodTexture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="coneFrustum" />
             </children>
@@ -834,9 +980,9 @@
                 <rotate axis ="x" angle="-90" />
             </transformation>
             <materials>
-                <material id="lightWood" />
+                <material id="inherit" />
             </materials>
-            <texture id="lightWoodTexture" length_s="1" length_t="1" />
+            <texture id="none" />
             <children>
                 <componentref id="stick" />
             </children>
@@ -851,7 +997,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -866,7 +1012,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -881,7 +1027,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit" length_s="1" length_t="1" />
+            <texture id="inherit" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -911,9 +1057,9 @@
                 <rotate axis="x" angle="180" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="floorMaterial" />
             </materials>
-            <texture id="floorTexture" length_s="0.1" length_t="0.1" />
+            <texture id="floorTexture" length_s="0.3" length_t="0.3" />
             <children>
                 <primitiveref id="demoTriangle" />
             </children>

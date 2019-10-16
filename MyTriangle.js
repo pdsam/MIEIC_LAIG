@@ -38,10 +38,17 @@ class MyTriangle extends CGFobject{
             0,1,2,
         ];
 
+        let v1 = vec3.fromValues(this.x2 - this.x1, this.y2 - this.y1, this.z2 - this.z1);
+        let v2 = vec3.fromValues(this.x3 - this.x1, this.y3 - this.y1, this.z3 - this.z1);
+
+        let normal = vec3.create();
+        let normalNormalized = vec3.create();
+        vec3.cross(normal, v1, v2);
+        vec3.normalize(normalNormalized, normal);
         this.normals = [
-            0,0,1,
-            0,0,1,
-            0,0,1
+            ...normalNormalized,
+            ...normalNormalized,
+            ...normalNormalized
         ];
 
         this.origTexCoords = [];
@@ -57,8 +64,6 @@ class MyTriangle extends CGFobject{
             1,0,
             Math.cos(alpha), Math.sin(alpha)
         ]);
-
-        console.log(this.origTexCoords);
 
         this.updateTexCoords(this.origTexCoords);
 

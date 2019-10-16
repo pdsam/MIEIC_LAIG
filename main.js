@@ -51,4 +51,5 @@ main=function()
 
 ]);
 
-//TODO perguntar acerca de camara estatica quando se da parse nas views
+//TODO alertar prof do ou com as luzes que as deixa ligadas por default
+//TODO perguntar acerca de conversao do angulo dos focos para radianos
