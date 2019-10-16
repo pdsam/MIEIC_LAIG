@@ -65,6 +65,18 @@
             <specular r="0.5" g="0.5" b="0.5" a="1.0" />
         </material>
 
+        <material id="orangeWood" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.36" g="0.078" b="0.008" a="1.0" />
+            <diffuse r="0.36" g="0.078" b="0.008" a="1.0" />
+            <specular r="0.01" g="0.01" b="0.01" a="1.0" />
+        </material>
+        <material id="lightWood" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.87" g="0.72" b="0.52" a="1.0" />
+            <diffuse r="0.87" g="0.72" b="0.52" a="1.0" />
+            <specular r="0.2" g="0.2" b="0.2" a="1.0" />
+        </material>
 
         <material id="ballMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
@@ -798,9 +810,9 @@
                 <scale x="0.3" y="0.3" z ="10" /> 
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
-            <texture id="lightWoodTexture" length_s="1" length_t="1" />
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="coneFrustum" />
             </children>
@@ -813,9 +825,9 @@
                 <rotate axis ="x" angle="-90" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="lightWood" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="lightWoodTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="stick" />
             </children>
@@ -828,9 +840,9 @@
             <scale x="0.1" y="0.1" z= "2" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -843,9 +855,9 @@
             <scale x="0.1" y="0.1" z= "2" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -858,9 +870,9 @@
             <scale x="0.1" y="0.1" z= "2" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="inherit" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -874,9 +886,9 @@
             <rotate axis ="x" angle="-10" />
             </transformation>
             <materials>
-                <material id="demoMaterial" />
+                <material id="orangeWood" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="lightWoodTexture" length_s="1" length_t="1" />
             <children>
                 <componentref id="pooltriangleL" />
                 <componentref id="pooltriangleR" />
