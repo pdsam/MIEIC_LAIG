@@ -22,9 +22,9 @@ class MyRectangle extends CGFobject {
 		let newTex = [...this.origTexCoords];
 		for (let i = 0; i < this.origTexCoords.length; i++) {
 			if (i % 2 == 0) {
-				newTex[i] = this.origTexCoords[i]*length_s;
+				newTex[i] = this.origTexCoords[i]/length_s;
 			} else {
-				newTex[i] = this.origTexCoords[i]*length_t;
+				newTex[i] = this.origTexCoords[i]/length_t;
 			}
 		}
 		this.updateTexCoords(newTex);

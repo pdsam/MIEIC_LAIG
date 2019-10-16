@@ -23,7 +23,7 @@
     </lights>
 
     <textures>
-        <texture id="demoTexture" file="scenes/images/earth.jpg" />
+        <texture id="demoTexture" file="scenes/images/floor.jpg" />
     </textures>
 
     <materials>
@@ -50,6 +50,11 @@
     </transformations>
 
     <primitives>
+        <primitive id="demoTriangle">
+            <triangle   x1="1" y1="0" z1="0"
+                        x2="-0.5" y2="0" z2="0.87"
+                        x3="-0.5" y3="0" z3="-0.87" />
+        </primitive>
         <primitive id="demoRectangle">
             <rectangle x1="-0.5" y1="-1" x2="0.5" y2="1" />
         </primitive>
@@ -59,41 +64,17 @@
     </primitives>
 
     <components>
-        <component id="sphere">
-            <transformation>
-                <translate x="2" y="0" z="0"/>
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="none"/>
-            <children>
-                <primitiveref id="demoSphere" />
-            </children>
-        </component>
-        <component id="sphere2">
-            <transformation>
-                <translate x="-2" y="0" z="0"/>
-            </transformation>
-            <materials>
-               <material id="inherit" />
-            </materials>
-            <texture id="none"/>
-            <children>
-                <primitiveref id="demoSphere" />
-            </children>
-        </component>
         <component id="demoRoot">
             <transformation>
+                <rotate axis="x" angle="180" />
             </transformation>
             <materials>
                 <material id="demoMaterial" />
                 <material id="demoMaterial2" />
             </materials>
-            <texture id="none"/>
+            <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
-                <componentref id="sphere" />
-                <componentref id="sphere2" />
+                <primitiveref id="demoTriangle" />
             </children>
         </component>
     </components>

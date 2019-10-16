@@ -47,9 +47,6 @@ class SceneTreeNode extends CGFobject {
         let update = this.length_s > 0 && this.length_t > 0;
         for (let child of this.children) {
             if (update) {
-                if (this.id == "tableTop") {
-                    let j;
-                }
                 child.updateScaleFactors(this.length_s, this.length_t);
             }
             child.display();
