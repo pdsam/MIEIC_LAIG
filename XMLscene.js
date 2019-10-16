@@ -36,6 +36,9 @@ class XMLscene extends CGFscene {
 
         this.axis = new CGFaxis(this);
         this.setUpdatePeriod(100);
+
+        this.shader = new CGFshader(this.gl, 'shaders/vertex.glsl', 'shaders/fragment.glsl');
+        this.setActiveShader(this.shader);
     }
 
     /**
