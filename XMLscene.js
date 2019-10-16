@@ -81,6 +81,7 @@ class XMLscene extends CGFscene {
                 i++;
             }
         }
+        this.interface.build(this.graph);
     }
 
     setDefaultAppearance() {
