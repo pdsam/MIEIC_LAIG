@@ -50,8 +50,10 @@
         <texture id="ball14Texture" file="scenes/images/Ball14.jpg" />
         <texture id="ball15Texture" file="scenes/images/Ball15.jpg" />
         <texture id="ballCueTexture" file="scenes/images/BallCue.jpg" />
-        <texture id="tableTopTexture" file="scenes/images/poolTop.jpg" />
+        <texture id="tableTopTexture" file="scenes/images/greenText.jpg" />
         <texture id="marbleTexture" file="scenes/images/marble.jpg" />
+        <texture id="lightWoodTexture" file="scenes/images/light-wood.jpg" />
+        <texture id="greenTable" file="scenes/images/greenText.jpg"/>
     </textures>
         
     <materials>
@@ -61,6 +63,7 @@
             <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
             <specular r="0.5" g="0.5" b="0.5" a="1.0" />
         </material>
+
 
         <material id="ballMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
@@ -758,6 +761,7 @@
             </children>
         </component>
 
+
         <component id="table">
             <transformation>
                 <scale x="1" y="1" z="1" />
@@ -794,7 +798,7 @@
             <materials>
                 <material id="demoMaterial" />
             </materials>
-            <texture id="demoTexture" length_s="1" length_t="1" />
+            <texture id="lightWoodTexture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="coneFrustum" />
             </children>
