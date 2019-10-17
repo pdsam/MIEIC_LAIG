@@ -38,9 +38,10 @@ class MyInterface extends CGFinterface {
         .name("Camera")
         .onChange(graph.changeCamera.bind(graph));
         
+        var folder = this.gui.addFolder('Lights');
         
         for(let i = 0; i < graph.numberOfLights; i++) {
-            this.gui.add(this.scene.lights[i], 'enabled')
+            folder.add(this.scene.lights[i], 'enabled')
             .name("Light: " + i)
             .onChange(console.log("changed"));
         }
