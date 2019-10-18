@@ -1194,7 +1194,7 @@
             </children>
         </component>
 
-        <component id="demoRoot">
+        <component id="root">
             <transformation>
                 <scale x="1" y="1" z="1" />
             </transformation>
