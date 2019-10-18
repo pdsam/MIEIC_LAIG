@@ -83,9 +83,9 @@
     <materials>
         <material id="demoMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="1" g="0" b="0." a="1.0" />
-            <diffuse r="1" g="0" b="0" a="1.0" />
-            <specular r="1" g="0" b="0" a="1.0" />
+            <ambient r="0" g="0" b="1s." a="1.0" />
+            <diffuse r="0" g="0" b="1" a="1.0" />
+            <specular r="0" g="" b="1" a="1.0" />
         </material>
 
         <material id="steelMat" shininess="10">
@@ -765,8 +765,6 @@
             </transformation>
             <materials>
                 <material id="tableTopMaterial" />
-                <material id="orangeWood" />
-                <material id="demoMaterial" />    
             </materials>
             <texture id="greenTable" length_s="1" length_t="1" />
             <children>
@@ -781,6 +779,8 @@
             </transformation>
             <materials>
                 <material id="steelMat" />
+                <material id="orangeWood" />
+                <material id="demoMaterial" /> 
             </materials>
             <texture id="steel" length_s="1" length_t="0.5" />
             <children>
@@ -1043,6 +1043,7 @@
             </transformation>
             <materials>
                 <material id="tableMaterial" />
+                <material id="orangeWood" />
             </materials>
             <texture id="marbleTexture" length_s="1" length_t="1" />
             <children>
