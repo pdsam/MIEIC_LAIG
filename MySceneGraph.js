@@ -902,7 +902,7 @@ class MySceneGraph {
                 mat4.identity(matrix);
                 newComponent.transformationMatrix = matrix;
 
-            } else if (trasnformNodes[0].name == "transformationref") {
+            } else if (trasnformNodes[0].nodeName == "transformationref") {
                 let id = this.reader.getString(children[0], "id", true);
 
                 if (this.transformations[id] == null) {
