@@ -4,8 +4,15 @@ class SceneTreeNode extends CGFobject {
         this.id = id;
         this.tree = tree;
         this.children = children;
-        this.materials = materials;
+        this.materials = materials; //Will be set to null if it supposed to inherit from the parent
         this.activeMaterialIndex = 0;
+
+        /* 
+            The texture attribute can be of three types:
+                - A CGFtexture
+                - null if it is supposed to be inherited
+                - -1 if the object has no texture
+        */
         this.texture = texture;
         this.transformationMatrix = transformation;
 
@@ -33,17 +40,21 @@ class SceneTreeNode extends CGFobject {
         }
 
         this.tree.pushMaterial();
+        //Only apply material if it is not inheriting
         if (this.materials != null) {
             this.tree.applyMaterial(this.materials[this.activeMaterialIndex]);
         }
         
         this.tree.pushTexture();
         if (this.texture == -1) {
+            //Object has no texture
             this.tree.applyTexture(null);
         } else if (this.texture != null) {
+            //Object has own texture
             this.tree.applyTexture(this.texture);
         }
 
+        //Check if texture scale factors need to be applied
         let update = this.length_s > 0 && this.length_t > 0;
         for (let child of this.children) {
             if (update) {

@@ -1,7 +1,7 @@
 <lxs>
     <scene root="demoRoot" axis_length="5"/>
 
-    <views default="defaultCamera">
+    <views default="otherSide">
         <perspective id="defaultCamera" near="0.1" far="500" angle="45">
             <from x="10" y="10" z="10" />
             <to x="0" y="0" z="0" />
@@ -26,27 +26,29 @@
     </globals>
 
     <lights>
-        <omni id="demoLight" enabled="1">
+        <omni id="stageLight" enabled="0">
             <location x="9.8" y="11.9" z="10" w="1.0" />
             <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
             <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
             <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="0" linear="0" quadratic="1" />
         </omni>
-        <omni id="demoLight2" enabled="1">
+        <omni id="stageLight2" enabled="0">
             <location x="-9.8" y="11.9" z="-10" w="1.0" />
             <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
             <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
             <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="0" linear="0" quadratic="1" />
         </omni>
-        <omni id="undertable" enabled="1">
-            <location x="0" y="-1" z="00" w="1.0" />
+        <omni id="undertable" enabled="0">
+            <location x="0" y="-1" z="0" w="1.0" />
             <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
             <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
             <specular r="1.0" g="1.0" b="1.0" a="1.0" />
         </omni>
-        <spot id="spotLight" enabled="0" angle="15" exponent="1">
-            <location x="1" y="0.3" z="0" w="1.0" />
-            <target x="1" y="0.3" z="1" />
+        <spot id="spotLight" enabled="1" angle="0" exponent="20">
+            <location x="1" y="3" z="0" w="1.0" />
+            <target x="0" y="-1" z="1" />
             <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
             <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
             <specular r="1.0" g="1.0" b="1.0" a="1.0" />
@@ -119,6 +121,12 @@
             <diffuse r="1" g="1" b="1" a="1.0" />
             <specular r="0.05" g="0.05" b="0.05" a="1.0" />
         </material>
+        <material id="shinyFloorMaterial" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="1" g="1" b="1" a="1.0" />
+            <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+        </material>
 
         <material id="ballMaterial" shininess="50">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
@@ -134,7 +142,7 @@
             <specular r="0" g="0" b="0" a="1.0" />
         </material>
 
-        <material id="tableMaterial" shininess="10">
+        <material id="tableMaterial" shininess="70">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
             <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
             <diffuse r="1" g="1" b="1" a="1.0" />
@@ -1095,7 +1103,7 @@
 
         <component id="stickTable">
             <transformation>
-                <translate x="4.2" y="-3.4" z="0" />
+                <translate x="4.15" y="-3.0" z="0" />
                 <rotate axis ="z" angle="15" />
                 <rotate axis ="x" angle="-90" />
             </transformation>
@@ -1178,6 +1186,7 @@
             </transformation>
             <materials>
                 <material id="floorMaterial" />
+                <material id="shinyFloorMaterial" />
             </materials>
             <texture id="floorTexture" length_s="0.3" length_t="0.3" />
             <children>

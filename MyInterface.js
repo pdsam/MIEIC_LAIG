@@ -44,11 +44,9 @@ class MyInterface extends CGFinterface {
         var folder = this.gui.addFolder('Lights');
         
         for(let i = 0; i < graph.numberOfLights; i++) {
-            folder.add(this.scene.lights[i], 'enabled')
-            .name("Light: " + i)
-            .onChange(console.log("changed"));
+            this.gui.add(this.scene.lights[i], 'enabled')
+            .name("Light: " + i);
         }
-      //  this.gui.add(this.scene, 'bruh').name('Display Diamond');
     }
 
     /**
@@ -66,11 +64,11 @@ class MyInterface extends CGFinterface {
             this.scene.graph.updateMaterials();
             console.log("M");
         }
-    };
+    }
 
     processKeyUp(event) {
         this.activeKeys[event.code]=false;
-    };
+    }
 
     isKeyPressed(keyCode) {
         return this.activeKeys[keyCode] || false;
