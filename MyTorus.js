@@ -25,13 +25,19 @@ class MyTorus extends CGFobject{
 
         for(let i = 0;i <= this.slices;i++){
             for(let j = 0; j <=this.loops; j++){
-                //todo calculate the trigonometry once
-                this.vertices.push(
-                    (this.outter + this.inner*Math.cos(loop_angle*j)) * Math.cos(slice_angle*i), 
-					(this.outter + this.inner*Math.cos(loop_angle*j)) * Math.sin(slice_angle*i), 
-                    this.inner * Math.sin(loop_angle*j));
 
-                let cInternal = Math.cos(loop_angle*j);
+                //only calculate trignometric functions once
+                var cosL = Math.cos(loop_angle*j);
+                var cosS = Math.cos(slice_angle*i);
+                var sinL = Math.sin(loop_angle*j);
+                var sinS = Math.sin(slice_angle*i);
+
+                this.vertices.push(
+                    (this.outter + this.inner*cosL) * cosS, 
+					(this.outter + this.inner*cosL) * sinS, 
+                    this.inner * sinL);
+
+                let cInternal = cosL;
 
                 this.texCoords.push(
 					i*1/this.slices, 
@@ -39,9 +45,9 @@ class MyTorus extends CGFobject{
 				);
                 
                 this.normals.push(
-                    cInternal * Math.cos(i*slice_angle),
-                    cInternal*Math.sin(slice_angle*i),
-                    Math.sin(loop_angle*j)
+                    cInternal * cosS,
+                    cInternal*sinS,
+                    sinL
                 );
             }
         }

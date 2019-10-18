@@ -27,8 +27,11 @@ class MyInterface extends CGFinterface {
         return true;
     }
 
+    /**
+     * Generates the cameres drop down and the light checkboxes in the interface
+     */
     build(graph) {
-        //building 
+        //cameras
         console.log("Building interface");
         let mapper = {};
         let keys =Object.keys(graph.views);
@@ -40,9 +43,8 @@ class MyInterface extends CGFinterface {
         .onChange(graph.changeCamera.bind(graph));
         
 
-        
+        //lights
         var folder = this.gui.addFolder('Lights');
-        
         for(let i = 0; i < graph.numberOfLights; i++) {
             this.gui.add(this.scene.lights[i], 'enabled')
             .name("Light: " + i);

@@ -32,16 +32,20 @@ class MyCylinder extends CGFobject {
       for (let j = 0; j < this.slices; j++) {
         let angle = j * angleIncrement;
         let radius = this.radius_bot + radiusIncrement * i;
+
+        let cosA = Math.cos(angle);
+        let sinA = Math.sin(angle);
+
         this.vertices.push(
           ...[
-            radius * Math.cos(angle),
-            radius * Math.sin(angle),
+            radius * cosA,
+            radius * sinA,
             heightIncrement * i
           ]
         );
 
         this.normals.push(
-          ...[cost * Math.cos(angle), cost * Math.sin(angle), sint]
+          ...[cost * cosA, cost * sinA, sint]
         );
 
         let u = j*(1/this.slices);
