@@ -607,6 +607,7 @@ class MySceneGraph {
 
             // Get id of the current transformation.
             var transformationID = this.reader.getString(children[i], 'id');
+            
             if (transformationID == null)
                 return "no ID defined for transformation";
 
@@ -648,6 +649,7 @@ class MySceneGraph {
                         break;
                 }
             }
+
             this.transformations[transformationID] = transfMatrix;
         }
 
@@ -903,8 +905,8 @@ class MySceneGraph {
                 newComponent.transformationMatrix = matrix;
 
             } else if (trasnformNodes[0].nodeName == "transformationref") {
-                let id = this.reader.getString(children[0], "id", true);
-
+                let id = this.reader.getString(trasnformNodes[0], "id", true);
+                
                 if (this.transformations[id] == null) {
                     return "Invalid transform id in componentID " + componentID;
                 }
@@ -995,8 +997,20 @@ class MySceneGraph {
             if (id == "inherit") {
                 newComponent.length_s = -1;
                 newComponent.length_t = -1;
+                let length_s = this.reader.getFloat(grandChildren[textureIndex], "length_s", false);
+                let length_t = this.reader.getFloat(grandChildren[textureIndex], "length_t", false);
+
+                if (length_s != null || length_t != null) {
+                    console.warn("In componentId: " + componentID + ", length_s and length_t should not be defined, as texture is inherited.");
+                }
             } else if (id == "none") {
                 newComponent.texture = -1;
+                let length_s = this.reader.getFloat(grandChildren[textureIndex], "length_s", false);
+                let length_t = this.reader.getFloat(grandChildren[textureIndex], "length_t", false);
+
+                if (length_s != null || length_t != null) {
+                    console.warn("In componentId: " + componentID + ", length_s and length_t should not be defined, as texture is disabled.");
+                }
             } else if (this.textures[id] != null) {
                 let length_s = this.reader.getFloat(grandChildren[textureIndex], "length_s", true);
                 let length_t = this.reader.getFloat(grandChildren[textureIndex], "length_t", true);
@@ -1217,6 +1231,6 @@ class MySceneGraph {
      * Displays the scene, processing each node, starting in the root node.
      */
     displayScene() {
-        this.components['root'].display();
+        this.components[this.idRoot].display();
     }
 }
