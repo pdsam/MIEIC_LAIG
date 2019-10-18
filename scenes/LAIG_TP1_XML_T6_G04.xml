@@ -86,9 +86,9 @@
     <materials>
         <material id="demoMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0" g="0" b="1s." a="1.0" />
+            <ambient r="0" g="0" b="1" a="1.0" />
             <diffuse r="0" g="0" b="1" a="1.0" />
-            <specular r="0" g="" b="1" a="1.0" />
+            <specular r="0" g="0" b="1" a="1.0" />
         </material>
 
         <material id="steelMat" shininess="10">
