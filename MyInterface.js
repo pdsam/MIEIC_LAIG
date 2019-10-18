@@ -28,6 +28,7 @@ class MyInterface extends CGFinterface {
     }
 
     build(graph) {
+        //building 
         console.log("Building interface");
         let mapper = {};
         let keys =Object.keys(graph.views);
@@ -37,6 +38,8 @@ class MyInterface extends CGFinterface {
         this.gui.add(graph, 'activeView', mapper)
         .name("Camera")
         .onChange(graph.changeCamera.bind(graph));
+        
+
         
         var folder = this.gui.addFolder('Lights');
         
@@ -62,7 +65,6 @@ class MyInterface extends CGFinterface {
         if(event.code == "KeyM"){
             this.scene.graph.updateMaterials();
             console.log("M");
-            console.log(this.scene.lights[0]);
         }
     };
 

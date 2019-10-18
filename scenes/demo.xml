@@ -55,7 +55,6 @@
     </lights>
 
     <textures>
-        <texture id="demoTexture" file="scenes/images/vidral.jpg" />
         <texture id="ball1Texture" file="scenes/images/Ball1.jpg" />
         <texture id="ball2Texture" file="scenes/images/Ball2.jpg" />
         <texture id="ball3Texture" file="scenes/images/Ball3.jpg" />
@@ -77,7 +76,6 @@
         <texture id="floorTexture" file="scenes/images/floor.jpg" />
         <texture id="lightWoodTexture" file="scenes/images/light-wood.jpg" />
         <texture id="greenTable" file="scenes/images/greenText.jpg"/>
-        <texture id="hazard" file="scenes/images/hazard.png"/>
         <texture id="steel" file="scenes/images/steel.jpg" />
         <texture id="brushed-iron" file="scenes/images/brushed-iron.jpg" />
     </textures>
@@ -85,9 +83,9 @@
     <materials>
         <material id="demoMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
-            <diffuse r="1" g="1" b="1" a="1.0" />
-            <specular r="0.5" g="0.5" b="0.5" a="1.0" />
+            <ambient r="1" g="0" b="0." a="1.0" />
+            <diffuse r="1" g="0" b="0" a="1.0" />
+            <specular r="1" g="0" b="0" a="1.0" />
         </material>
 
         <material id="steelMat" shininess="10">
@@ -767,6 +765,8 @@
             </transformation>
             <materials>
                 <material id="tableTopMaterial" />
+                <material id="orangeWood" />
+                <material id="demoMaterial" />    
             </materials>
             <texture id="greenTable" length_s="1" length_t="1" />
             <children>
