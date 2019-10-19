@@ -1219,7 +1219,6 @@ class MySceneGraph {
         Object.keys(this.components).forEach(key => {
             this.components[key].rotateMaterials();
         });
-        console.log("materials swiched");
     }
 
     changeCamera() {

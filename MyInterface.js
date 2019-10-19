@@ -49,6 +49,8 @@ class MyInterface extends CGFinterface {
             this.gui.add(this.scene.lights[i], 'enabled')
             .name("Light: " + i);
         }
+
+        this.gui.add(this.scene, 'shaderIndex', this.scene.shaderMap).name("Shading Method: ").onChange(this.scene.changeShader.bind(this.scene));
     }
 
     /**
@@ -64,7 +66,6 @@ class MyInterface extends CGFinterface {
         this.activeKeys[event.code]=true;
         if(event.code == "KeyM"){
             this.scene.graph.updateMaterials();
-            console.log("M");
         }
     }
 
