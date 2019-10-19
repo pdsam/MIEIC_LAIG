@@ -1,7 +1,8 @@
 /**
  * The basic node in the scene tree.
- * SceneTreeNde is not supposed to be a tree leaf as it
- * is a representation of a scene component.
+ * SceneTreeNode is not supposed to be a tree leaf as it
+ * is a representation of a scene component, and components
+ * are supposed to have children.
  * 
  * Tree leaves are represented by primitives.
  */

@@ -37,16 +37,18 @@ class XMLscene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.setUpdatePeriod(100);
 
-        this.defaultShader = this.activeShader;
+        this.defaultShader = this.activeShader; //Saving default Gouraud shader
+
+        //Creating phong shader
         this.phongShader = new CGFshader(this.gl, 'shaders/vertex.glsl', 'shaders/fragment.glsl');
         
+        //Variables for the interface
         this.shaders = [this.defaultShader, this.phongShader];
         this.shaderMap = {"Gouraud" : 0, "Phong": 1};
         this.shaderIndex = 0;
     }
 
     changeShader(i) {
-        console.log("switching to: " + i);
         this.setActiveShader(this.shaders[i]);
     }
 

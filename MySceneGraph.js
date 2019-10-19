@@ -48,6 +48,11 @@ class MySceneGraph {
         this.reader.open('scenes/' + filename, this);
 
 
+        /* 
+            Material and texture stacks.
+            These are when displaying object to save previous
+            state of the scene.
+        */
         this.materialStack = [];
         this.textureStack = [];
     }

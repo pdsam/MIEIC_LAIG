@@ -50,6 +50,7 @@ class MyInterface extends CGFinterface {
             .name("Light: " + i);
         }
 
+        //shader switching
         this.gui.add(this.scene, 'shaderIndex', this.scene.shaderMap).name("Shading Method: ").onChange(this.scene.changeShader.bind(this.scene));
     }
 
