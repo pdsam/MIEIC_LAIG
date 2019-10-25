@@ -46,7 +46,7 @@ class MyInterface extends CGFinterface {
         //lights
         var folder = this.gui.addFolder('Lights');
         for(let i = 0; i < graph.numberOfLights; i++) {
-            this.gui.add(this.scene.lights[i], 'enabled')
+            folder.add(this.scene.lights[i], 'enabled')
             .name("Light: " + i);
         }
 
