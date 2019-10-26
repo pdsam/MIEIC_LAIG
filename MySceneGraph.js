@@ -185,6 +185,19 @@ class MySceneGraph {
                 return error;
         }
 
+        // <animations>
+        if ((index = nodeNames.indexOf("animations")) == -1) {
+            return "tag <animations> missing";
+        } else {
+            if (index != ANIMATIONS_INDEX) {
+                this.onXMLMinorError("tag <animations> out of order");
+            }
+
+            if ((error = this.parseAnimations(nodes[index])) != null) {
+                return error;
+            }
+        }
+
         // <primitives>
         if ((index = nodeNames.indexOf("primitives")) == -1)
             return "tag <primitives> missing";
@@ -663,6 +676,110 @@ class MySceneGraph {
         return null;
     }
 
+    parseAnimations(animationsNode) {
+
+        this.animations = [];
+
+        const animations = animationsNode.children;
+
+        for (const child of animations) {
+            if (child.nodeName != "animation") {
+                return "Unknown tag in animations: " + child.nodeNames;
+            }
+
+            const animationID = this.reader.getString(child, "id", true);
+
+            const keyframes = child.children;
+
+            if (keyframes == null || keyframes.length == 0) {
+                return "Animation of id " + animationID + " has no keyframes.1";
+            }
+
+            let hasKeyFrames = false;
+            let lastInstant = 0;
+
+            const newAnimation = new KeyframeAnimation(this.scene, animationID);
+
+            for (const keyFrame of keyframes) {
+                if (keyFrame.nodeName != "keyframe") {
+                    return "Unknown tag in animation keyframes of animation of id " + animationID;
+                }
+
+                hasKeyFrames = true;
+
+                const instant = this.reader.getFloat(keyFrame, "instant", true);
+
+                if (instant <= lastInstant) {
+                    return "Keyframe instants out of order in animation of id " + animationID;
+                }
+
+                lastInstant = instant;
+                
+                const nodeNames = [];
+                for (let trans of keyFrame.children) {
+                    nodeNames.push(trans.nodeName);
+                }
+
+                const translationIndex = nodeNames.indexOf("translate");
+                const rotationIndex = nodeNames.indexOf("rotate");
+                const scaleIndex = nodeNames.indexOf("scale");
+
+                if (translationIndex == -1) {
+                    return "Missing <translate> tag in key frame in animation of id " + animationID;
+                }
+
+                if (rotationIndex == -1) {
+                    return "Missing <rotate> tag in key frame in animation of id " + animationID;
+                }
+
+                if (scaleIndex == -1) {
+                    return "Missing <scale> tag in key frame in animation of id " + animationID;
+                }
+
+                const translationCoords = this.parseCoordinates3D(keyFrame.children[translationIndex], "translation in animation of id " + animationID);
+                if (!Array.isArray(translationCoords))  {
+                    return translationCoords;
+                }
+
+                const scaleCoords = this.parseCoordinates3D(keyFrame.children[scaleIndex], "scale in animation of id " + animationID);
+                if (!Array.isArray(scaleCoords))  {
+                    return scaleCoords;
+                }
+
+                var angle_x = this.reader.getFloat(keyFrame.children[rotationIndex], 'angle_x');
+                if (!(angle_x != null && !isNaN(angle_x))) {
+                    return "unable to parse x-coordinate of the " + messageError;
+                }
+
+                // y
+                var angle_y = this.reader.getFloat(keyFrame.children[rotationIndex], 'angle_y');
+                if (!(angle_y != null && !isNaN(angle_y))) {
+                    return "unable to parse y-coordinate of the " + messageError;
+                }
+
+                // z
+                var angle_z = this.reader.getFloat(keyFrame.children[rotationIndex], 'angle_z');
+                if (!(angle_z != null && !isNaN(angle_z))) {
+                    return "unable to parse z-coordinate of the " + messageError;
+                }
+
+                const rotationCoords = [angle_x*DEGREE_TO_RAD, angle_y*DEGREE_TO_RAD, angle_z*DEGREE_TO_RAD];
+
+                newAnimation.addKeyframe(new Keyframe(instant, translationCoords, rotationCoords, scaleCoords));
+            }
+
+            if (!hasKeyFrames) {
+                return "Animation of id " + animationID + " has no keyframes.2";
+            }
+
+            this.animations[animationID] = newAnimation;
+        }
+
+        this.log("Parsed animations.");
+
+        return null;
+    }
+
     /**
      * Parses the <primitives> block.
      * @param {primitives block element} primitivesNode
@@ -893,6 +1010,7 @@ class MySceneGraph {
             }
 
             var transformationIndex = nodeNames.indexOf("transformation");
+            var animationIndex = nodeNames.indexOf("animationref");
             var materialsIndex = nodeNames.indexOf("materials");
             var textureIndex = nodeNames.indexOf("texture");
             var childrenIndex = nodeNames.indexOf("children");
@@ -953,6 +1071,22 @@ class MySceneGraph {
                     }
                 }
                 newComponent.transformationMatrix = matrix;
+            }
+
+            //Animation
+            if (animationIndex != -1) {
+                const node = grandChildren[animationIndex];
+
+                const id = this.reader.getString(node, "id", true);
+                if (id == null) {
+                    return "<animationref> needs id at component with id " + componentID;
+                }
+
+                if (this.animations[id] == null) {
+                    return "invalid animation id at component with id " + componentID;
+                }
+
+                newComponent.animation = this.animations[id];
             }
 
             // Materials
@@ -1112,7 +1246,7 @@ class MySceneGraph {
 
 
         // w
-        var w = this.reader.getFloat(node, 'w');
+        var w = this.reader.getFloat(node, 'w', false);
         if (!(w != null && !isNaN(w)))
             return "unable to parse w-coordinate of the " + messageError;
 
@@ -1230,6 +1364,13 @@ class MySceneGraph {
     changeCamera() {
         this.scene.camera = this.views[this.activeView];
         this.scene.interface.setActiveCamera(this.scene.camera);
+    }
+
+    updateAnimations(t) {
+        const keys = Object.keys(this.animations);
+        for (const key of keys) {
+            this.animations[key].update(t);
+        }
     }
 
     /**

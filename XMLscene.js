@@ -48,6 +48,12 @@ class XMLscene extends CGFscene {
         this.shaderIndex = 0;
     }
 
+    update(t) {
+        if (this.sceneInited) {
+            this.graph.updateAnimations(t);
+        }
+    }
+
     changeShader(i) {
         this.setActiveShader(this.shaders[i]);
     }

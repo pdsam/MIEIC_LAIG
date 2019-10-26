@@ -175,6 +175,41 @@
 
     </transformations>
 
+    <animations>
+        <animation id="anime">
+            <keyframe instant="3">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="-360" angle_z="0"/>
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="5">
+                <translate x="0" y="5" z="0" />
+                <rotate angle_x="0" angle_y="-360" angle_z="0"/>
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="6">
+                <translate x="0" y="5" z="0" />
+                <rotate angle_x="180" angle_y="0" angle_z="0"/>
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="10">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0"/>
+                <scale x="1" y="1" z="10" />
+            </keyframe>
+            <keyframe instant="10.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0"/>
+                <scale x="1" y="1" z="0.5" />
+            </keyframe>
+            <keyframe instant="11">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0"/>
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+        </animation>
+    </animations>
+
     <primitives>
         <primitive id="demoRectangle">
             <rectangle x1="-0.5" y1="-1" x2="0.5" y2="1" />
@@ -1050,6 +1085,7 @@
         <component id="table">
             <transformation>
             </transformation>
+            <animationref id="anime" />
             <materials>
                 <material id="tableMaterial" />
                 <material id="orangeWood" />

@@ -7,12 +7,12 @@
  * Tree leaves are represented by primitives.
  */
 class SceneTreeNode extends CGFobject {
-    constructor(scene, id, tree, children = null, materials = null, texture = null, transformation = null) {
+    constructor(scene, id, tree) {
         super(scene);
         this.id = id;
         this.tree = tree;
-        this.children = children;
-        this.materials = materials; //Will be set to null if it supposed to inherit from the parent
+        this.children = null;
+        this.materials = null; //Will be set to null if it supposed to inherit from the parent
         this.activeMaterialIndex = 0;
 
         /* 
@@ -21,8 +21,9 @@ class SceneTreeNode extends CGFobject {
                 - null if it is supposed to be inherited
                 - -1 if the object has no texture
         */
-        this.texture = texture;
-        this.transformationMatrix = transformation;
+        this.texture = null;
+        this.transformationMatrix = null;
+        this.animation = null;
 
         // These will be set to -1 when texture is set to be inherited
         // as the component will inherit the parents lengths.
@@ -47,6 +48,10 @@ class SceneTreeNode extends CGFobject {
         this.scene.pushMatrix();
         if (this.transformationMatrix != null) {
             this.scene.multMatrix(this.transformationMatrix);
+        }
+
+        if (this.animation != null) {
+            this.animation.apply();
         }
 
         this.tree.pushMaterial();
