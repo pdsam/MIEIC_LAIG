@@ -35,7 +35,7 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.axis = new CGFaxis(this);
-        this.setUpdatePeriod(100);
+        this.setUpdatePeriod(10);
 
         this.defaultShader = this.activeShader; //Saving default Gouraud shader
 
