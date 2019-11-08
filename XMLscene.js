@@ -45,7 +45,9 @@ class XMLscene extends CGFscene {
         //Variables for the interface
         this.shaders = [this.defaultShader, this.phongShader];
         this.shaderMap = {"Gouraud" : 0, "Phong": 1};
-        this.shaderIndex = 0;
+        this.shaderIndex = 1;
+
+        this.setActiveShader(this.shaders[this.shaderIndex]);
     }
 
     update(t) {

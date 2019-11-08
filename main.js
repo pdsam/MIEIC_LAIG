@@ -53,6 +53,3 @@ main=function()
 }
 
 ]);
-
-//TODO alertar prof do ou com as luzes que as deixa ligadas por default
-//TODO perguntar acerca de conversao do angulo dos focos para radianos
