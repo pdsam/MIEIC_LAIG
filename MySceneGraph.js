@@ -48,7 +48,6 @@ class MySceneGraph {
          */
         this.reader.open('scenes/' + filename, this);
 
-
         /* 
             Material and texture stacks.
             These are when displaying object to save previous
@@ -965,15 +964,16 @@ class MySceneGraph {
                 var torus = new MyTorus(this.scene,primitiveId,inner,outer,slices,loops);
                 this.primitives[primitiveId] = torus;
             }else if (primitiveType == 'plane'){
-                var nPartsU = this.reader.getInt(grandChildren[0],'npartsU');
+                let nPartsU = this.reader.getInteger(grandChildren[0],'npartsU');
                 if(!(nPartsU != null && !isNaN(nPartsU)))
                     return "Unable to parse npartsU of the primitive coordinates for ID = " +primitiveId;
 
-                var nPartsV = this.reader.getInt(grandChildren[0], 'npartsV');
+                let nPartsV = this.reader.getInteger(grandChildren[0], 'npartsV');
                 if(!(nPartsV != null && !isNaN(nPartsV)))
                     return "Unable to parse npartsV of the primitive coordinates for ID = " +primitiveId;
                 
-                var plane = new Plane(this.scene,nPartsU,nPartsV);
+                let plane = new Plane(this.scene,nPartsU,nPartsV);
+                this.primitives[primitiveId] = plane;
 
 
             }else {
