@@ -12,33 +12,72 @@ class Cylinder2 extends CGFobject{
 
     createSurface(){
 
-        let controlPoints = [
+        let controlPointsTop = [
                                 [//u= 0 , v= 0..1
-                                    [],
-                                    []
+                                    [this.base,0,0,1],
+                                    [this.top,0,this.height,1]
 
                                 ],
 
 
                                 [//u= 1 , v= 0..1
-                                    [],
-                                    []
+                                    [this.base,4/3*this.base,0,1],
+                                    [this.top,4/3*this.top,this.height,1],
 
                                 ],
 
                                 
                                 [//u= 2 , v= 0..1
-                                    [],
-                                    []
+                                    [-this.base,4/3*this.base,0,1],
+                                    [-this.top,4/3*this.top,this.height,1]
 
-                                ]
+                                ],
+
+                                [//u= 3 , v= 0..1
+                                    [-this.base,0,0,1],
+                                    [-this.top,0,this.height,1]
+
+                                ],
 
         ];
+        let controlPointsBot = [
+            [//u= 0 , v= 0..1
+                [-this.base,0,0,1],
+                [-this.top,0,this.height,1]
 
-        let surface = new CGFnurbsSurface(2,1)
-        this.Nurbscylinder = new CGFobject()
-        //this.nurbsPlane = new CGFnurbsObject(this.scene,this.uDivisions,this.vDivisions,nurbsSurface);
+            ],
 
+
+            [//u= 1 , v= 0..1
+                [-this.base,-4/3*this.base,0,1],
+                [-this.top,-4/3*this.top,this.height,1],
+
+            ],
+
+            
+            [//u= 2 , v= 0..1
+                [this.base,-4/3*this.base,0,1],
+                [this.top,-4/3*this.top,this.height,1]
+
+            ],
+
+            [//u= 3 , v= 0..1
+                [this.base,0,0,1],
+                [this.top,0,this.height,1]
+
+            ],
+
+];
+
+        let topSurface = new CGFnurbsSurface(3,1,controlPointsTop);
+        let botSurface = new CGFnurbsSurface(3,1,controlPointsBot)
+        //TODO only half the slices
+        this.nurbsCylinderTop = new CGFnurbsObject(this.scene,this.stacks,this.slices,topSurface);
+        this.nurbsCylinderBot = new CGFnurbsObject(this.scene,this.stacks,this.slices,botSurface);
+    }
+    display(){
+        this.nurbsCylinderTop.display();
+        this.nurbsCylinderBot.display();
     }
 
 }

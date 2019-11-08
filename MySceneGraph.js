@@ -976,7 +976,34 @@ class MySceneGraph {
                 this.primitives[primitiveId] = plane;
 
 
-            }else {
+            }else if(primitiveType == 'cylinder2'){
+                let base = this.reader.getFloat(grandChildren[0], 'base');
+                if (!(base != null && !isNaN(base)))
+                    return "unable to parse base of the primitive coordinates for ID = " + primitiveId;
+
+                let top = this.reader.getFloat(grandChildren[0], 'top');
+                if (!(top != null && !isNaN(top)))
+                    return "unable to parse top of the primitive coordinates for ID = " + primitiveId;
+
+                let height = this.reader.getFloat(grandChildren[0], 'height');
+                if (!(height != null && !isNaN(height)))
+                    return "unable to parse height of the primitive coordinates for ID = " + primitiveId;
+
+
+                let slices = this.reader.getInteger(grandChildren[0], 'slices');
+                if (!(slices != null && !isNaN(slices)))
+                    return "unable to parse slices of the primitive coordinates for ID = " + primitiveId;
+
+                let stacks = this.reader.getInteger(grandChildren[0], 'stacks');
+                if (!(stacks != null && !isNaN(stacks)))
+                    return "unable to parse stacks of the primitive coordinates for ID = " + primitiveId;
+
+
+                let cylinder = new Cylinder2(this.scene, base, top, height, slices, stacks);
+
+                this.primitives[primitiveId] = cylinder;
+            }
+            else {
                 console.warn("To do: Parse other primitives.");
             }
         }

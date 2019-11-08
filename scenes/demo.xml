@@ -84,7 +84,7 @@
         </primitive>
             
         <primitive id="cylinder2">
-            <cylinder2 base="2" top="2" height="2" slices="10" stacks="10" />
+            <cylinder2 base="1" top="1" height="2" slices="1" stacks="20" />
         </primitive>
         
         <primitive id="nurbsPlane">
@@ -104,6 +104,7 @@
             <texture id="demoTexture"/>
             <children>
                 <primitiveref id="nurbsPlane" />
+                <primitiveref id="cylinder2" /> 
             </children>
         </component>
     </components>
