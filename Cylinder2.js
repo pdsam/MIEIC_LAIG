@@ -10,6 +10,10 @@ class Cylinder2 extends CGFobject{
         this.createSurface();
     }
 
+    updateScaleFactors(lengths_s, length_t) {
+        return;
+    }
+
     createSurface(){
 
         let controlPointsTop = [
