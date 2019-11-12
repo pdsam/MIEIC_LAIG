@@ -72,8 +72,8 @@ class Cylinder2 extends CGFobject{
         let topSurface = new CGFnurbsSurface(3,1,controlPointsTop);
         let botSurface = new CGFnurbsSurface(3,1,controlPointsBot)
         //TODO only half the slices
-        this.nurbsCylinderTop = new CGFnurbsObject(this.scene,this.stacks,this.slices,topSurface);
-        this.nurbsCylinderBot = new CGFnurbsObject(this.scene,this.stacks,this.slices,botSurface);
+        this.nurbsCylinderTop = new CGFnurbsObject(this.scene,this.stacks,Math.ceil(this.slices/2),topSurface);
+        this.nurbsCylinderBot = new CGFnurbsObject(this.scene,this.stacks,Math.ceil(this.slices/2),botSurface);
     }
     display(){
         this.nurbsCylinderTop.display();
