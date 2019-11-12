@@ -8,6 +8,10 @@ class Plane extends CGFobject {
 
     }
 
+    updateScaleFactors(length_s, length_t) {
+        return;
+    }
+
     createSurface() {
         var nurbsSurface = new CGFnurbsSurface(1, 1,
             [

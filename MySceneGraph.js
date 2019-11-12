@@ -1401,6 +1401,10 @@ class MySceneGraph {
         });
     }
 
+    getActiveCamera() {
+        return this.views[this.activeView];
+    }
+
     changeCamera() {
         this.scene.camera = this.views[this.activeView];
         this.scene.interface.setActiveCamera(this.scene.camera);

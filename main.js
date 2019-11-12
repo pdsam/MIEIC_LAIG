@@ -26,6 +26,7 @@ serialInclude(['../lib/CGF.js',
 'Keyframe.js',
 'Plane.js',
 'Cylinder2.js',
+'MySecurityCamera.js',
 
 main=function()
 {

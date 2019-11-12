@@ -35,12 +35,12 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.axis = new CGFaxis(this);
-        this.setUpdatePeriod(10);
+        this.setUpdatePeriod(16);
 
         this.defaultShader = this.activeShader; //Saving default Gouraud shader
 
         //Creating phong shader
-        this.phongShader = new CGFshader(this.gl, 'shaders/vertex.glsl', 'shaders/fragment.glsl');
+        this.phongShader = new CGFshader(this.gl, 'shaders/phong/vertex.glsl', 'shaders/phong/fragment.glsl');
         
         //Variables for the interface
         this.shaders = [this.defaultShader, this.phongShader];
@@ -48,12 +48,22 @@ class XMLscene extends CGFscene {
         this.shaderIndex = 1;
 
         this.setActiveShader(this.shaders[this.shaderIndex]);
+
+        this.secCamera = new MySecurityCamera(this);
+        this.cameraTexture = new CGFtextureRTT(this, this.gl.canvas.width, this.gl.canvas.height);
+        this.securityView = new CGFcamera(Math.PI/2, 0.1, 500, vec3.fromValues(0,2,-5), vec3.fromValues(0,0,0));
+
+        this.securityCameraShader = new CGFshader(this.gl, 'shaders/security_vert.glsl', 'shaders/security_frag.glsl');
+        this.securityCameraShader.setUniformsValues({imageCenter: [0.75,-0.75]});
+        this.stripesTime = 0;
     }
 
     update(t) {
         if (this.sceneInited) {
             this.graph.updateAnimations(t);
         }
+        this.stripesTime += 0.01;
+        this.securityCameraShader.setUniformsValues({time: this.stripesTime});
     }
 
     changeShader(i) {
@@ -130,8 +140,9 @@ class XMLscene extends CGFscene {
     /**
      * Displays the scene.
      */
-    display() {
+    render(camera) {
         // ---- BEGIN Background, camera and axis setup
+        this.camera = camera;
 
         // Clear image and depth buffer everytime we update the scene
         this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
@@ -162,5 +173,28 @@ class XMLscene extends CGFscene {
 
         this.popMatrix();
         // ---- END Background, camera and axis setup
+    }
+
+    display() {
+        if (!this.sceneInited) {
+            return;
+        }
+
+        this.setActiveShader(this.shaders[this.shaderIndex]);
+
+        this.cameraTexture.attachToFrameBuffer();
+        this.render(this.securityView);
+        this.cameraTexture.detachFromFrameBuffer();
+        this.render(this.graph.getActiveCamera());
+        
+        this.gl.disable(this.gl.DEPTH_TEST);
+
+        this.setActiveShader(this.securityCameraShader);
+        
+        this.cameraTexture.bind();
+        this.secCamera.display();
+
+        this.gl.enable(this.gl.DEPTH_TEST);
+        
     }
 }
