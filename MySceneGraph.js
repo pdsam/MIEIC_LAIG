@@ -285,7 +285,7 @@ class MySceneGraph {
 
                 let target = vec3.fromValues(...this.parseCoordinates3D(view.children[toIndex], "to node"));
 
-                this.views[id] = new CGFcamera(angle, near, far , position, target);
+                this.views[id] = new CGFcamera(angle, near, far, position, target);
 
             } else if ("ortho") {
                 hasViews = true;
@@ -297,7 +297,7 @@ class MySceneGraph {
                 let top = this.reader.getFloat(view, "top", true);
                 let bottom = this.reader.getFloat(view, "bottom", true);
 
-                let nodeNames =  [];
+                let nodeNames = [];
                 for (let child of view.children) {
                     nodeNames.push(child.nodeName);
                 }
@@ -316,10 +316,10 @@ class MySceneGraph {
 
                 let up;
                 if (upIndex == -1) {
-                    up = vec3.fromValues(0,1,0);
+                    up = vec3.fromValues(0, 1, 0);
                 } else {
-                    up = vec3.fromValues(...this.parseCoordinates3D(view.children[upIndex], "up node")); 
-                } 
+                    up = vec3.fromValues(...this.parseCoordinates3D(view.children[upIndex], "up node"));
+                }
                 this.views[id] = new CGFcameraOrtho(left, right, bottom, top, near, far, position, target, up);
             } else {
                 return "Invalid view node name: " + view.nodeName;
@@ -569,7 +569,7 @@ class MySceneGraph {
             let material = new CGFappearance(this.scene);
 
             let shininess = this.reader.getFloat(children[i], 'shininess', true);
-            
+
             material.setShininess(shininess);
 
             let matParams = children[i].children;
@@ -625,7 +625,7 @@ class MySceneGraph {
 
             // Get id of the current transformation.
             var transformationID = this.reader.getString(children[i], 'id');
-            
+
             if (transformationID == null)
                 return "no ID defined for transformation";
 
@@ -649,7 +649,7 @@ class MySceneGraph {
                         break;
                     case 'scale':
                         let coords = this.parseCoordinates3D(grandChildren[j], "scale transformation for ID " + transformationID);
-                        if (!Array.isArray(coords)){
+                        if (!Array.isArray(coords)) {
                             return coords;
                         }
                         transfMatrix = mat4.scale(transfMatrix, transfMatrix, coords);
@@ -713,7 +713,7 @@ class MySceneGraph {
                 }
 
                 lastInstant = instant;
-                
+
                 const nodeNames = [];
                 for (let trans of keyFrame.children) {
                     nodeNames.push(trans.nodeName);
@@ -736,12 +736,12 @@ class MySceneGraph {
                 }
 
                 const translationCoords = this.parseCoordinates3D(keyFrame.children[translationIndex], "translation in animation of id " + animationID);
-                if (!Array.isArray(translationCoords))  {
+                if (!Array.isArray(translationCoords)) {
                     return translationCoords;
                 }
 
                 const scaleCoords = this.parseCoordinates3D(keyFrame.children[scaleIndex], "scale in animation of id " + animationID);
-                if (!Array.isArray(scaleCoords))  {
+                if (!Array.isArray(scaleCoords)) {
                     return scaleCoords;
                 }
 
@@ -762,7 +762,7 @@ class MySceneGraph {
                     return "unable to parse z-coordinate of the " + messageError;
                 }
 
-                const rotationCoords = [angle_x*DEGREE_TO_RAD, angle_y*DEGREE_TO_RAD, angle_z*DEGREE_TO_RAD];
+                const rotationCoords = [angle_x * DEGREE_TO_RAD, angle_y * DEGREE_TO_RAD, angle_z * DEGREE_TO_RAD];
 
                 newAnimation.addKeyframe(new Keyframe(instant, translationCoords, rotationCoords, scaleCoords));
             }
@@ -801,7 +801,7 @@ class MySceneGraph {
             // Get id of the current primitive.
             var primitiveId = this.reader.getString(children[i], 'id');
             if (primitiveId == null)
-                return "no ID defined for texture";
+                return "no ID defined for primitive";
 
             // Checks for repeated IDs.
             if (this.primitives[primitiveId] != null)
@@ -813,8 +813,8 @@ class MySceneGraph {
             if (grandChildren.length != 1 ||
                 (grandChildren[0].nodeName != 'rectangle' && grandChildren[0].nodeName != 'triangle' &&
                     grandChildren[0].nodeName != 'cylinder' && grandChildren[0].nodeName != 'sphere' &&
-                    grandChildren[0].nodeName != 'torus' && grandChildren[0].nodeName !='plane' && 
-                    grandChildren[0].nodeName !='patch' && grandChildren[0].nodeName !='cylinder2')) {
+                    grandChildren[0].nodeName != 'torus' && grandChildren[0].nodeName != 'plane' &&
+                    grandChildren[0].nodeName != 'patch' && grandChildren[0].nodeName != 'cylinder2')) {
                 return "There must be exactly 1 primitive type (rectangle, triangle, cylinder, sphere or torus)"
             }
 
@@ -961,22 +961,22 @@ class MySceneGraph {
                 if (!(loops != null && !isNaN(loops)))
                     return "unable to parse loops of the primitive coordinates for ID = " + primitiveId;
 
-                var torus = new MyTorus(this.scene,primitiveId,inner,outer,slices,loops);
+                var torus = new MyTorus(this.scene, primitiveId, inner, outer, slices, loops);
                 this.primitives[primitiveId] = torus;
-            }else if (primitiveType == 'plane'){
-                let nPartsU = this.reader.getInteger(grandChildren[0],'npartsU');
-                if(!(nPartsU != null && !isNaN(nPartsU)))
-                    return "Unable to parse npartsU of the primitive coordinates for ID = " +primitiveId;
+            } else if (primitiveType == 'plane') {
+                let nPartsU = this.reader.getInteger(grandChildren[0], 'npartsU');
+                if (!(nPartsU != null && !isNaN(nPartsU)))
+                    return "Unable to parse npartsU of the primitive coordinates for ID = " + primitiveId;
 
                 let nPartsV = this.reader.getInteger(grandChildren[0], 'npartsV');
-                if(!(nPartsV != null && !isNaN(nPartsV)))
-                    return "Unable to parse npartsV of the primitive coordinates for ID = " +primitiveId;
-                
-                let plane = new Plane(this.scene,nPartsU,nPartsV);
+                if (!(nPartsV != null && !isNaN(nPartsV)))
+                    return "Unable to parse npartsV of the primitive coordinates for ID = " + primitiveId;
+
+                let plane = new Plane(this.scene, nPartsU, nPartsV);
                 this.primitives[primitiveId] = plane;
 
 
-            }else if(primitiveType == 'cylinder2'){
+            } else if (primitiveType == 'cylinder2') {
                 let base = this.reader.getFloat(grandChildren[0], 'base');
                 if (!(base != null && !isNaN(base)))
                     return "unable to parse base of the primitive coordinates for ID = " + primitiveId;
@@ -1002,8 +1002,58 @@ class MySceneGraph {
                 let cylinder = new Cylinder2(this.scene, base, top, height, slices, stacks);
 
                 this.primitives[primitiveId] = cylinder;
-            }
-            else {
+
+            } else if (primitiveType == 'patch') {
+                let npointsU = this.reader.getInteger(grandChildren[0], 'npointsU');
+                if (!(npointsU != null && !isNaN(npointsU)))
+                    return "unable to parse npointsU of the primitive coordinates for ID = " + primitiveId;
+                let npointsV = this.reader.getInteger(grandChildren[0], 'npointsV');
+                if (!(npointsV != null && !isNaN(npointsV)))
+                    return "unable to parse npointsV of the primitive coordinates for ID = " + primitiveId;
+                let npartsU = this.reader.getInteger(grandChildren[0], 'npartsU');
+                if (!(npartsU != null && !isNaN(npartsU)))
+                    return "unable to parse npartsU of the primitive coordinates for ID = " + primitiveId;
+                let npartsV = this.reader.getInteger(grandChildren[0], 'npartsV');
+                if (!(npartsV != null && !isNaN(npartsV)))
+                    return "unable to parse npartsV of the primitive coordinates for ID = " + primitiveId;
+                
+                let controlPointsBlock = grandChildren[0].children;
+                if(controlPointsBlock == null || controlPointsBlock.length == 0){
+                    return "Patch of id "+primitiveId+ " has no control points"; 
+                }
+
+                let counter = 1;
+                let controlPoints = [];
+                for(const controlPoint of controlPointsBlock){
+                    if(controlPoint.nodeName != "controlpoint")
+                        return "Unkown tag in control points of patch of id " + primitiveId;
+                
+                    let xx = this.reader.getFloat(controlPoint, 'xx');
+                    if (!(xx != null && !isNaN(xx)))
+                    return "unable to parse xx in the control point number:" + counter + " of the patch with ID = " + primitiveId;
+                
+                    let yy = this.reader.getFloat(controlPoint, 'yy');
+                    if (!(yy != null && !isNaN(yy)))
+                    return "unable to parse yy in the control point number:" + counter + " of the patch with ID = " + primitiveId;
+
+                    let zz = this.reader.getFloat(controlPoint, 'zz');
+                    if (!(zz != null && !isNaN(zz)))
+                    return "unable to parse zz in the control point number:" + counter + " of the patch with ID = " + primitiveId;
+
+                    let aux = [xx,yy,zz];
+                    controlPoints.push(aux);
+
+                    counter++;
+                }   
+                
+                
+                
+                if(!(controlPoints.length!= 0 && controlPoints.length == npointsU*npointsV))
+                    return "unable to parse controlPoints of the primitive coordinates for ID =" + primitiveId;
+                let patch = new Patch(this.scene,npointsU,npointsV,npartsU,npartsV,controlPoints);
+                this.primitives[primitiveId] = patch;
+
+            } else {
                 console.warn("To do: Parse other primitives.");
             }
         }
@@ -1056,7 +1106,7 @@ class MySceneGraph {
             var childrenIndex = nodeNames.indexOf("children");
 
             let newComponent = new SceneTreeNode(this.scene, componentID, this, []);
-            
+
             // Transformations
             if (transformationIndex < 0) {
                 return "Missing transformation for componentId " + componentID;
@@ -1070,7 +1120,7 @@ class MySceneGraph {
 
             } else if (trasnformNodes[0].nodeName == "transformationref") {
                 let id = this.reader.getString(trasnformNodes[0], "id", true);
-                
+
                 if (this.transformations[id] == null) {
                     return "Invalid transform id in componentID " + componentID;
                 }
@@ -1086,7 +1136,7 @@ class MySceneGraph {
                     if (transNode.nodeName == "transformationref") {
                         return "transformationref tag mixed with explicit transform at componentID " + componentID;
                     }
-                    
+
                     if (transNode.nodeName === "translate") {
                         //Translation
                         let transPos = this.parseCoordinates3D(transNode, "translate node at componentID " + componentID);
@@ -1147,7 +1197,7 @@ class MySceneGraph {
                     if (matNode.nodeName != "material") {
                         return "Unknown materials child at componentID " + componentID;
                     }
-                    
+
                     hasMaterials = true;
                     let id = this.reader.getString(matNode, "id", true);
                     if (this.materials[id] == null) {
@@ -1212,7 +1262,7 @@ class MySceneGraph {
             for (let child of childrenNodes) {
                 if (child.nodeName == "componentref") {
                     hasChildren = true;
-                    let id = this.reader.getString(child,"id",true);
+                    let id = this.reader.getString(child, "id", true);
                     if (this.components[id] == null) {
                         return "Non existant componentref at componentID " + componentID;
                     }
@@ -1220,7 +1270,7 @@ class MySceneGraph {
                     componentChildren.push(this.components[id]);
                 } else if (child.nodeName == "primitiveref") {
                     hasChildren = true;
-                    let id = this.reader.getString(child,"id", true);
+                    let id = this.reader.getString(child, "id", true);
                     if (this.primitives[id] == null) {
                         return "Non existant primitiveref at componentID " + componentID;
                     }
@@ -1363,7 +1413,7 @@ class MySceneGraph {
     }
 
     popMaterial() {
-        let mat = this.materialStack[this.materialStack.length-1];
+        let mat = this.materialStack[this.materialStack.length - 1];
         this.activeMaterial = mat;
         if (mat != null) {
             mat.apply();
@@ -1386,7 +1436,7 @@ class MySceneGraph {
     }
 
     popTexture() {
-        let tex = this.textureStack[this.textureStack.length-1];
+        let tex = this.textureStack[this.textureStack.length - 1];
         if (this.activeMaterial) {
             this.activeMaterial.setTexture(tex);
             this.activeMaterial.apply();
@@ -1394,8 +1444,8 @@ class MySceneGraph {
         this.textureStack.pop();
     }
 
-    
-    updateMaterials(){
+
+    updateMaterials() {
         Object.keys(this.components).forEach(key => {
             this.components[key].rotateMaterials();
         });
