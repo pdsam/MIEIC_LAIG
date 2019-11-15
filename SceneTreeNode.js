@@ -46,12 +46,13 @@ class SceneTreeNode extends CGFobject {
 
     display() {
         this.scene.pushMatrix();
-        if (this.transformationMatrix != null) {
-            this.scene.multMatrix(this.transformationMatrix);
-        }
-
+        
         if (this.animation != null) {
             this.animation.apply();
+        }
+
+        if (this.transformationMatrix != null) {
+            this.scene.multMatrix(this.transformationMatrix);
         }
 
         this.tree.pushMaterial();

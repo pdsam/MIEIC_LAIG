@@ -11,7 +11,7 @@ out vec4 fragColor;
 
 void main() {
 
-    vec4 texColor = texture(uSampler, vTextureCoord);
+    vec4 texColor = texture(uSampler, vec2(vTextureCoord.x, 1.0-vTextureCoord.y));
 
     vec2 centerToPos = vTextureCoord - vec2(0.5,0.5);
     float dist = length(centerToPos);
@@ -20,7 +20,7 @@ void main() {
 
     vec4 color = vec4(texColor.xyz * perc, 1);
 
-    float offset = sin((vTextureCoord.y - time) * 20.0)*0.5 + 1.0;
+    float offset = sin((vTextureCoord.y + time) * 20.0)*0.5 + 1.0;
 
     fragColor = color + offset * 0.3;
 }

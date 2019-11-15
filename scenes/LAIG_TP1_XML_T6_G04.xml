@@ -176,34 +176,36 @@
     </transformations>
 
     <animations>
-        <animation id="anime">
+        <animation id="club">
+            <keyframe instant="1">
+                <translate x="0" y="2" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0"/>
+                <scale x="1" y="1" z="1" />
+            </keyframe>
             <keyframe instant="3">
-                <translate x="0" y="0" z="0" />
-                <rotate angle_x="0" angle_y="-360" angle_z="0"/>
+                <translate x="-3.5" y="0.7" z="-10" />
+                <rotate angle_x="95" angle_y="0" angle_z="-15"/>
                 <scale x="1" y="1" z="1" />
             </keyframe>
-            <keyframe instant="5">
-                <translate x="0" y="5" z="0" />
-                <rotate angle_x="0" angle_y="-360" angle_z="0"/>
+            <keyframe instant="4">
+                <translate x="-3.5" y="0.8" z="-11" />
+                <rotate angle_x="95" angle_y="0" angle_z="-15"/>
                 <scale x="1" y="1" z="1" />
             </keyframe>
-            <keyframe instant="6">
-                <translate x="0" y="5" z="0" />
-                <rotate angle_x="180" angle_y="0" angle_z="0"/>
+            <keyframe instant="4.2">
+                <translate x="-3.5" y="0.7" z="-9.4" />
+                <rotate angle_x="95" angle_y="0" angle_z="-15"/>
                 <scale x="1" y="1" z="1" />
             </keyframe>
-            <keyframe instant="10">
+        </animation>
+        <animation id="cueBall">
+            <keyframe instant="4.2">
                 <translate x="0" y="0" z="0" />
                 <rotate angle_x="0" angle_y="0" angle_z="0"/>
-                <scale x="1" y="1" z="10" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
-            <keyframe instant="10.5">
-                <translate x="0" y="0" z="0" />
-                <rotate angle_x="0" angle_y="0" angle_z="0"/>
-                <scale x="1" y="1" z="0.5" />
-            </keyframe>
-            <keyframe instant="11">
-                <translate x="0" y="0" z="0" />
+            <keyframe instant="5.5">
+                <translate x="2.6" y="0" z="3.5" />
                 <rotate angle_x="0" angle_y="0" angle_z="0"/>
                 <scale x="1" y="1" z="1" />
             </keyframe>
@@ -690,6 +692,7 @@
                 <translate x="0" y="0.2" z="-3.5" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="cueBall" />
             <materials>
                 <material id="ballMaterial" />
             </materials>
@@ -1085,7 +1088,6 @@
         <component id="table">
             <transformation>
             </transformation>
-            <animationref id="anime" />
             <materials>
                 <material id="tableMaterial" />
                 <material id="orangeWood" />
@@ -1142,6 +1144,7 @@
             <transformation>
                 <transformationref id="stickTransform" />
             </transformation>
+            <animationref id="club" />
             <materials>
                 <material id="inherit" />
             </materials>
