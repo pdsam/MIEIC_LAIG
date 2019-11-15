@@ -92,10 +92,11 @@
         </primitive>
         <primitive id="patch">
             <patch npointsU="2" npointsV="2" npartsU="6" npartsV="6" >
-                <controlpoint xx="-0,5" yy="0.0" zz="0.5" />
-                <controlpoint xx="-0,5" yy="0.0" zz="-0.5" />
-                <controlpoint xx="0,5" yy="0.0" zz="0.5" />
-                <controlpoint xx="0,5" yy="0.0" zz="-0.5" />
+                <controlpoint xx="-0.5" yy="0.0" zz="0.5" />
+                <controlpoint xx="-0.5" yy="0.0" zz="-0.5" />
+                <controlpoint xx="0.5" yy="0.0" zz="0.5" />
+                <controlpoint xx="0.5" yy="0.0" zz="-0.5" />
+            </patch>
         </primitive>
     </primitives>
 
@@ -110,7 +111,7 @@
             <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="nurbsPlane" />
-                <primitiveref id="cylinder2" /> 
+                <primitiveref id="patch" />
             </children>
         </component>
     </components>

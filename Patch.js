@@ -17,7 +17,7 @@ class Patch extends CGFobject{
 
     createSurface(){
         let controlPoints = [];
-        for(let i = 0; i <this.nPointsU;i++ ){
+        for(let i = 0; i <this.npointsU;i++ ){
             let subBuffer = [];
             for(let j = 0; j < this.npointsV;j++){
                let point =  Object.values(this.controlPoints[i*this.npointsV+j]);
@@ -27,8 +27,8 @@ class Patch extends CGFobject{
             controlPoints.push(subBuffer);
         }
 
-        let surface = new CGFnurbsSurface(this.nPointsU-1,this.npointsV-1,controlPoints);
-        this.nurbsPatch = new CGFobject(this.scene,this.npartsU,this.npartsV,surface);
+        this.surface = new CGFnurbsSurface(this.npointsU-1,this.npointsV-1,controlPoints);
+        this.nurbsPatch = new CGFnurbsObject(this.scene,this.npartsU,this.npartsV,this.surface);
     }
     
     updateScaleFactors(length_s, length_t) {
@@ -36,6 +36,7 @@ class Patch extends CGFobject{
     }
 
     display(){
+        console.log(this.surface);
         this.nurbsPatch.display();
     }
 }

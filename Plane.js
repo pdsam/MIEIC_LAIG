@@ -13,7 +13,7 @@ class Plane extends CGFobject {
     }
 
     createSurface() {
-        var nurbsSurface = new CGFnurbsSurface(1, 1,
+        this.nurbsSurface = new CGFnurbsSurface(1, 1,
             [
                 [
                     [-0.5, 0.0, 0.5, 1],
@@ -28,13 +28,14 @@ class Plane extends CGFobject {
 
         );
 
-        this.nurbsPlane = new CGFnurbsObject(this.scene,this.uDivisions,this.vDivisions,nurbsSurface);
+        this.nurbsPlane = new CGFnurbsObject(this.scene,this.uDivisions,this.vDivisions,this.nurbsSurface);
 
 
     }
 
 
     display(){
+        console.log(this.nurbsSurface);
         this.nurbsPlane.display();
     }
 
