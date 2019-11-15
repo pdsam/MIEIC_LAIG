@@ -1005,7 +1005,7 @@ class MySceneGraph {
 
             } else if (primitiveType == 'patch') {
                 let npointsU = this.reader.getInteger(grandChildren[0], 'npointsU');
-                if (!(npointsU != null && !isNaN(nPointsU)))
+                if (!(npointsU != null && !isNaN(npointsU)))
                     return "unable to parse npointsU of the primitive coordinates for ID = " + primitiveId;
                 let npointsV = this.reader.getInteger(grandChildren[0], 'npointsV');
                 if (!(npointsV != null && !isNaN(npointsV)))

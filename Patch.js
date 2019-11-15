@@ -30,6 +30,10 @@ class Patch extends CGFobject{
         let surface = new CGFnurbsSurface(this.nPointsU-1,this.npointsV-1,controlPoints);
         this.nurbsPatch = new CGFobject(this.scene,this.npartsU,this.npartsV,surface);
     }
+    
+    updateScaleFactors(length_s, length_t) {
+        return;
+    }
 
     display(){
         this.nurbsPatch.display();
