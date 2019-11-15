@@ -36,7 +36,6 @@ class Patch extends CGFobject{
     }
 
     display(){
-        console.log(this.surface);
         this.nurbsPatch.display();
     }
 }
