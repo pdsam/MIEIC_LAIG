@@ -51,11 +51,14 @@ class XMLscene extends CGFscene {
 
         this.secCamera = new MySecurityCamera(this);
         this.cameraTexture = new CGFtextureRTT(this, this.gl.canvas.width, this.gl.canvas.height);
-        this.securityView = new CGFcamera(Math.PI/2, 0.1, 500, vec3.fromValues(0,2,-5), vec3.fromValues(0,0,0));
+        this.securityView = null;
 
         this.securityCameraShader = new CGFshader(this.gl, 'shaders/security_vert.glsl', 'shaders/security_frag.glsl');
-        this.securityCameraShader.setUniformsValues({imageCenter: [0.75,-0.75]});
         this.stripesTime = 0;
+    }
+
+    changeSecCamera(cameraIndex) {
+        this.securityView = cameraIndex;
     }
 
     update(t) {
@@ -113,7 +116,6 @@ class XMLscene extends CGFscene {
                 i++;
             }
         }
-        this.interface.build(this.graph);
     }
 
     setDefaultAppearance() {
@@ -127,12 +129,15 @@ class XMLscene extends CGFscene {
      */
     onGraphLoaded() {
         this.axis = new CGFaxis(this, this.graph.referenceLength);
+        this.securityView = this.graph.activeView;
 
         this.gl.clearColor(this.graph.background[0], this.graph.background[1], this.graph.background[2], this.graph.background[3]);
 
         this.setGlobalAmbientLight(this.graph.ambient[0], this.graph.ambient[1], this.graph.ambient[2], this.graph.ambient[3]);
 
         this.initLights();
+
+        this.interface.build(this.graph);
 
         this.sceneInited = true;
     }
@@ -183,7 +188,7 @@ class XMLscene extends CGFscene {
         this.setActiveShader(this.shaders[this.shaderIndex]);
 
         this.cameraTexture.attachToFrameBuffer();
-        this.render(this.securityView);
+        this.render(this.graph.getCamera(this.securityView));
         this.cameraTexture.detachFromFrameBuffer();
         this.render(this.graph.getActiveCamera());
         
