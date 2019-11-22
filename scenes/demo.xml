@@ -84,7 +84,7 @@
         </primitive>
             
         <primitive id="cylinder2">
-            <cylinder2 base="1" top="1" height="2" slices="1" stacks="20" />
+            <cylinder2 base="0.3" top="0.1" height="1" slices="20" stacks="10" />
         </primitive>
         
         <primitive id="nurbsPlane">
@@ -110,7 +110,7 @@
             </materials>
             <texture id="demoTexture" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="nurbsPlane" />
+                <primitiveref id="cylinder2" />
                 <primitiveref id="patch" />
             </children>
         </component>
