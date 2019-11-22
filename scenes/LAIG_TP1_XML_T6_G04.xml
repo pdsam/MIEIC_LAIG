@@ -231,6 +231,17 @@
             <cylinder base="0.3" top="0.1" height="1" slices="20" stacks="10" />
         </primitive>
         
+        <primitive id="cylinder2">
+            <cylinder2 base="1" top="1" height="2" slices="1" stacks="20" />
+        </primitive>
+
+        <primitive id="coneFrustumNurbs">
+            <cylinder2 base="0.3" top="0.1" height="1" slices="20" stacks="10" />
+        </primitive>
+
+        <primitive id="nurbsPlane">
+            <plane npartsU="20" npartsV="20" />
+        </primitive>
 
         <primitive id="demoTorus">
             <torus inner="0.1" outer="0.4" slices="20" loops="6" />
@@ -1140,6 +1151,19 @@
             </children>
         </component>
 
+        <component id="stickNurbs">
+            <transformation>
+                <scale x="0.3" y="0.3" z ="10" /> 
+            </transformation>
+            <materials>
+                <material id="lightWood" />
+            </materials>
+            <texture id="lightWoodTexture" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="coneFrustumNurbs" />
+            </children>
+        </component>
+
         <component id="stickTable">
             <transformation>
                 <transformationref id="stickTransform" />
@@ -1151,6 +1175,21 @@
             <texture id="none" />
             <children>
                 <componentref id="stick" />
+            </children>
+        </component>
+
+        <component id="stickTableNurbs">
+            <transformation>
+                <translate x="-4.15" y="-3.0" z="0" />
+                <rotate axis ="z" angle="-15" />
+                <rotate axis ="x" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="stickNurbs" />
             </children>
         </component>
         
@@ -1216,6 +1255,7 @@
                 <componentref id="pooltriangleB" />
             </children>
         </component>
+
         <component id="floor">
             <transformation>
                 <translate x="0" y="-3" z="0" />
@@ -1243,6 +1283,7 @@
             <children>
                 <componentref id="table" />
                 <componentref id="stickTable" />
+                <componentref id="stickTableNurbs" />
                 <componentref id="pooltriangle" />
                 <componentref id="floor" />
             </children>
