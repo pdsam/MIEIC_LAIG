@@ -75,7 +75,6 @@ class MySceneGraph {
         this.loadedOk = true;
 
         // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
-        //this.scene.interface.build(this);
         this.scene.onGraphLoaded();
     }
 
@@ -1449,6 +1448,10 @@ class MySceneGraph {
         Object.keys(this.components).forEach(key => {
             this.components[key].rotateMaterials();
         });
+    }
+
+    getCamera(index) {
+        return this.views[index];
     }
 
     getActiveCamera() {
