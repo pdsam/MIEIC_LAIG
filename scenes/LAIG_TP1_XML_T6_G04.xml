@@ -199,6 +199,16 @@
                 <rotate angle_x="95" angle_y="0" angle_z="-15" />
                 <scale x="1" y="1" z="1" />
             </keyframe>
+            <keyframe instant="10.5">
+                    <translate x="-3.5" y="0.7" z="-9.4" />
+                <rotate angle_x="95" angle_y="0" angle_z="-15" />
+                <scale x="1" y="1" z="1" />
+                </keyframe>
+            <keyframe instant="12">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
         </animation>
         <animation id="cueBall">
             <keyframe instant="4.2">
@@ -207,10 +217,93 @@
                 <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="5.5">
-                <translate x="2.6" y="0" z="3.5" />
+                <translate x="2.6" y="0" z="5" />
                 <rotate angle_x="0" angle_y="0" angle_z="0" />
                 <scale x="1" y="1" z="1" />
             </keyframe>
+            <keyframe instant="7">
+                    <translate x="0" y="0" z="8" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="9">
+                    <translate x="-2.6" y="0" z="5" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="13">
+                    <translate x="0" y="0" z="-0.5" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="15">
+                    <translate x="0" y="0" z="-1" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+            
+        </animation>
+
+        <animation id="chalkSharpen">
+                <keyframe instant="5.5">
+                        <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="6">
+                        <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="7.5">
+                        <translate x="0" y="3" z="-4" />
+                        <rotate angle_x="90" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="10.5">
+                        <translate x="0" y="3" z="-4" />
+                        <rotate angle_x="90" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="12">
+                        <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+
+        </animation>
+
+        <animation id="chalk">
+                <keyframe instant="7.5">
+                        <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="8">
+                        <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="8.5">
+                        <translate x="0" y="0" z="0" />
+                        <rotate angle_x="-90" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="9.5">
+                        <translate x="-0.25" y="1" z="2.5" />
+                        <rotate angle_x="-90" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="10.5">
+                        <translate x="-0.25" y="1" z="2.5" />
+                        <rotate angle_x="-90" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="12">
+                        <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
         </animation>
     </animations>
 
@@ -1237,6 +1330,7 @@
                     <rotate axis="y" angle="45" />
                     <scale x="0.3" y="0.3" z="0.3" />
                 </transformation>
+                <animationref id="chalk"/>
                 <materials>
                     <material id="ballMaterial" />
                 </materials>
@@ -1373,6 +1467,7 @@
                 <rotate axis="z" angle="-15" />
                 <rotate axis="x" angle="-90" />
             </transformation>
+            <animationref id="chalkSharpen"/>
             <materials>
                 <material id="inherit" />
             </materials>
