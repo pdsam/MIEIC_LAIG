@@ -1,5 +1,5 @@
 <lxs>
-    <scene root="root" axis_length="5"/>
+    <scene root="root" axis_length="5" />
 
     <views default="defaultCamera">
         <perspective id="defaultCamera" near="0.1" far="500" angle="45">
@@ -54,7 +54,7 @@
             <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
             <specular r="1.0" g="1.0" b="1.0" a="1.0" />
             <attenuation constant="1" linear="0" quadratic="0" />
-        </spot> 
+        </spot>
     </lights>
 
     <textures>
@@ -78,11 +78,13 @@
         <texture id="marbleTexture" file="scenes/images/marble.jpg" />
         <texture id="floorTexture" file="scenes/images/floor.jpg" />
         <texture id="lightWoodTexture" file="scenes/images/light-wood.jpg" />
-        <texture id="greenTable" file="scenes/images/greenText.jpg"/>
+        <texture id="greenTable" file="scenes/images/greenText.jpg" />
         <texture id="steel" file="scenes/images/steel.jpg" />
         <texture id="brushed-iron" file="scenes/images/brushed-iron.jpg" />
+        <texture id="chalk" file="scenes/images/blueChalk.jpg" />
+        <texture id="chalkBox" file="scenes/images/chalkSide.jpg"/>
     </textures>
-        
+
     <materials>
         <material id="demoMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
@@ -109,7 +111,7 @@
             <ambient r="0.87" g="0.72" b="0.52" a="1.0" />
             <diffuse r="0.87" g="0.72" b="0.52" a="1.0" />
             <specular r="0.2" g="0.2" b="0.2" a="1.0" />
-    </material>
+        </material>
         <material id="stickMaterial" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
             <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
@@ -169,8 +171,8 @@
     <transformations>
         <transformation id="stickTransform">
             <translate x="4.15" y="-3.0" z="0" />
-            <rotate axis ="z" angle="15" />
-            <rotate axis ="x" angle="-90" />
+            <rotate axis="z" angle="15" />
+            <rotate axis="x" angle="-90" />
         </transformation>
 
     </transformations>
@@ -179,34 +181,34 @@
         <animation id="club">
             <keyframe instant="1">
                 <translate x="0" y="2" z="0" />
-                <rotate angle_x="0" angle_y="0" angle_z="0"/>
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
                 <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="3">
                 <translate x="-3.5" y="0.7" z="-10" />
-                <rotate angle_x="95" angle_y="0" angle_z="-15"/>
+                <rotate angle_x="95" angle_y="0" angle_z="-15" />
                 <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="4">
                 <translate x="-3.5" y="0.8" z="-11" />
-                <rotate angle_x="95" angle_y="0" angle_z="-15"/>
+                <rotate angle_x="95" angle_y="0" angle_z="-15" />
                 <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="4.2">
                 <translate x="-3.5" y="0.7" z="-9.4" />
-                <rotate angle_x="95" angle_y="0" angle_z="-15"/>
+                <rotate angle_x="95" angle_y="0" angle_z="-15" />
                 <scale x="1" y="1" z="1" />
             </keyframe>
         </animation>
         <animation id="cueBall">
             <keyframe instant="4.2">
                 <translate x="0" y="0" z="0" />
-                <rotate angle_x="0" angle_y="0" angle_z="0"/>
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
                 <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="5.5">
                 <translate x="2.6" y="0" z="3.5" />
-                <rotate angle_x="0" angle_y="0" angle_z="0"/>
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
                 <scale x="1" y="1" z="1" />
             </keyframe>
         </animation>
@@ -220,9 +222,7 @@
             <sphere radius="1" stacks="20" slices="30" />
         </primitive>
         <primitive id="demoTriangle">
-            <triangle   x1="1" y1="0" z1="0"
-                        x2="-0.5" y2="0" z2="0.87"
-                        x3="-0.5" y3="0" z3="-0.87" />
+            <triangle x1="1" y1="0" z1="0" x2="-0.5" y2="0" z2="0.87" x3="-0.5" y3="0" z3="-0.87" />
         </primitive>
         <primitive id="demoCylinder">
             <cylinder base="0.5" top="1" height="1" slices="20" stacks="5" />
@@ -230,7 +230,7 @@
         <primitive id="coneFrustum">
             <cylinder base="0.3" top="0.1" height="1" slices="20" stacks="10" />
         </primitive>
-        
+
         <primitive id="cylinder2">
             <cylinder2 base="1" top="1" height="2" slices="1" stacks="20" />
         </primitive>
@@ -249,45 +249,45 @@
         <primitive id="unitSquare">
             <rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" />
         </primitive>
- 
+
         <primitive id="chandelierInverted">
-            <patch npointsU="4" npointsV="4" npartsU="20" npartsV="20" >
-                <controlpoint xx="-1" yy="0.0" zz="0.0"/>
-                <controlpoint xx="-1" yy="0.0" zz="1.3333333333333333"/>
-                <controlpoint xx="1" yy="0.0" zz="1.3333333333333333"/>
-                <controlpoint xx="1" yy="0.0" zz="0.0"/>
-                <controlpoint xx="-1" yy="0.0" zz="0.0"/>
-                <controlpoint xx="-1" yy="1.1547005383792515" zz="0.6666666666666667"/>
-                <controlpoint xx="1" yy="1.1547005383792515" zz="0.6666666666666667"/>
-                <controlpoint xx="1" yy="0.0" zz="0.0"/>
-                <controlpoint xx="-1" yy="0.0" zz="-0.0"/>
-                <controlpoint xx="-1" yy="1.1547005383792515" zz="-0.6666666666666663"/>
-                <controlpoint xx="1" yy="1.1547005383792515" zz="-0.6666666666666663"/>
-                <controlpoint xx="1" yy="0.0" zz="-0.0"/>
-                <controlpoint xx="-1" yy="0.0" zz="-0.0"/>
-                <controlpoint xx="-1" yy="1.6328623988631375e-16" zz="-1.3333333333333333"/>
-                <controlpoint xx="1" yy="1.6328623988631375e-16" zz="-1.3333333333333333"/>
-                <controlpoint xx="1" yy="0.0" zz="-0.0"/>
+            <patch npointsU="4" npointsV="4" npartsU="20" npartsV="20">
+                <controlpoint xx="-1" yy="0.0" zz="0.0" />
+                <controlpoint xx="-1" yy="0.0" zz="1.3333333333333333" />
+                <controlpoint xx="1" yy="0.0" zz="1.3333333333333333" />
+                <controlpoint xx="1" yy="0.0" zz="0.0" />
+                <controlpoint xx="-1" yy="0.0" zz="0.0" />
+                <controlpoint xx="-1" yy="1.1547005383792515" zz="0.6666666666666667" />
+                <controlpoint xx="1" yy="1.1547005383792515" zz="0.6666666666666667" />
+                <controlpoint xx="1" yy="0.0" zz="0.0" />
+                <controlpoint xx="-1" yy="0.0" zz="-0.0" />
+                <controlpoint xx="-1" yy="1.1547005383792515" zz="-0.6666666666666663" />
+                <controlpoint xx="1" yy="1.1547005383792515" zz="-0.6666666666666663" />
+                <controlpoint xx="1" yy="0.0" zz="-0.0" />
+                <controlpoint xx="-1" yy="0.0" zz="-0.0" />
+                <controlpoint xx="-1" yy="1.6328623988631375e-16" zz="-1.3333333333333333" />
+                <controlpoint xx="1" yy="1.6328623988631375e-16" zz="-1.3333333333333333" />
+                <controlpoint xx="1" yy="0.0" zz="-0.0" />
             </patch>
         </primitive>
         <primitive id="chandelier">
-            <patch npointsU="4" npointsV="4" npartsU="20" npartsV="20" >
-                <controlpoint xx="-1" yy="0.0" zz="0.0"/>
-                <controlpoint xx="-1" yy="-0.0" zz="-1.3333333333333333"/>
-                <controlpoint xx="1" yy="-0.0" zz="-1.3333333333333333"/>
-                <controlpoint xx="1" yy="0.0" zz="0.0"/>
-                <controlpoint xx="-1" yy="-0.0" zz="0.0"/>
-                <controlpoint xx="-1" yy="1.1547005383792515" zz="-0.6666666666666667"/>
-                <controlpoint xx="1" yy="1.1547005383792515" zz="-0.6666666666666667"/>
-                <controlpoint xx="1" yy="-0.0" zz="0.0"/>
-                <controlpoint xx="-1" yy="-0.0" zz="-0.0"/>
-                <controlpoint xx="-1" yy="1.1547005383792515" zz="0.6666666666666663"/>
-                <controlpoint xx="1" yy="1.1547005383792515" zz="0.6666666666666663"/>
-                <controlpoint xx="1" yy="-0.0" zz="-0.0"/>
-                <controlpoint xx="-1" yy="-0.0" zz="-0.0"/>
-                <controlpoint xx="-1" yy="1.6328623988631375e-16" zz="1.3333333333333333"/>
-                <controlpoint xx="1" yy="1.6328623988631375e-16" zz="1.3333333333333333"/>
-                <controlpoint xx="1" yy="-0.0" zz="-0.0"/>
+            <patch npointsU="4" npointsV="4" npartsU="20" npartsV="20">
+                <controlpoint xx="-1" yy="0.0" zz="0.0" />
+                <controlpoint xx="-1" yy="-0.0" zz="-1.3333333333333333" />
+                <controlpoint xx="1" yy="-0.0" zz="-1.3333333333333333" />
+                <controlpoint xx="1" yy="0.0" zz="0.0" />
+                <controlpoint xx="-1" yy="-0.0" zz="0.0" />
+                <controlpoint xx="-1" yy="1.1547005383792515" zz="-0.6666666666666667" />
+                <controlpoint xx="1" yy="1.1547005383792515" zz="-0.6666666666666667" />
+                <controlpoint xx="1" yy="-0.0" zz="0.0" />
+                <controlpoint xx="-1" yy="-0.0" zz="-0.0" />
+                <controlpoint xx="-1" yy="1.1547005383792515" zz="0.6666666666666663" />
+                <controlpoint xx="1" yy="1.1547005383792515" zz="0.6666666666666663" />
+                <controlpoint xx="1" yy="-0.0" zz="-0.0" />
+                <controlpoint xx="-1" yy="-0.0" zz="-0.0" />
+                <controlpoint xx="-1" yy="1.6328623988631375e-16" zz="1.3333333333333333" />
+                <controlpoint xx="1" yy="1.6328623988631375e-16" zz="1.3333333333333333" />
+                <controlpoint xx="1" yy="-0.0" zz="-0.0" />
             </patch>
         </primitive>
 
@@ -296,23 +296,23 @@
     <components>
         <component id="topUnitCube">
             <transformation>
-                <translate x="0" y="0.5" z="0" /> 
+                <translate x="0" y="0.5" z="0" />
                 <rotate axis="x" angle="-90" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit"/>
+            <texture id="inherit" />
 
             <children>
                 <primitiveref id="unitSquare" />
 
-             </children>
+            </children>
 
         </component>
-        
-      
+
+
         <component id="pearlTriangle">
             <transformation>
                 <scale x="0.2" y="0.2" z="0.2" />
@@ -321,8 +321,9 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit" />/>
-             <children>
+            <texture id="inherit" />
+            />
+            <children>
                 <primitiveref id="demoTriangle" />
 
             </children>
@@ -332,13 +333,14 @@
             <transformation>
                 <translate x="3" y="0.251" z="0" />
                 <rotate axis="y" angle="60" />
-                
+
             </transformation>
             <materials>
                 <material id="steelMat" />
             </materials>
-            <texture id="brushed-iron" length_s="1" length_t="1" />/>
-             <children>
+            <texture id="brushed-iron" length_s="1" length_t="1" />
+            />
+            <children>
                 <componentref id="pearlTriangle" />
 
             </children>
@@ -351,8 +353,9 @@
             <materials>
                 <material id="steelMat" />
             </materials>
-            <texture id="brushed-iron" length_s="1" length_t="1" />/>
-             <children>
+            <texture id="brushed-iron" length_s="1" length_t="1" />
+            />
+            <children>
                 <componentref id="pearlTriangle" />
 
             </children>
@@ -366,8 +369,9 @@
             <materials>
                 <material id="steelMat" />
             </materials>
-            <texture id="brushed-iron" length_s="1" length_t="1" />/>
-             <children>
+            <texture id="brushed-iron" length_s="1" length_t="1" />
+            />
+            <children>
                 <componentref id="pearlTriangle" />
 
             </children>
@@ -381,8 +385,9 @@
             <materials>
                 <material id="steelMat" />
             </materials>
-            <texture id="brushed-iron" length_s="1" length_t="1" />/>
-             <children>
+            <texture id="brushed-iron" length_s="1" length_t="1" />
+            />
+            <children>
                 <componentref id="pearlTriangle" />
 
             </children>
@@ -396,8 +401,9 @@
             <materials>
                 <material id="steelMat" />
             </materials>
-            <texture id="brushed-iron" length_s="1" length_t="1" />/>
-             <children>
+            <texture id="brushed-iron" length_s="1" length_t="1" />
+            />
+            <children>
                 <componentref id="pearlTriangle" />
 
             </children>
@@ -411,8 +417,9 @@
             <materials>
                 <material id="steelMat" />
             </materials>
-            <texture id="brushed-iron" length_s="1" length_t="1" />/>
-             <children>
+            <texture id="brushed-iron" length_s="1" length_t="1" />
+            />
+            <children>
                 <componentref id="pearlTriangle" />
 
             </children>
@@ -420,19 +427,19 @@
 
         <component id="botUnitCube">
             <transformation>
-                <translate x="0" y="-0.5" z="0" /> 
+                <translate x="0" y="-0.5" z="0" />
                 <rotate axis="x" angle="90" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit"/>
+            <texture id="inherit" />
 
             <children>
                 <primitiveref id="unitSquare" />
 
-             </children>
+            </children>
 
         </component>
 
@@ -445,65 +452,65 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit"/>
+            <texture id="inherit" />
 
             <children>
                 <primitiveref id="unitSquare" />
 
-             </children>
+            </children>
 
         </component>
 
         <component id="frontUnitCube">
             <transformation>
-                <translate x="0" y="0" z="0.5" /> 
+                <translate x="0" y="0" z="0.5" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit"/>
+            <texture id="inherit" />
 
             <children>
                 <primitiveref id="unitSquare" />
 
-             </children>
+            </children>
 
         </component>
 
         <component id="rightUnitCube">
             <transformation>
-                <translate x="-0.5" y="0" z="0" /> 
+                <translate x="-0.5" y="0" z="0" />
                 <rotate axis="y" angle="-90" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit"/>
+            <texture id="inherit" />
 
             <children>
                 <primitiveref id="unitSquare" />
 
-             </children>
+            </children>
 
         </component>
 
         <component id="leftUnitCube">
             <transformation>
-                <translate x="0.5" y="0" z="0" /> 
+                <translate x="0.5" y="0" z="0" />
                 <rotate axis="y" angle="90" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit"/>
+            <texture id="inherit" />
 
             <children>
                 <primitiveref id="unitSquare" />
 
-             </children>
+            </children>
 
         </component>
 
@@ -515,7 +522,7 @@
                 <material id="inherit" />
             </materials>
 
-            <texture id="inherit"/>
+            <texture id="inherit" />
 
             <children>
                 <componentref id="topUnitCube" />
@@ -525,7 +532,7 @@
                 <componentref id="frontUnitCube" />
                 <componentref id="backUnitCube" />
 
-             </children>
+            </children>
 
         </component>
 
@@ -556,7 +563,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball3">
             <transformation>
                 <translate x="0.2" y="0.2" z="0.3464101615137755" />
@@ -584,7 +591,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball5">
             <transformation>
                 <translate x="0" y="0.2" z="0.692820323027551" />
@@ -598,7 +605,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball6">
             <transformation>
                 <translate x="0.4" y="0.2" z="0.692820323027551" />
@@ -612,7 +619,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball7">
             <transformation>
                 <translate x="-0.6" y="0.2" z="1.039230484541326" />
@@ -626,7 +633,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball8">
             <transformation>
                 <translate x="-0.2" y="0.2" z="1.039230484541326" />
@@ -640,7 +647,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball9">
             <transformation>
                 <translate x="0.2" y="0.2" z="1.039230484541326" />
@@ -654,7 +661,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball10">
             <transformation>
                 <translate x="0.6" y="0.2" z="1.039230484541326" />
@@ -668,7 +675,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball11">
             <transformation>
                 <translate x="-0.8" y="0.2" z="1.385640646055102" />
@@ -682,7 +689,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball12">
             <transformation>
                 <translate x="-0.4" y="0.2" z="1.385640646055102" />
@@ -696,7 +703,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball13">
             <transformation>
                 <translate x="0" y="0.2" z="1.385640646055102" />
@@ -710,7 +717,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball14">
             <transformation>
                 <translate x="0.4" y="0.2" z="1.385640646055102" />
@@ -724,7 +731,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball15">
             <transformation>
                 <translate x="0.8" y="0.2" z="1.385640646055102" />
@@ -738,7 +745,7 @@
                 <primitiveref id="demoSphere" />
             </children>
         </component>
-        
+
         <component id="ball0">
             <transformation>
                 <translate x="0" y="0.2" z="-3.5" />
@@ -789,7 +796,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -802,7 +809,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
                 <componentref id="unitCube" />
             </children>
@@ -880,7 +887,7 @@
             <materials>
                 <material id="steelMat" />
                 <material id="orangeWood" />
-                <material id="demoMaterial" /> 
+                <material id="demoMaterial" />
             </materials>
             <texture id="steel" length_s="1" length_t="0.5" />
             <children>
@@ -891,7 +898,7 @@
         <component id="tableLegDR">
             <transformation>
                 <translate x="2.5" y="-3" z="5.5" />
-                
+
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -905,7 +912,7 @@
         <component id="tableLegUR">
             <transformation>
                 <translate x="2.5" y="-3" z="-5.5" />
-                
+
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -919,7 +926,7 @@
         <component id="tableLegDL">
             <transformation>
                 <translate x="-2.5" y="-3" z="5.5" />
-                
+
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -933,7 +940,7 @@
         <component id="tableLegUL">
             <transformation>
                 <translate x="-2.5" y="-3" z="-5.5" />
-                
+
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -960,12 +967,12 @@
 
         <component id="tableHoleBR">
             <transformation>
-            <translate x="2.7" y="0" z="5.5" />
+                <translate x="2.7" y="0" z="5.5" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -973,12 +980,12 @@
 
         <component id="tableHoleBL">
             <transformation>
-            <translate x="-2.7" y="0" z="5.5" />
+                <translate x="-2.7" y="0" z="5.5" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -986,12 +993,12 @@
 
         <component id="tableHoleMR">
             <transformation>
-            <translate x="2.7" y="0" z="0" />
+                <translate x="2.7" y="0" z="0" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -999,12 +1006,12 @@
 
         <component id="tableHoleML">
             <transformation>
-            <translate x="-2.7" y="0" z="0" />
+                <translate x="-2.7" y="0" z="0" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -1012,12 +1019,12 @@
 
         <component id="tableHoleUR">
             <transformation>
-            <translate x="2.7" y="0" z="-5.5" />
+                <translate x="2.7" y="0" z="-5.5" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -1025,12 +1032,12 @@
 
         <component id="tableHoleUL">
             <transformation>
-            <translate x="-2.7" y="0" z="-5.5" />
+                <translate x="-2.7" y="0" z="-5.5" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
                 <componentref id="tableHole" />
             </children>
@@ -1071,7 +1078,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="none"/>
+            <texture id="none" />
             <children>
                 <componentref id="tableHoleVoid" />
             </children>
@@ -1083,7 +1090,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="none"/>
+            <texture id="none" />
             <children>
                 <componentref id="tableHoleVoid" />
             </children>
@@ -1095,7 +1102,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="none"/>
+            <texture id="none" />
             <children>
                 <componentref id="tableHoleVoid" />
             </children>
@@ -1107,7 +1114,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="none"/>
+            <texture id="none" />
             <children>
                 <componentref id="tableHoleVoid" />
             </children>
@@ -1119,7 +1126,7 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="none"/>
+            <texture id="none" />
             <children>
                 <componentref id="tableHoleVoid" />
             </children>
@@ -1131,15 +1138,121 @@
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="none"/>
+            <texture id="none" />
             <children>
                 <componentref id="tableHoleVoid" />
             </children>
         </component>
 
+        <component id="chalksideXP">
+                <transformation>
+                    <translate x="0.5" y="0" z="0" />
+                    <rotate axis="x" angle="90"/>
+                    <rotate axis="z" angle="-90" />
+                </transformation>
+                <materials>
+                    <material id="inherit" />
+                </materials>
+                <texture id="chalkBox" length_s="1" length_t="1" />
+                <children>
+                    <primitiveref id="nurbsPlane" />
+                </children>
+            </component>
+    
+            <component id="chalksideXN">
+                <transformation>
+                    <translate x="-0.5" y="0" z="0" />
+                    <rotate axis="x" angle="90"/>
+                    <rotate axis="z" angle="90" />
+                </transformation>
+                <materials>
+                    <material id="inherit" />
+                </materials>
+                <texture id="chalkBox" length_s="1" length_t="1" />
+                <children>
+                    <primitiveref id="nurbsPlane" />
+                </children>
+            </component>
+    
+            <component id="chalksideZP">
+                <transformation>
+                    <translate x="0" y="0" z="0.5" />
+                    <rotate axis="x" angle="90" />
+                </transformation>
+                <materials>
+                    <material id="inherit" />
+                </materials>
+                <texture id="chalkBox" length_s="1" length_t="1" />
+                <children>
+                    <primitiveref id="nurbsPlane" />
+                </children>
+            </component>
+    
+            <component id="chalksideZN">
+                <transformation>
+                    <translate x="0" y="0" z="-0.5" />
+                    <rotate axis="z" angle="180"/>
+                    <rotate axis="x" angle="-90" />
+                </transformation>
+                <materials>
+                    <material id="inherit" />
+                </materials>
+                <texture id="chalkBox" length_s="1" length_t="1" />
+                <children>
+                    <primitiveref id="nurbsPlane" />
+                </children>
+            </component>
+    
+            <component id="chalksideBot">
+                    <transformation>
+                        <translate x="0" y="-0.5" z="0" />
+                        <rotate axis="x" angle="180" />
+                    </transformation>
+                    <materials>
+                        <material id="inherit" />
+                    </materials>
+                    <texture id="chalkBox" length_s="1" length_t="1" />
+                    <children>
+                        <primitiveref id="nurbsPlane" />
+                    </children>
+                </component>
+    
+                <component id="chalksideTop">
+                        <transformation>
+                            <translate x="0" y="0.5" z="0" />
+                        </transformation>
+                        <materials>
+                            <material id="inherit" />
+                        </materials>
+                        <texture id="chalk" length_s="1" length_t="1" />
+                        <children>
+                            <primitiveref id="nurbsPlane" />
+                        </children>
+                    </component>
+    
+    
+            <component id="chalk">
+                <transformation>
+                    <translate x="-3" y="0.4" z="2" />
+                    <rotate axis="y" angle="45" />
+                    <scale x="0.3" y="0.3" z="0.3" />
+                </transformation>
+                <materials>
+                    <material id="ballMaterial" />
+                </materials>
+                <texture id="chalkBox" length_s="1" length_t="1" />
+                <children>
+                    <componentref id="chalksideXP" />
+                    <componentref id="chalksideXN" />
+                    <componentref id="chalksideZP" />
+                    <componentref id="chalksideZN" />
+                    <componentref id="chalksideBot" />
+                    <componentref id="chalksideTop" />
+                </children>
+            </component>
+
         <component id="table">
-            <transformation>
-            </transformation>
+            <transformation></transformation>
             <materials>
                 <material id="tableMaterial" />
                 <material id="orangeWood" />
@@ -1176,20 +1289,21 @@
                 <componentref id="pearlTriangle4" />
                 <componentref id="pearlTriangle5" />
                 <componentref id="pearlTriangle6" />
+                <componentref id="chalk" />
             </children>
         </component>
- 
-        
+
+
         <component id="cable">
             <transformation>
                 <translate x="0" y="0.5" z="0" />
                 <rotate axis="x" angle="-90" />
                 <scale x="0.1" y="0.1" z="5" />
             </transformation>
-             <materials>
+            <materials>
                 <material id="steelMat" />
             </materials>
-            
+
             <texture id="steel" length_s="1" length_t="1" />
             <children>
                 <primitiveref id="cylinder2" />
@@ -1200,7 +1314,7 @@
 
         <component id="chandelier">
             <transformation>
-            <translate x="0" y="5.5" z="0" />
+                <translate x="0" y="5.5" z="0" />
             </transformation>
             <materials>
                 <material id="steelMat" />
@@ -1215,7 +1329,7 @@
 
         <component id="stick">
             <transformation>
-                <scale x="0.3" y="0.3" z ="10" /> 
+                <scale x="0.3" y="0.3" z="10" />
             </transformation>
             <materials>
                 <material id="lightWood" />
@@ -1228,7 +1342,7 @@
 
         <component id="stickNurbs">
             <transformation>
-                <scale x="0.3" y="0.3" z ="10" /> 
+                <scale x="0.3" y="0.3" z="10" />
             </transformation>
             <materials>
                 <material id="lightWood" />
@@ -1256,8 +1370,8 @@
         <component id="stickTableNurbs">
             <transformation>
                 <translate x="-4.15" y="-3.0" z="0" />
-                <rotate axis ="z" angle="-15" />
-                <rotate axis ="x" angle="-90" />
+                <rotate axis="z" angle="-15" />
+                <rotate axis="x" angle="-90" />
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -1267,12 +1381,12 @@
                 <componentref id="stickNurbs" />
             </children>
         </component>
-        
+
         <component id="pooltriangleL">
             <transformation>
-            <translate x="-0.5" y="0" z="0" />
-            <rotate axis="y" angle ="-30" />
-            <scale x="0.1" y="0.1" z= "2" />
+                <translate x="-0.5" y="0" z="0" />
+                <rotate axis="y" angle="-30" />
+                <scale x="0.1" y="0.1" z="2" />
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -1285,9 +1399,9 @@
 
         <component id="pooltriangleR">
             <transformation>
-            <translate x="0.5" y="0" z="0" />
-            <rotate axis="y" angle ="30" />
-            <scale x="0.1" y="0.1" z= "2" />
+                <translate x="0.5" y="0" z="0" />
+                <rotate axis="y" angle="30" />
+                <scale x="0.1" y="0.1" z="2" />
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -1300,9 +1414,9 @@
 
         <component id="pooltriangleB">
             <transformation>
-            <translate x="0" y="0" z="0.8660254037844386" />
-            <rotate axis="y" angle ="90" />
-            <scale x="0.1" y="0.1" z= "2" />
+                <translate x="0" y="0" z="0.8660254037844386" />
+                <rotate axis="y" angle="90" />
+                <scale x="0.1" y="0.1" z="2" />
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -1314,11 +1428,10 @@
         </component>
 
 
-
         <component id="pooltriangle">
             <transformation>
-            <translate x="0" y="0.25" z="5.6" />
-            <rotate axis ="x" angle="-10" />
+                <translate x="0" y="0.25" z="5.6" />
+                <rotate axis="x" angle="-10" />
             </transformation>
             <materials>
                 <material id="orangeWood" />
