@@ -82,7 +82,7 @@
         <texture id="steel" file="scenes/images/steel.jpg" />
         <texture id="brushed-iron" file="scenes/images/brushed-iron.jpg" />
         <texture id="chalk" file="scenes/images/blueChalk.jpg" />
-        <texture id="chalkBox" file="scenes/images/chalkSide.jpg"/>
+        <texture id="chalkBox" file="scenes/images/chalkSide.jpg" />
     </textures>
 
     <materials>
@@ -200,15 +200,15 @@
                 <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="10.5">
-                    <translate x="-3.5" y="0.7" z="-9.4" />
+                <translate x="-3.5" y="0.7" z="-9.4" />
                 <rotate angle_x="95" angle_y="0" angle_z="-15" />
                 <scale x="1" y="1" z="1" />
-                </keyframe>
+            </keyframe>
             <keyframe instant="12">
-                    <translate x="0" y="0" z="0" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
-                </keyframe>
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
         </animation>
         <animation id="cueBall">
             <keyframe instant="4.2">
@@ -222,24 +222,24 @@
                 <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="7">
-                    <translate x="0" y="0" z="8" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="0" y="0" z="8" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="9">
-                    <translate x="-2.6" y="0" z="5" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="-2.6" y="0" z="5" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="13">
-                    <translate x="0" y="0" z="0" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="15">
-                    <translate x="0" y="0" z="-1" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="0" y="0" z="-1" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="17">
                 <translate x="0" y="0" z="-1" />
@@ -252,169 +252,214 @@
                 <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="22.5">
-                    <translate x="0" y="0" z="2" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="0" y="0" z="2" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
 
-            
+
         </animation>
 
         <animation id="chalkSharpen">
-                <keyframe instant="5.5">
-                        <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="6">
-                        <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="7.5">
-                        <translate x="0" y="3" z="-4" />
-                        <rotate angle_x="90" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="10.5">
-                        <translate x="0" y="3" z="-4" />
-                        <rotate angle_x="90" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="12">
-                        <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
+            <keyframe instant="5.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="6">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="7.5">
+                <translate x="0" y="3" z="-4" />
+                <rotate angle_x="90" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="10.5">
+                <translate x="0" y="3" z="-4" />
+                <rotate angle_x="90" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="12">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
 
-                <keyframe instant="13">
-                    <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="14">
-                    <translate x="0" y="3" z="-4" />
-                        <rotate angle_x="90" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="16">
-                    <translate x="3.2" y="1" z="-11.5" />
-                        <rotate angle_x="95" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
+            <keyframe instant="13">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="14">
+                <translate x="0" y="3" z="-4" />
+                <rotate angle_x="90" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="16">
+                <translate x="3.2" y="1" z="-11.5" />
+                <rotate angle_x="95" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
 
-                <keyframe instant="16.5">
-                    <translate x="3.2" y="1" z="-11.5" />
-                        <rotate angle_x="98" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
+            <keyframe instant="16.5">
+                <translate x="3.2" y="1" z="-11.5" />
+                <rotate angle_x="98" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
 
-                <keyframe instant="17">
-                    <translate x="3.2" y="1" z="-10.5" />
-                        <rotate angle_x="98" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="17.5">
-                    <translate x="3.2" y="1" z="-10.5" />
-                        <rotate angle_x="98" angle_y="0" angle_z="15" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="18.5">
-                    <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
+            <keyframe instant="17">
+                <translate x="3.2" y="1" z="-10.5" />
+                <rotate angle_x="98" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="17.5">
+                <translate x="3.2" y="1" z="-10.5" />
+                <rotate angle_x="98" angle_y="0" angle_z="15" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="18.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
 
         </animation>
 
         <animation id="chalk">
-                <keyframe instant="7.5">
-                        <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="8">
-                        <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="8.5">
-                        <translate x="0" y="0" z="0" />
-                        <rotate angle_x="-90" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="9.5">
-                        <translate x="-0.25" y="1" z="2.5" />
-                        <rotate angle_x="-90" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="10.5">
-                        <translate x="-0.25" y="1" z="2.5" />
-                        <rotate angle_x="-90" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="12">
-                        <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                
+            <keyframe instant="7.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="8">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="8.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="-90" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="9.5">
+                <translate x="-0.25" y="1" z="2.5" />
+                <rotate angle_x="-90" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="10.5">
+                <translate x="-0.25" y="1" z="2.5" />
+                <rotate angle_x="-90" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="12">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+
         </animation>
         <animation id="ballHoleRight">
             <keyframe instant="19.5">
-                    <translate x="0" y="0" z="0" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="23.5">
-                    <translate x="1.8" y="0" z="3" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="1.8" y="0" z="3" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="23.8">
-                    <translate x="1.8" y="0" z="3" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="1.8" y="0" z="3" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="24.5">
-                    <translate x="1.8" y="-1" z="3" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="1" y="1" z="1" />
+                <translate x="1.8" y="-1" z="3" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="25.5">
-                    <translate x="1.8" y="-2" z="3" />
-                    <rotate angle_x="0" angle_y="0" angle_z="0" />
-                    <scale x="0" y="0" z="0" />
+                <translate x="1.8" y="-2" z="3" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="0" y="0" z="0" />
             </keyframe>
         </animation>
 
         <animation id="ballHoleLeft">
-                <keyframe instant="19.5">
-                        <translate x="0" y="0" z="0" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="23.5">
-                        <translate x="-1.8" y="0" z="3" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="23.8">
-                        <translate x="-1.8" y="0" z="3" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="24.5">
-                        <translate x="-1.8" y="-1" z="3" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="1" y="1" z="1" />
-                </keyframe>
-                <keyframe instant="25.5">
-                        <translate x="-1.8" y="-2" z="3" />
-                        <rotate angle_x="0" angle_y="0" angle_z="0" />
-                        <scale x="0" y="0" z="0" />
-                </keyframe>
-            </animation>
+            <keyframe instant="19.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="23.5">
+                <translate x="-1.8" y="0" z="3" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="23.8">
+                <translate x="-1.8" y="0" z="3" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="24.5">
+                <translate x="-1.8" y="-1" z="3" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="25.5">
+                <translate x="-1.8" y="-2" z="3" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="0" y="0" z="0" />
+            </keyframe>
+        </animation>
+
+
+        <animation id="ballBackLeft">
+            <keyframe instant="19.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="23.5">
+                <translate x="-0.5" y="0" z="2.5" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+        </animation>
+
+        <animation id="ballBackRight">
+            <keyframe instant="19.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="23.5">
+                <translate x="0.5" y="0" z="2.5" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+        </animation>
+
+        <animation id="ballBackCenter">
+            <keyframe instant="19.5">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="22.5">
+                <translate x="0" y="0" z="2.2" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="23.5">
+                <translate x="0" y="0" z="1.5" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+        </animation>
 
 
     </animations>
@@ -901,6 +946,7 @@
                 <translate x="-0.4" y="0.2" z="1.385640646055102" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ballBackLeft" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -915,6 +961,7 @@
                 <translate x="0" y="0.2" z="1.385640646055102" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ballBackCenter" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -929,6 +976,7 @@
                 <translate x="0.4" y="0.2" z="1.385640646055102" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ballBackRight" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -1352,112 +1400,112 @@
         </component>
 
         <component id="chalksideXP">
-                <transformation>
-                    <translate x="0.5" y="0" z="0" />
-                    <rotate axis="x" angle="90"/>
-                    <rotate axis="z" angle="-90" />
-                </transformation>
-                <materials>
-                    <material id="inherit" />
-                </materials>
-                <texture id="chalkBox" length_s="1" length_t="1" />
-                <children>
-                    <primitiveref id="nurbsPlane" />
-                </children>
-            </component>
-    
-            <component id="chalksideXN">
-                <transformation>
-                    <translate x="-0.5" y="0" z="0" />
-                    <rotate axis="x" angle="90"/>
-                    <rotate axis="z" angle="90" />
-                </transformation>
-                <materials>
-                    <material id="inherit" />
-                </materials>
-                <texture id="chalkBox" length_s="1" length_t="1" />
-                <children>
-                    <primitiveref id="nurbsPlane" />
-                </children>
-            </component>
-    
-            <component id="chalksideZP">
-                <transformation>
-                    <translate x="0" y="0" z="0.5" />
-                    <rotate axis="x" angle="90" />
-                </transformation>
-                <materials>
-                    <material id="inherit" />
-                </materials>
-                <texture id="chalkBox" length_s="1" length_t="1" />
-                <children>
-                    <primitiveref id="nurbsPlane" />
-                </children>
-            </component>
-    
-            <component id="chalksideZN">
-                <transformation>
-                    <translate x="0" y="0" z="-0.5" />
-                    <rotate axis="z" angle="180"/>
-                    <rotate axis="x" angle="-90" />
-                </transformation>
-                <materials>
-                    <material id="inherit" />
-                </materials>
-                <texture id="chalkBox" length_s="1" length_t="1" />
-                <children>
-                    <primitiveref id="nurbsPlane" />
-                </children>
-            </component>
-    
-            <component id="chalksideBot">
-                    <transformation>
-                        <translate x="0" y="-0.5" z="0" />
-                        <rotate axis="x" angle="180" />
-                    </transformation>
-                    <materials>
-                        <material id="inherit" />
-                    </materials>
-                    <texture id="chalkBox" length_s="1" length_t="1" />
-                    <children>
-                        <primitiveref id="nurbsPlane" />
-                    </children>
-                </component>
-    
-                <component id="chalksideTop">
-                        <transformation>
-                            <translate x="0" y="0.5" z="0" />
-                        </transformation>
-                        <materials>
-                            <material id="inherit" />
-                        </materials>
-                        <texture id="chalk" length_s="1" length_t="1" />
-                        <children>
-                            <primitiveref id="nurbsPlane" />
-                        </children>
-                    </component>
-    
-    
-            <component id="chalk">
-                <transformation>
-                    <translate x="-3" y="0.4" z="2" />
-                    <rotate axis="y" angle="45" />
-                    <scale x="0.3" y="0.3" z="0.3" />
-                </transformation>
-                <animationref id="chalk"/>
-                <materials>
-                    <material id="ballMaterial" />
-                </materials>
-                <texture id="chalkBox" length_s="1" length_t="1" />
-                <children>
-                    <componentref id="chalksideXP" />
-                    <componentref id="chalksideXN" />
-                    <componentref id="chalksideZP" />
-                    <componentref id="chalksideZN" />
-                    <componentref id="chalksideBot" />
-                    <componentref id="chalksideTop" />
-                </children>
-            </component>
+            <transformation>
+                <translate x="0.5" y="0" z="0" />
+                <rotate axis="x" angle="90" />
+                <rotate axis="z" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="chalkBox" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="nurbsPlane" />
+            </children>
+        </component>
+
+        <component id="chalksideXN">
+            <transformation>
+                <translate x="-0.5" y="0" z="0" />
+                <rotate axis="x" angle="90" />
+                <rotate axis="z" angle="90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="chalkBox" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="nurbsPlane" />
+            </children>
+        </component>
+
+        <component id="chalksideZP">
+            <transformation>
+                <translate x="0" y="0" z="0.5" />
+                <rotate axis="x" angle="90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="chalkBox" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="nurbsPlane" />
+            </children>
+        </component>
+
+        <component id="chalksideZN">
+            <transformation>
+                <translate x="0" y="0" z="-0.5" />
+                <rotate axis="z" angle="180" />
+                <rotate axis="x" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="chalkBox" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="nurbsPlane" />
+            </children>
+        </component>
+
+        <component id="chalksideBot">
+            <transformation>
+                <translate x="0" y="-0.5" z="0" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="chalkBox" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="nurbsPlane" />
+            </children>
+        </component>
+
+        <component id="chalksideTop">
+            <transformation>
+                <translate x="0" y="0.5" z="0" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="chalk" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="nurbsPlane" />
+            </children>
+        </component>
+
+
+        <component id="chalk">
+            <transformation>
+                <translate x="-3" y="0.4" z="2" />
+                <rotate axis="y" angle="45" />
+                <scale x="0.3" y="0.3" z="0.3" />
+            </transformation>
+            <animationref id="chalk" />
+            <materials>
+                <material id="ballMaterial" />
+            </materials>
+            <texture id="chalkBox" length_s="1" length_t="1" />
+            <children>
+                <componentref id="chalksideXP" />
+                <componentref id="chalksideXN" />
+                <componentref id="chalksideZP" />
+                <componentref id="chalksideZN" />
+                <componentref id="chalksideBot" />
+                <componentref id="chalksideTop" />
+            </children>
+        </component>
 
         <component id="table">
             <transformation></transformation>
@@ -1581,7 +1629,7 @@
                 <rotate axis="z" angle="-15" />
                 <rotate axis="x" angle="-90" />
             </transformation>
-            <animationref id="chalkSharpen"/>
+            <animationref id="chalkSharpen" />
             <materials>
                 <material id="inherit" />
             </materials>
