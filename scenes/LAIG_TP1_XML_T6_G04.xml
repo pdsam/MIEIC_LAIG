@@ -232,7 +232,7 @@
                     <scale x="1" y="1" z="1" />
             </keyframe>
             <keyframe instant="13">
-                    <translate x="0" y="0" z="-0.5" />
+                    <translate x="0" y="0" z="0" />
                     <rotate angle_x="0" angle_y="0" angle_z="0" />
                     <scale x="1" y="1" z="1" />
             </keyframe>
@@ -241,6 +241,22 @@
                     <rotate angle_x="0" angle_y="0" angle_z="0" />
                     <scale x="1" y="1" z="1" />
             </keyframe>
+            <keyframe instant="17">
+                <translate x="0" y="0" z="-1" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="19.5">
+                <translate x="0" y="0" z="4.1" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="22.5">
+                    <translate x="0" y="0" z="2" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+
             
         </animation>
 
@@ -267,6 +283,44 @@
                 </keyframe>
                 <keyframe instant="12">
                         <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+
+                <keyframe instant="13">
+                    <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="14">
+                    <translate x="0" y="3" z="-4" />
+                        <rotate angle_x="90" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="16">
+                    <translate x="3.2" y="1" z="-11.5" />
+                        <rotate angle_x="95" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+
+                <keyframe instant="16.5">
+                    <translate x="3.2" y="1" z="-11.5" />
+                        <rotate angle_x="98" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+
+                <keyframe instant="17">
+                    <translate x="3.2" y="1" z="-10.5" />
+                        <rotate angle_x="98" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="17.5">
+                    <translate x="3.2" y="1" z="-10.5" />
+                        <rotate angle_x="98" angle_y="0" angle_z="15" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="18.5">
+                    <translate x="0" y="0" z="0" />
                         <rotate angle_x="0" angle_y="0" angle_z="0" />
                         <scale x="1" y="1" z="1" />
                 </keyframe>
@@ -304,7 +358,65 @@
                         <rotate angle_x="0" angle_y="0" angle_z="0" />
                         <scale x="1" y="1" z="1" />
                 </keyframe>
+                
         </animation>
+        <animation id="ballHoleRight">
+            <keyframe instant="19.5">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="23.5">
+                    <translate x="1.8" y="0" z="3" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="23.8">
+                    <translate x="1.8" y="0" z="3" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="24.5">
+                    <translate x="1.8" y="-1" z="3" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="25.5">
+                    <translate x="1.8" y="-2" z="3" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="0" y="0" z="0" />
+            </keyframe>
+        </animation>
+
+        <animation id="ballHoleLeft">
+                <keyframe instant="19.5">
+                        <translate x="0" y="0" z="0" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.5">
+                        <translate x="-1.8" y="0" z="3" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.8">
+                        <translate x="-1.8" y="0" z="3" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="24.5">
+                        <translate x="-1.8" y="-1" z="3" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="25.5">
+                        <translate x="-1.8" y="-2" z="3" />
+                        <rotate angle_x="0" angle_y="0" angle_z="0" />
+                        <scale x="0" y="0" z="0" />
+                </keyframe>
+            </animation>
+
+
     </animations>
 
     <primitives>
@@ -774,6 +886,7 @@
                 <translate x="-0.8" y="0.2" z="1.385640646055102" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ballHoleLeft" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -830,6 +943,7 @@
                 <translate x="0.8" y="0.2" z="1.385640646055102" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ballHoleRight" />
             <materials>
                 <material id="inherit" />
             </materials>
