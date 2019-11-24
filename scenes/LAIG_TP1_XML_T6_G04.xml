@@ -473,6 +473,90 @@
                     <scale x="1" y="1" z="1" />
                 </keyframe>
             </animation>
+        <animation id="ball7">
+                <keyframe instant="19.5">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.5">
+                    <translate x="-0.5" y="0" z="0.8" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+            </animation>
+        <animation id="ball10">
+                <keyframe instant="19.5">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.5">
+                    <translate x="0.5" y="0" z="0.8" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+            </animation>
+        <animation id="ball8">
+                <keyframe instant="19.5">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.5">
+                    <translate x="-0.2" y="0" z="0.9" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+            </animation>
+        <animation id="ball9">
+                <keyframe instant="19.5">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.5">
+                    <translate x="0.2" y="0" z="0.9" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+            </animation>
+        <animation id="ball4">
+                <keyframe instant="19.5">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.5">
+                    <translate x="-0.1" y="0" z="0.3" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+            </animation>
+        <animation id="ball5">
+                <keyframe instant="19.5">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.5">
+                    <translate x="0" y="0" z="0.4" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+            </animation>
+        <animation id="ball6">
+                <keyframe instant="19.5">
+                    <translate x="0" y="0" z="0" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+                <keyframe instant="23.5">
+                    <translate x="0.1" y="0" z="0.3" />
+                    <rotate angle_x="0" angle_y="0" angle_z="0" />
+                    <scale x="1" y="1" z="1" />
+                </keyframe>
+            </animation>
 
     </animations>
 
@@ -846,6 +930,7 @@
                 <translate x="-0.4" y="0.2" z="0.692820323027551" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ball4" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -860,6 +945,7 @@
                 <translate x="0" y="0.2" z="0.692820323027551" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ball5" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -874,6 +960,7 @@
                 <translate x="0.4" y="0.2" z="0.692820323027551" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ball6" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -888,6 +975,7 @@
                 <translate x="-0.6" y="0.2" z="1.039230484541326" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ball7" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -902,6 +990,7 @@
                 <translate x="-0.2" y="0.2" z="1.039230484541326" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ball8" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -916,6 +1005,7 @@
                 <translate x="0.2" y="0.2" z="1.039230484541326" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ball9" />
             <materials>
                 <material id="inherit" />
             </materials>
@@ -930,6 +1020,7 @@
                 <translate x="0.6" y="0.2" z="1.039230484541326" />
                 <scale x="0.2" y="0.2" z="0.2" />
             </transformation>
+            <animationref id="ball10" />
             <materials>
                 <material id="inherit" />
             </materials>
